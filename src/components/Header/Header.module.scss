@@ -1,0 +1,57 @@
+@import "../../sass/colors";
+
+.root {
+  //@include make-container();
+  display: flex;
+  position: sticky;
+
+  padding-top: 2rem;
+  width: 100%;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+
+  ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+
+    li {
+      position: relative;
+      margin-left: 2rem;
+
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -3px;
+        height: 3px;
+        width: 1%;
+        background: $color_text;
+        border: 1px solid $color_text;
+        border-radius: 6px;
+        opacity: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        transition: .3s;
+        pointer-events: none;
+      }
+
+      @mixin active-link {
+        width: 100%;
+        opacity: 1;
+      }
+
+      &.active {
+        &:after {
+          @include active-link
+        }
+      }
+
+      &:hover {
+        &:after {
+          @include active-link
+        }
+      }
+    }
+  }
+}

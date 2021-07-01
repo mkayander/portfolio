@@ -1,0 +1,18 @@
+$color_text: #F1FAEE;
+
+$color_accent: #E63946;
+$color_accent_variant: #E6398C;
+$accent_gradient: linear-gradient(265.34deg, $color_accent 3.98%, $color_accent_variant 94.23%);
+
+$color_primary: #457B9D;
+$color_primary_variant: #45589D;
+$primary_gradient: linear-gradient(265.34deg, $color_primary 3.98%, $color_primary_variant 94.23%);
+
+@mixin colored_shadow($color) {
+  box-shadow: 0 2px 6px transparentize($color, 0.7);
+}
+
+$section_gradient: linear-gradient(196.87deg, #122238 9.19%, #1D3557 100.11%);
+
+$color_background: #080F1A;
+$color_footer: #060B13;
