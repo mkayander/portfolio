@@ -39,5 +39,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "bootstrap": "^5.0.2",
+    "classnames": "^2.3.1",
+    "sass": "^1.35.1"
   }
 }
