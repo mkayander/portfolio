@@ -2,13 +2,16 @@
 
 .root {
   //@include make-container();
-  display: flex;
-  position: sticky;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+
+  opacity: 0.9;
 
   padding-top: 2rem;
-  width: 100%;
-  flex-flow: row nowrap;
-  justify-content: flex-end;
 
   ul {
     display: flex;
