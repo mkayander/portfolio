@@ -1,0 +1,78 @@
+@import "../../sass/colors";
+@import "../../sass/dimensions";
+
+.root {
+  position: relative;
+  transition: $transition_time;
+  height: 60px;
+  border-radius: $button_border_radius;
+
+
+  overflow: hidden;
+
+  &.accent {
+    background: $accent_gradient;
+    @include colored_shadow($color_accent);
+
+    &:hover {
+      @include colored_shadow_intensive($color_accent);
+    }
+  }
+
+  &.primary {
+    background: $primary_gradient;
+    @include colored_shadow($color_primary);
+
+    &:hover {
+      @include colored_shadow_intensive($color_primary);
+    }
+  }
+
+  &:after {
+    transition: $transition_time;
+    border-radius: $button_border_radius;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0;
+    mix-blend-mode: soft-light;
+  }
+
+  span {
+    transition: $transition_time;
+    color: $color_text;
+    opacity: 0.85;
+
+    margin-inline: 1.25rem;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+
+    span {
+      //opacity: 1;
+    }
+  }
+
+  &:focus {
+    &:after {
+      opacity: 0.3;
+    }
+  }
+
+  &:focus:active {
+    &:after {
+      opacity: 0.5;
+    }
+  }
+}
