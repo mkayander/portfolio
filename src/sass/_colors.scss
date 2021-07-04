@@ -1,22 +1,22 @@
-$color_text: #F1FAEE;
+$color_text: #f1faee;
 
-$color_accent: #E63946;
-$color_accent_variant: #E6398C;
+$color_accent: #e63946;
+$color_accent_variant: #e6398c;
 $accent_gradient: linear-gradient(265.34deg, $color_accent 3.98%, $color_accent_variant 94.23%);
 
-$color_primary: #457B9D;
-$color_primary_variant: #45589D;
+$color_primary: #457b9d;
+$color_primary_variant: #45589d;
 $primary_gradient: linear-gradient(265.34deg, $color_primary_variant 3.98%, $color_primary 94.23%);
 
-@mixin colored_shadow($color, $transparency:0.7, $y:2px, $blur:6px) {
-  box-shadow: 0 $y $blur transparentize($color, $transparency);
+@mixin colored_shadow($color, $transparency: 0.7, $y: 2px, $blur: 6px) {
+    box-shadow: 0 $y $blur transparentize($color, $transparency);
 }
 
-@mixin colored_shadow_intensive($color, $transparency:0.1, $y:2px, $blur:10px) {
-  box-shadow: 0 $y $blur transparentize($color, $transparency);
+@mixin colored_shadow_intensive($color, $transparency: 0.1, $y: 2px, $blur: 10px) {
+    box-shadow: 0 $y $blur transparentize($color, $transparency);
 }
 
-$section_gradient: linear-gradient(196.87deg, #122238 9.19%, #1D3557 100.11%);
+$section_gradient: linear-gradient(196.87deg, #122238 9.19%, #1d3557 100.11%);
 
-$color_background: #080F1A;
-$color_footer: #060B13;
+$color_background: #080f1a;
+$color_footer: #060b13;
