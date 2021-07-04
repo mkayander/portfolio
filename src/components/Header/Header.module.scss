@@ -1,3 +1,6 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins/breakpoints";
 @import "../../sass/colors";
 
 .root {
@@ -13,14 +16,21 @@
 
     padding-top: 2rem;
 
+    @include media-breakpoint-down(md) {
+        padding-top: 1rem;
+    }
+
     ul {
         display: flex;
         flex-flow: row wrap;
         justify-content: flex-end;
 
+        & > *:not(:first-child) {
+            margin-left: 2rem;
+        }
+
         li {
             position: relative;
-            margin-left: 2rem;
 
             &:after {
                 content: "";
