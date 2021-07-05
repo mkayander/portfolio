@@ -26,22 +26,23 @@
     top: 0;
     left: 0;
     right: 0;
-    padding-top: 20%;
+    padding-top: 30vh;
     z-index: 10;
     position: absolute;
 
     @include media-breakpoint-down(md) {
         position: relative;
+        padding-top: 20%;
     }
 
     .card {
         padding: 0 0;
         @include transition();
+        @include glassmorph-hidden($color_primary, 9px, 0.82, $button_border_radius);
 
-        @include media-breakpoint-down(md) {
+        @media only screen and (max-width: 1024px) {
             @include glassmorph($color_primary, 9px, 0.82, $button_border_radius);
             padding: $button_border_radius $button_border_radius;
-
 
             h5 {
                 font-size: 26px;
@@ -55,6 +56,9 @@
                 line-height: 32px;
                 margin: 0;
             }
+        }
+
+        @include media-breakpoint-down(md) {
         }
     }
 
@@ -114,4 +118,38 @@
     & > *:not(:last-child) {
         margin-right: 1rem;
     }
+}
+
+.buttonScroll {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 8vh;
+    width: 60px;
+    height: 60px;
+    background: transparent;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    img {
+        opacity: 0.9;
+    }
+
+    &.fixed {
+        position: fixed;
+    }
+
+    &.relative {
+        position: relative;
+        transform: translate(-50%, -90px);
+    }
+
+    @include media-breakpoint-down(lg) {
+        display: none;
+    }
+
+    //&:hover {
+    //    cursor: pointer;
 }
