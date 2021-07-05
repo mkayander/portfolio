@@ -25,7 +25,7 @@ const Introduction: React.FC = () => {
     useEffect(() => {
         const listener = () => {
             if (bgRef?.current && buttonScrollRef?.current) {
-                if (window.getComputedStyle(buttonScrollRef.current).display === "none") return;
+                if (window.getComputedStyle(buttonScrollRef.current).opacity === "0") return;
 
                 switch (scrollButtonState) {
                     case ScrollButtonState.fixed:
@@ -54,11 +54,10 @@ const Introduction: React.FC = () => {
             }
         };
 
-        addWindowEvents(["scroll", "resize"], listener);
-        listener();
+        addWindowEvents(["scroll", "resize", "load"], listener);
 
         return () => {
-            removeWindowEvents(["scroll", "resize"], listener);
+            removeWindowEvents(["scroll", "resize", "load"], listener);
         };
     }, [scrollButtonState]);
 
