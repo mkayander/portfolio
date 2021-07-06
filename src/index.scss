@@ -34,17 +34,22 @@ a {
 }
 
 p {
-    margin: 0 0;
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 24px;
+    line-height: 36px;
+    color: #f1faee;
 }
 
 button {
     outline: none;
     border: none;
     padding: 0 0;
+    background: none;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 ul {
@@ -68,8 +73,7 @@ h3,
 h4,
 h5,
 h6 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
+    margin: 0;
     /*font-weight: 500;*/
     line-height: 1.2;
 }
@@ -86,4 +90,11 @@ h3 {
 .container {
     // Animated breakpoint transitions
     @include transition();
+}
+
+.emoji {
+    display: inline-block;
+    width: auto;
+    height: 1em;
+    vertical-align: -0.125em;
 }
