@@ -6,20 +6,26 @@
     transition: all $duration ease-out;
 }
 
-@mixin glassmorph($color: #fff, $blur: 9px, $transparency: 0.75, $radius: 32px) {
+@mixin glassmorph($color: #fff, $blur: 9px, $transparency: 0.75, $radius: 32px, $bottom-border-only: false) {
     background: transparentize($color, $transparency);
     box-shadow: 0 8px 32px 0 transparentize($color, 0.75);
     backdrop-filter: blur($blur);
     -webkit-backdrop-filter: blur($blur);
     border-radius: $radius;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    @if $bottom-border-only {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    } @else {
+        border: 1px solid rgba(255, 255, 255, 0.18);
+    }
 }
 
-@mixin glassmorph-hidden($color: #fff, $blur: 9px, $transparency: 0.75, $radius: 32px) {
-    //background: transparentize($color, $transparency);
-    //box-shadow: 0 8px 32px 0 transparentize($color, 0.75);
-    //backdrop-filter: blur($blur);
-    //-webkit-backdrop-filter: blur($blur);
+@mixin glassmorph-hidden($color: #fff, $blur: 9px, $transparency: 0.75, $radius: 32px, $bottom-border-only: false) {
     border-radius: $radius;
-    border: 1px solid rgba(255, 255, 255, 0);
+
+    @if $bottom-border-only {
+        border-bottom: 1px solid rgba(255, 255, 255, 0);
+    } @else {
+        border: 1px solid rgba(255, 255, 255, 0);
+    }
 }
