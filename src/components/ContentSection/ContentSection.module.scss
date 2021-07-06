@@ -1,0 +1,56 @@
+@import "../../sass/mixins";
+
+.root {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+.header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+
+    hr {
+        flex: 1;
+        margin-inline: 1rem;
+        opacity: 0.9;
+    }
+
+    button {
+        display: flex;
+        align-items: center;
+        @include transition(0.2s);
+        transform: rotate(180deg);
+        opacity: 0.9;
+
+        &.folded {
+            transform: rotate(0);
+        }
+
+        img {
+            width: 42px;
+        }
+    }
+}
+
+.content {
+    @include transition(0.2s);
+    padding-top: 0.5rem;
+    overflow: hidden;
+    opacity: 1;
+
+    p {
+        margin-top: 0;
+        font-size: 14pt;
+    }
+
+    &.folded {
+        max-height: 0;
+        //transform: scaleY(0);
+        opacity: 0;
+        animation: fold 2s;
+    }
+}
