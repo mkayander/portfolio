@@ -2,9 +2,10 @@
 @import "../../../node_modules/bootstrap/scss/variables";
 @import "../../../node_modules/bootstrap/scss/mixins/breakpoints";
 @import "../../sass/colors";
+@import "../../sass/mixins";
 
 .root {
-    //@include make-container();
+    @include transition();
     z-index: 100;
     position: fixed;
     top: 0;
@@ -12,12 +13,23 @@
     right: 0;
     width: 100%;
 
-    opacity: 0.9;
-
     padding-top: 2rem;
+
+    @include glassmorph-hidden($color_primary, 9px, 0.75, 0, true);
+
+    &.scrolled {
+        padding-top: 0;
+        @include glassmorph($color_primary, 9px, 0.75, 0, true);
+    }
 
     @include media-breakpoint-down(md) {
         padding-top: 1rem;
+
+        ul {
+            & > *:not(:first-child) {
+                margin-left: 0.75rem !important;
+            }
+        }
     }
 
     ul {
@@ -31,6 +43,7 @@
 
         li {
             position: relative;
+            opacity: 0.9;
 
             &:after {
                 content: "";
