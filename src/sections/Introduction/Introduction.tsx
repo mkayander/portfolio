@@ -7,7 +7,11 @@ import styles from "./Introduction.module.scss";
 import classNames from "classnames";
 import { Button, ScrollButton } from "../../components";
 
-const Introduction: React.FC = () => {
+type IntroductionProps = {
+    nextSectionRef: React.RefObject<HTMLElement>;
+};
+
+const Introduction: React.FC<IntroductionProps> = ({ nextSectionRef }) => {
     const bgRef = useRef<HTMLImageElement>(null);
 
     return (
@@ -31,7 +35,16 @@ const Introduction: React.FC = () => {
             <img className={styles.bgImage} src={BgImg} alt="Background" />
             <img className={styles.bgImage} src={Shape1} alt="Background" />
             <img ref={bgRef} className={styles.bgMain} src={Shape2} alt="Background" />
-            <ScrollButton containerRef={bgRef} />
+            <ScrollButton
+                containerRef={bgRef}
+                onClick={() =>
+                    nextSectionRef.current &&
+                    window.scroll({
+                        behavior: "smooth",
+                        top: nextSectionRef.current.offsetTop - 128,
+                    })
+                }
+            />
         </section>
     );
 };
