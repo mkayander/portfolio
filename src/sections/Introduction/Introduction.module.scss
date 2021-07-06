@@ -26,7 +26,7 @@
     top: 0;
     left: 0;
     right: 0;
-    padding-top: 30vh;
+    padding-top: 20%;
     z-index: 10;
     position: absolute;
 
@@ -40,12 +40,20 @@
         @include transition();
         @include glassmorph-hidden($color_primary, 9px, 0.82, $button_border_radius);
 
-        @media only screen and (max-width: 1024px) {
+        @include media-breakpoint-down(md) {
             @include glassmorph($color_primary, 9px, 0.82, $button_border_radius);
             padding: $button_border_radius $button_border_radius;
+            margin-top: 1.75rem;
+
+            h3,
+            h5,
+            h6 {
+                margin-top: 1rem;
+            }
 
             h5 {
                 font-size: 26px;
+                line-height: 32px;
             }
             h3 {
                 line-height: 42px;
@@ -54,12 +62,33 @@
             h6 {
                 font-size: 26px;
                 line-height: 32px;
-                margin: 0;
+            }
+
+            .buttons {
+                button {
+                    margin-top: 1rem !important;
+                }
             }
         }
 
-        @include media-breakpoint-down(md) {
+        .buttons {
+            display: flex;
+            flex-flow: row wrap;
+
+            button {
+                margin-top: 1.75rem;
+            }
+
+            & > *:not(:last-child) {
+                margin-right: 1rem;
+            }
         }
+    }
+
+    h3,
+    h5,
+    h6 {
+        @include transition();
     }
 
     h5 {
@@ -106,53 +135,4 @@
         left: 0;
         right: 0;
     }
-}
-
-.buttons {
-    display: flex;
-    flex-flow: row wrap;
-
-    & > * {
-        margin-top: 1.75rem;
-    }
-
-    & > *:not(:last-child) {
-        margin-right: 1rem;
-    }
-}
-
-.buttonScroll {
-    transition: opacity 0.3s;
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 8vh;
-    width: 60px;
-    height: 60px;
-    background: transparent;
-    opacity: 1;
-
-    &:hover {
-        cursor: pointer;
-    }
-
-    img {
-        opacity: 0.9;
-    }
-
-    &.fixed {
-        position: fixed;
-    }
-
-    &.relative {
-        position: relative;
-        transform: translate(-50%, -90px);
-    }
-
-    @include media-breakpoint-down(lg) {
-        opacity: 0;
-    }
-
-    //&:hover {
-    //    cursor: pointer;
 }

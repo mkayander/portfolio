@@ -2,7 +2,8 @@ import React from "react";
 import styles from "./App.module.scss";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap/dist/css/bootstrap-grid.min.css";
-import { Header, Introduction } from "./components";
+import { Header } from "./components";
+import { Introduction } from "./sections";
 
 function App() {
     return (
