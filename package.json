@@ -41,9 +41,11 @@
     ]
   },
   "devDependencies": {
+    "@types/twemoji": "^12.1.1",
     "bootstrap": "^5.0.2",
     "classnames": "^2.3.1",
     "prettier": "^2.3.2",
-    "sass": "^1.35.1"
+    "sass": "^1.35.1",
+    "twemoji": "^13.1.0"
   }
 }
