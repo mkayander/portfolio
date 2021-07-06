@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import styles from "./ScrollButton.module.scss";
-import ScrollIcon from "../../sections/Introduction/assets/Scroll_Down_Button.svg";
+import ScrollIcon from "./assets/Scroll_Down_Button.svg";
 import { addWindowEvents, removeWindowEvents } from "../../utils/windowEvents";
 
 const scrollButtonOffset = 160;
