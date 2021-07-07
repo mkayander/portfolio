@@ -3,8 +3,7 @@ import styles from "./App.module.scss";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap/dist/css/bootstrap-grid.min.css";
 import { ContentSection, Header } from "./components";
-import { Introduction } from "./sections";
-import WorksSection from "./sections/WorksSection/WorksSection";
+import { Introduction, WorksSection } from "./sections";
 
 function App() {
     const aboutMeRef = useRef<HTMLDivElement>(null);
