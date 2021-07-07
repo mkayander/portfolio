@@ -17,7 +17,6 @@ const Header = () => {
     useEffect(() => {
         const listener = () => {
             if (window.scrollY > 64) {
-                console.log(window.scrollY);
                 setIsScrolled(true);
             } else {
                 setIsScrolled(false);
