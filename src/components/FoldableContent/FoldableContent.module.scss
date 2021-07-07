@@ -42,11 +42,6 @@
     overflow: hidden;
     opacity: 1;
 
-    p {
-        margin-top: 0;
-        font-size: 14pt;
-    }
-
     &.folded {
         max-height: 0;
         //transform: scaleY(0);

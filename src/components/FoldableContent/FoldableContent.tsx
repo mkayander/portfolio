@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./ContentSection.module.scss";
+import styles from "./FoldableContent.module.scss";
 import ExpandIcon from "../ScrollButton/assets/Scroll_Down_Button.svg";
 import Twemoji from "../Twemoji/Twemoji";
 import classNames from "classnames";
@@ -12,7 +12,7 @@ type TextSectionProps = {
     initiallyFolded?: boolean;
 };
 
-const ContentSection: React.FC<TextSectionProps> = ({ title, emoji, children }) => {
+const FoldableContent: React.FC<TextSectionProps> = ({ title, emoji, children }) => {
     const [isFolded, setIsFolded] = useState(false);
 
     return (
@@ -34,4 +34,4 @@ const ContentSection: React.FC<TextSectionProps> = ({ title, emoji, children }) 
     );
 };
 
-export default ContentSection;
+export default FoldableContent;
