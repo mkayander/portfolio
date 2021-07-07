@@ -36,8 +36,9 @@ a {
 p {
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
     line-height: 36px;
+    margin-top: 0;
+    font-size: 14pt;
     color: #f1faee;
 }
 
@@ -82,6 +83,20 @@ h3 {
     font-size: 1.75rem;
 }
 
+h5 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 100%;
+    /* or 20px */
+
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.02em;
+
+    color: #faf4e6;
+}
+
 /*code {*/
 /*    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',*/
 /*    monospace;*/
@@ -95,6 +110,6 @@ h3 {
 .emoji {
     height: 1em;
     width: 1em;
-    margin: 0 .05em 0 .1em;
+    margin: 0 0.05em 0 0.1em;
     vertical-align: -0.1em;
 }
