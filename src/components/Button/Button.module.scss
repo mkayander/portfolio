@@ -4,8 +4,8 @@
 .root {
     position: relative;
     transition: $transition_time;
-    height: 60px;
     border-radius: $button_border_radius;
+    padding: 0.5rem 1.5rem;
 
     overflow: hidden;
 
@@ -45,8 +45,6 @@
         transition: $transition_time;
         color: $color_text;
         opacity: 0.85;
-
-        margin-inline: 1.25rem;
 
         font-style: normal;
         font-weight: normal;
