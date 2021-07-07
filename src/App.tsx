@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import styles from "./App.module.scss";
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap/dist/css/bootstrap-grid.min.css";
 import { FoldableContent, Header } from "./components";
 import { Introduction, WorksSection } from "./sections";
