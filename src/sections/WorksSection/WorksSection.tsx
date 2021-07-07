@@ -1,5 +1,21 @@
 import React from "react";
 import styles from "./WorksSection.module.scss";
+import Twemoji from "../../components/Twemoji/Twemoji";
+import { WorkItem } from "../../components";
+import classNames from "classnames";
+
+const mockData = {
+    title: "Tour-Up.ru",
+    shortDescription: "Туристическое Android Приложение",
+    year: 2021,
+    description:
+        "Это моя выпускная квалификационная работа (диплом), с которой я закончил высшее образование. Создано мобильное приложение с возможностью просмотра туристических маршрутов и следования по ним, с помощью GPS.\n" +
+        "Также реализована полноценная серверная часть (Backend & Frontend) c базой данных маршрутов и редактором маршрутов, созданном на React с применением библиотеки карт Leaflet.",
+    imageUrl: "https://i.ibb.co/yWgY14q/image-1.png",
+    githubUrls: ["https://github.com/mkayander/TouringApp", "https://github.com/mkayander/TouringAndroidApp"],
+};
+
+const mockArray = [mockData, mockData, mockData, mockData, mockData];
 
 const WorksSection = () => {
     return (
@@ -14,6 +30,27 @@ const WorksSection = () => {
                     </clipPath>
                 </defs>
             </svg>
+
+            <div className={classNames("container", styles.content)}>
+                <h3>
+                    <Twemoji emoji="👨‍💻" /> Мои работы
+                </h3>
+                <p>
+                    Ниже представлены мои работы и пет-проекты, которыми я занимался с целью изучения технологий,
+                    паттернов клиент-серверных систем, ориентируясь на лучшие практики и изучая докумментацию.
+                </p>
+                {mockArray.map((value, index) => (
+                    <WorkItem
+                        title={value.title}
+                        shortDescription={value.shortDescription}
+                        year={value.year}
+                        description={value.description}
+                        imageUrl={value.imageUrl}
+                        githubUrls={value.githubUrls}
+                        reversed={index % 2 !== 0}
+                    />
+                ))}
+            </div>
         </section>
     );
 };
