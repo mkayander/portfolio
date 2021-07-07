@@ -26,7 +26,7 @@ const Twemoji: React.FC<TwemojiProps> = ({ emoji, mode = TwemojiMode.parseNode }
 
         default:
         case TwemojiMode.parseNode:
-            return <span>{emoji}</span>;
+            return <span ref={ref}>{emoji}</span>;
     }
 };
 
