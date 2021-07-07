@@ -93,8 +93,8 @@ h3 {
 }
 
 .emoji {
-    display: inline-block;
-    width: auto;
     height: 1em;
-    vertical-align: -0.125em;
+    width: 1em;
+    margin: 0 .05em 0 .1em;
+    vertical-align: -0.1em;
 }
