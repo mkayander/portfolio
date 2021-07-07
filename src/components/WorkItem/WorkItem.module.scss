@@ -1,0 +1,67 @@
+@import "../../sass/colors";
+
+.root {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin: 10% 0;
+
+    &.reversed {
+        flex-direction: row-reverse;
+    }
+
+    img {
+        //height: 370px;
+        //width: 600px;
+        max-width: 50%;
+        object-fit: contain;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+}
+
+.content {
+    display: flex;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+    margin: 0 2rem;
+
+    h5 {
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 25px;
+    }
+
+    .buttons {
+        display: flex;
+        flex-flow: row wrap;
+
+        & > button:not(:last-child) {
+            margin-right: 1rem;
+        }
+    }
+}
+
+.yearChip {
+    background: $color_primary;
+    border-radius: 30px;
+    padding: 0.1rem 0.75rem;
+    margin-top: 0.25rem;
+
+    align-self: start;
+
+    color: #ffffff;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 21px;
+
+    text-align: center;
+}
