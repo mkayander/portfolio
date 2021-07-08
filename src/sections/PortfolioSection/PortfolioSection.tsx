@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./WorksSection.module.scss";
+import styles from "./PortfolioSection.module.scss";
 import { Heading, WorkItem } from "../../components";
 import classNames from "classnames";
 
@@ -16,7 +16,7 @@ const mockData = {
 
 const mockArray = [mockData, mockData, mockData, mockData, mockData];
 
-const WorksSection = () => {
+const PortfolioSection = () => {
     return (
         <section className={styles.root}>
             <svg height="0" width="0">
@@ -55,4 +55,4 @@ const WorksSection = () => {
     );
 };
 
-export default WorksSection;
+export default PortfolioSection;

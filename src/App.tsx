@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import styles from "./App.module.scss";
 import "bootstrap/dist/css/bootstrap-grid.min.css";
 import { FoldableContent, Header } from "./components";
-import { ContactsSection, Introduction, WorksSection } from "./sections";
+import { ContactsSection, Introduction, PortfolioSection } from "./sections";
 
 function App() {
     const aboutMeRef = useRef<HTMLDivElement>(null);
@@ -11,7 +11,9 @@ function App() {
         <div className={styles.root}>
             <Header />
             <main>
+
                 <Introduction nextSectionRef={aboutMeRef} />
+
                 <section ref={aboutMeRef} id="about-me" className="container">
                     <FoldableContent emoji="🧑" title="Обо мне">
                         <p>
@@ -59,8 +61,11 @@ function App() {
                         </p>
                     </FoldableContent>
                 </section>
-                <WorksSection />
+
+                <PortfolioSection />
+
                 <ContactsSection />
+
             </main>
             <footer className="container">
                 <h6 style={{ margin: 0 }}>Designed & Made by Max Kayander</h6>
