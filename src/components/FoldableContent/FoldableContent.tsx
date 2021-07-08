@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styles from "./FoldableContent.module.scss";
 import ExpandIcon from "../ScrollButton/assets/Scroll_Down_Button.svg";
-import Twemoji from "../Twemoji/Twemoji";
 import classNames from "classnames";
+import { Heading } from "../index";
 // import ExpandIcon from "./assets/Expand_Button_1.svg";
 
 type TextSectionProps = {
@@ -18,10 +18,7 @@ const FoldableContent: React.FC<TextSectionProps> = ({ title, emoji, children })
     return (
         <div className={styles.root}>
             <div className={styles.header} onClick={() => setIsFolded(!isFolded)}>
-                <h3>
-                    <Twemoji emoji={emoji} />
-                    {" " + title}
-                </h3>
+                <Heading emoji={emoji} text={title} />
                 <hr />
                 <button
                     title={isFolded ? "Развернуть" : "Свернуть"}

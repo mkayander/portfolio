@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./WorksSection.module.scss";
-import Twemoji from "../../components/Twemoji/Twemoji";
-import { WorkItem } from "../../components";
+import { Heading, WorkItem } from "../../components";
 import classNames from "classnames";
 
 const mockData = {
@@ -32,9 +31,10 @@ const WorksSection = () => {
             </svg>
 
             <div className={classNames("container", styles.content)}>
-                <h3>
-                    <Twemoji emoji="👨‍💻" /> Мои работы
-                </h3>
+                <Heading emoji="👨‍💻" text="Мои работы" />
+                {/*<h3>*/}
+                {/*    <Twemoji emoji="👨‍💻" /> Мои работы*/}
+                {/*</h3>*/}
                 <p>
                     Ниже представлены мои работы и пет-проекты, которыми я занимался с целью изучения технологий,
                     паттернов клиент-серверных систем, ориентируясь на лучшие практики и изучая докумментацию.
