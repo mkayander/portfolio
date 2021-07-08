@@ -1,7 +1,51 @@
+@import "../../sass/colors";
+
 .root {
-  position: relative;
+    position: relative;
+    padding: 2rem 0;
 }
 
 .card {
+    display: flex;
+    padding: 2rem;
+    margin-top: 2rem;
+    flex-flow: column nowrap;
+    background: transparentize($color_primary, 0.88);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(100px);
 
+    font-size: 24px;
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 64px;
+
+    img {
+        margin-right: 1rem;
+        height: 42px;
+    }
+
+    h5 {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 28px;
+        line-height: 42px;
+        margin-right: 1rem;
+    }
+
+    a {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 28px;
+        line-height: 42px;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-top: 1rem;
 }
