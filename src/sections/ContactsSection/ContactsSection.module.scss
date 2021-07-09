@@ -1,42 +1,56 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins/breakpoints";
 @import "../../sass/colors";
+@import "../../sass/mixins";
+
+$horizontal_padding: 3rem;
+$horizontal_margin: 2rem;
 
 .root {
     position: relative;
     padding: 2rem 0;
+
+    h3 {
+        margin: 0 $horizontal_padding + $horizontal_margin;
+    }
 }
 
 .card {
     display: flex;
-    padding: 2rem;
-    margin-top: 2rem;
+    padding: 2rem $horizontal_padding;
+    margin: 2rem $horizontal_margin;
     flex-flow: column nowrap;
-    background: transparentize($color_primary, 0.88);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(100px);
+    @include glassmorph($color_primary, 32px, 0.88, 64px);
+    //background: transparentize($color_primary, 0.88);
+    //box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+    //backdrop-filter: blur(100px);
+    //border-radius: 64px;
 
-    font-size: 24px;
+    font-size: 28px;
+    line-height: 42px;
     /* Note: backdrop-filter has minimal browser support */
-
-    border-radius: 64px;
 
     img {
         margin-right: 1rem;
         height: 42px;
+        width: 42px;
     }
 
     h5 {
         font-style: normal;
         font-weight: bold;
-        font-size: 28px;
-        line-height: 42px;
+        font-size: inherit;
+        line-height: inherit;
         margin-right: 1rem;
     }
 
     a {
         font-style: normal;
         font-weight: normal;
-        font-size: 28px;
-        line-height: 42px;
+        font-size: inherit;
+        line-height: inherit;
+        word-break: break-word;
 
         &:hover {
             text-decoration: underline;
@@ -46,6 +60,98 @@
 
 .row {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
+    align-items: center;
+
     margin-top: 1rem;
+
+    //--bs-gutter-x: 1.5rem;
+    //--bs-gutter-y: 0;
+    //display: flex;
+    //flex-wrap: wrap;
+    //margin-top: calc(var(--bs-gutter-y) * -1);
+    //margin-right: calc(var(--bs-gutter-x) * -0.5);
+    //margin-left: calc(var(--bs-gutter-x) * -0.5);
+
+    & > * {
+        box-sizing: border-box;
+        flex-shrink: 0;
+        width: 100%;
+        max-width: 100%;
+        //padding-right: calc(var(--bs-gutter-x) * 0.5);
+        //padding-left: calc(var(--bs-gutter-x) * 0.5);
+        //margin-top: var(--bs-gutter-y);
+    }
+}
+
+.titleCol {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    flex: 0 0 auto;
+    width: 25%;
+}
+
+.valueCol {
+    flex: 0 0 auto;
+    width: 75%;
+}
+
+@include media-breakpoint-down(xxl) {
+    .titleCol {
+        width: 30%;
+    }
+
+    .valueCol {
+        width: 70%;
+    }
+}
+
+@include media-breakpoint-down(xl) {
+    .titleCol {
+        width: 35%;
+    }
+
+    .valueCol {
+        width: 65%;
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    .titleCol {
+        width: 37%;
+    }
+
+    .valueCol {
+        width: 63%;
+    }
+
+    .card {
+        font-size: 22px;
+        line-height: 30px;
+
+        img {
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .titleCol {
+        width: 37%;
+    }
+
+    .valueCol {
+        width: 63%;
+    }
+
+    .card {
+        margin: 2rem 0;
+        padding: 2rem 2rem;
+
+        font-size: 14pt;
+        line-height: 30px;
+    }
 }
