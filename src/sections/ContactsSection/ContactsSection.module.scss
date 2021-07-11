@@ -9,11 +9,20 @@ $horizontal_margin: 2rem;
 
 .root {
     position: relative;
-    padding: 2rem 0;
+    padding: 4rem 0;
 
     h3 {
-        margin: 0 $horizontal_padding + $horizontal_margin;
+        margin: 1rem $horizontal_padding + $horizontal_margin;
     }
+}
+
+.circle1 {
+    background: linear-gradient(265.34deg, #457B9D 3.98%, #45589D 94.23%);
+    transform: rotate(-90deg);
+}
+
+.circle2 {
+    background: linear-gradient(265.34deg, #E63946 3.98%, #E6398C 94.23%);
 }
 
 .card {

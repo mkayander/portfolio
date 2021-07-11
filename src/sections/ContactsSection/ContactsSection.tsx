@@ -50,6 +50,9 @@ const ContactsSection = () => {
             <div className="container">
                 <Heading emoji="🤝" text="Буду рад пообщаться" />
 
+                <div className={styles.circle1} />
+                <div className={styles.circle2} />
+
                 <div className={styles.card}>
                     {contactsData.map(contact => (
                         <div key={contact.id} className={styles.row}>
