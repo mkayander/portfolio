@@ -41,6 +41,7 @@ const PortfolioSection = () => {
                 </p>
                 {mockArray.map((value, index) => (
                     <WorkItem
+                        key={index}
                         title={value.title}
                         shortDescription={value.shortDescription}
                         year={value.year}
