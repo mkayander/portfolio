@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ContactsSection.module.scss";
 import { Heading } from "../../components";
 import WhatsAppIcon from "./assets/Whatsapp_Icon_contact.svg";
@@ -8,6 +8,7 @@ import LinkedInIcon from "./assets/LinkedIn_Icon_contact.svg";
 import GithubIcon from "./assets/GitHub_Icon_contact.svg";
 import VKIcon from "./assets/VK_Icon_contact.svg";
 import classNames from "classnames";
+import calculateMouseTranslation, { MousePos } from "../../utils/calculateMouseTranslation";
 
 type Contact = {
     id: number;
@@ -44,14 +45,30 @@ const getContactHref = (contact: Contact) => {
     }
 };
 
-const ContactsSection = () => {
+const ContactsSection: React.FC = () => {
+    const [mousePos, setMousePos] = useState<MousePos>({ x: 0, y: 0 });
+
+    useEffect(() => {
+        const listener = (ev: MouseEvent) => {
+            setMousePos({ x: ev.screenX, y: ev.screenY });
+        };
+        window.addEventListener("mousemove", listener);
+        return () => {
+            window.removeEventListener("mousemove", listener);
+        };
+    }, []);
+
     return (
         <section className={styles.root}>
             <div className="container">
                 <Heading emoji="🤝" text="Буду рад пообщаться" />
 
-                <div className={styles.circle1} />
-                <div className={styles.circle2} />
+                <div className={styles.bigCircleContainer}>
+                    <div className={styles.bigCircle} style={{ transform: calculateMouseTranslation(mousePos, -0.02) }} />
+                </div>
+                <div className={styles.smallCircleContainer}>
+                    <div className={styles.smallCircle} style={{ transform: calculateMouseTranslation(mousePos, 0.04) }} />
+                </div>
 
                 <div className={styles.card}>
                     {contactsData.map(contact => (
