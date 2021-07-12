@@ -65,12 +65,12 @@ function App() {
                     </FoldableContent>
                 </section>
 
-                <PortfolioSection />
+                <PortfolioSection style={{zIndex: 10}} />
 
                 <ContactsSection />
 
             </main>
-            <Footer/>
+            <Footer style={{zIndex: 10}}/>
         </div>
     );
 }
