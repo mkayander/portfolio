@@ -12,17 +12,40 @@ $horizontal_margin: 2rem;
     padding: 4rem 0;
 
     h3 {
+        position: relative;
+        opacity: 1;
+        z-index: 5;
         margin: 1rem $horizontal_padding + $horizontal_margin;
     }
 }
 
 .circle1 {
-    background: linear-gradient(265.34deg, #457B9D 3.98%, #45589D 94.23%);
-    transform: rotate(-90deg);
+    @include transition();
+    //z-index: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(-40%, 50%);
+    $diameter: 1300px;
+    width: $diameter;
+    height: $diameter;
+    border-radius: 50%;
+    background: linear-gradient(265.34deg + 90deg, $color_primary_variant 3.98%, $color_primary 94.23%);
+    //transform: rotate(90deg);
 }
 
 .circle2 {
-    background: linear-gradient(265.34deg, #E63946 3.98%, #E6398C 94.23%);
+    @include transition();
+    //z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(20%, -40%);
+    $diameter: 900px;
+    width: $diameter;
+    height: $diameter;
+    border-radius: 50%;
+    background: linear-gradient(265.34deg + 90deg, $color_accent 3.98%, $color_accent_variant 94.23%);
 }
 
 .card {
@@ -36,7 +59,8 @@ $horizontal_margin: 2rem;
     //backdrop-filter: blur(100px);
     //border-radius: 64px;
 
-    font-size: 28px;
+    //font-size: 28px;
+    font-size: 20pt;
     line-height: 42px;
     /* Note: backdrop-filter has minimal browser support */
 
@@ -44,6 +68,7 @@ $horizontal_margin: 2rem;
         margin-right: 1rem;
         height: 42px;
         width: 42px;
+        opacity: .9;
     }
 
     h5 {
@@ -60,10 +85,18 @@ $horizontal_margin: 2rem;
         font-size: inherit;
         line-height: inherit;
         word-break: break-word;
+        text-decoration: underline;
 
         &:hover {
             text-decoration: underline;
         }
+    }
+
+    h5,
+    a {
+        background: -webkit-linear-gradient(0deg, transparentize(#f1faee, 0.1), transparentize(#f1faee, 0.34));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 }
 
@@ -107,6 +140,20 @@ $horizontal_margin: 2rem;
     width: 75%;
 }
 
+@include media-breakpoint-up(xxl) {
+    $horizontal_margin: 8rem;
+
+    .root {
+        h3 {
+            margin: 1rem $horizontal_padding + $horizontal_margin;
+        }
+    }
+
+    .card {
+        margin: 2rem $horizontal_margin;
+    }
+}
+
 @include media-breakpoint-down(xxl) {
     .titleCol {
         width: 30%;
@@ -124,6 +171,17 @@ $horizontal_margin: 2rem;
 
     .valueCol {
         width: 65%;
+    }
+
+    .circle1 {
+        $diameter: 900px;
+        width: $diameter;
+        height: $diameter;
+    }
+    .circle2 {
+        $diameter: 550px;
+        width: $diameter;
+        height: $diameter;
     }
 }
 
@@ -145,9 +203,25 @@ $horizontal_margin: 2rem;
             height: 30px;
         }
     }
+
+    .circle1 {
+        $diameter: 900px;
+        width: $diameter;
+        height: $diameter;
+    }
+    .circle2 {
+        $diameter: 550px;
+        width: $diameter;
+        height: $diameter;
+        transform: translate(35%, -35%);
+    }
 }
 
 @include media-breakpoint-down(md) {
+    .root {
+        padding-top: 0;
+    }
+
     .titleCol {
         width: 37%;
     }
@@ -162,5 +236,18 @@ $horizontal_margin: 2rem;
 
         font-size: 14pt;
         line-height: 30px;
+    }
+
+    .circle1 {
+        $diameter: 750px;
+        width: $diameter;
+        height: $diameter;
+        transform: translate(-40%, 40%);
+    }
+    .circle2 {
+        $diameter: 500px;
+        width: $diameter;
+        height: $diameter;
+        transform: translate(40%, -40%);
     }
 }

@@ -60,9 +60,9 @@ const ContactsSection = () => {
                                 <img src={contact.iconUrl} alt="Icon" />
                                 <h5>{contact.title}: </h5>
                             </div>
-                            <a className={styles.valueCol} href={getContactHref(contact)}>
-                                {contact.value}
-                            </a>
+                            <div className={styles.valueCol}>
+                                <a href={getContactHref(contact)}>{contact.value}</a>
+                            </div>
                         </div>
                     ))}
                 </div>
