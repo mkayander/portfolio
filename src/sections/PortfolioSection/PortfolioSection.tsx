@@ -16,9 +16,9 @@ const mockData = {
 
 const mockArray = [mockData, mockData, mockData, mockData, mockData];
 
-const PortfolioSection = () => {
+const PortfolioSection: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ ...rest }) => {
     return (
-        <section className={styles.root}>
+        <section className={styles.root} {...rest}>
             <svg height="0" width="0">
                 <defs>
                     <clipPath
