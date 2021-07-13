@@ -2,6 +2,8 @@ import React from "react";
 
 export type Section = {
     // id: string;
+    isActive: boolean;
+    index: number;
     displayName: string;
     ref: React.RefObject<HTMLDivElement>;
     scrollOffset: number;
@@ -12,6 +14,7 @@ export type SectionsState = Record<string, Section>;
 enum SectionActionType {
     ADD,
     REMOVE,
+    ACTIVATE,
 }
 
 type AddAction = {
@@ -25,7 +28,12 @@ type RemoveAction = {
     id: string;
 };
 
-type SectionReducerActions = AddAction | RemoveAction;
+type ActivateSectionAction = {
+    type: SectionActionType.ACTIVATE;
+    id: string;
+};
+
+type SectionReducerActions = AddAction | RemoveAction | ActivateSectionAction;
 
 const sectionReducer = (state: SectionsState = {}, action: SectionReducerActions) => {
     switch (action.type) {
@@ -45,10 +53,22 @@ const sectionReducer = (state: SectionsState = {}, action: SectionReducerActions
                 [action.id]: undefined,
             };
 
+        case SectionActionType.ACTIVATE:
+            const newState: SectionsState = Object.assign({}, state);
+            Object.keys(newState).forEach(key => {
+                newState[key].isActive = key === action.id;
+            });
+            return newState;
+
         default:
             return state;
     }
 };
+
+export const activateSection = (id: string): ActivateSectionAction => ({
+    type: SectionActionType.ACTIVATE,
+    id,
+});
 
 export const addSection = (id: string, section: Section): AddAction => ({
     type: SectionActionType.ADD,
