@@ -6,16 +6,19 @@ import Shape2 from "./assets/Shape_2.svg";
 import styles from "./Introduction.module.scss";
 import classNames from "classnames";
 import { Button, ScrollButton } from "../../components";
+import { scrollToSection } from "../../utils/doScroll";
+import { Section } from "../../reducers/sectionReducer";
 
 type IntroductionProps = {
-    nextSectionRef: React.RefObject<HTMLElement>;
+    inputRef?: React.RefObject<HTMLDivElement>;
+    nextSection?: Section;
 };
 
-const Introduction: React.FC<IntroductionProps> = ({ nextSectionRef }) => {
+const Introduction: React.FC<IntroductionProps> = ({ inputRef, nextSection }) => {
     const bgRef = useRef<HTMLImageElement>(null);
 
     return (
-        <section className={styles.root}>
+        <section ref={inputRef} className={styles.root}>
             <div className={classNames(styles.content, "container")}>
                 <div className={styles.card}>
                     <h5>Привет,</h5>
@@ -35,16 +38,7 @@ const Introduction: React.FC<IntroductionProps> = ({ nextSectionRef }) => {
             <img className={styles.bgImage} src={BgImg} alt="Background" />
             <img className={styles.bgImage} src={Shape1} alt="Background" />
             <img ref={bgRef} className={styles.bgMain} src={Shape2} alt="Background" />
-            <ScrollButton
-                containerRef={bgRef}
-                onClick={() =>
-                    nextSectionRef.current &&
-                    window.scroll({
-                        behavior: "smooth",
-                        top: nextSectionRef.current.offsetTop - 128,
-                    })
-                }
-            />
+            <ScrollButton containerRef={bgRef} onClick={() => scrollToSection(nextSection)} />
         </section>
     );
 };

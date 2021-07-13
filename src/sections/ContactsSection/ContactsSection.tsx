@@ -45,7 +45,14 @@ const getContactHref = (contact: Contact) => {
     }
 };
 
-const ContactsSection: React.FC = () => {
+type ContactsSectionProps = {
+    inputRef?: React.RefObject<HTMLDivElement>;
+};
+
+const ContactsSection: React.FC<React.HTMLAttributes<HTMLDivElement> & ContactsSectionProps> = ({
+    inputRef,
+    ...rest
+}) => {
     const [mousePos, setMousePos] = useState<MousePos>({ x: 0, y: 0 });
 
     useEffect(() => {
@@ -59,15 +66,21 @@ const ContactsSection: React.FC = () => {
     }, []);
 
     return (
-        <section className={styles.root}>
+        <section ref={inputRef} className={styles.root} {...rest}>
             <div className="container">
                 <Heading emoji="🤝" text="Буду рад пообщаться" />
 
                 <div className={styles.bigCircleContainer}>
-                    <div className={styles.bigCircle} style={{ transform: calculateMouseTranslation(mousePos, -0.02) }} />
+                    <div
+                        className={styles.bigCircle}
+                        style={{ transform: calculateMouseTranslation(mousePos, -0.02) }}
+                    />
                 </div>
                 <div className={styles.smallCircleContainer}>
-                    <div className={styles.smallCircle} style={{ transform: calculateMouseTranslation(mousePos, 0.04) }} />
+                    <div
+                        className={styles.smallCircle}
+                        style={{ transform: calculateMouseTranslation(mousePos, 0.04) }}
+                    />
                 </div>
 
                 <div className={styles.card}>

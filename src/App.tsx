@@ -1,20 +1,25 @@
-import React, { useRef } from "react";
+import React from "react";
 import styles from "./App.module.scss";
 import "bootstrap/dist/css/bootstrap-grid.min.css";
 import { FoldableContent, Footer, Header } from "./components";
 import { ContactsSection, Introduction, PortfolioSection } from "./sections";
+import { useSelector } from "react-redux";
+import { selectSections } from "./reducers/sectionReducer";
+import landingNavigation from "./landingNavigation";
 
 function App() {
-    const aboutMeRef = useRef<HTMLDivElement>(null);
+    const sectionsMap = useSelector(selectSections);
+    console.log(sectionsMap);
+
+    const getSectionRef = (id: keyof typeof landingNavigation) => sectionsMap[id]?.ref;
 
     return (
         <div className={styles.root}>
             <Header />
             <main>
+                <Introduction inputRef={getSectionRef("introduction")} nextSection={sectionsMap["aboutMe"]} />
 
-                <Introduction nextSectionRef={aboutMeRef} />
-
-                <section ref={aboutMeRef} id="about-me" className="container">
+                <section ref={getSectionRef("aboutMe")} id="about-me" className="container">
                     <FoldableContent emoji="🧑" title="Обо мне">
                         <p>
                             С самого детства заинтересован сферой <b>IT</b>, закончил среднее специальное и высшее
@@ -28,7 +33,8 @@ function App() {
                         </p>
                         <p>
                             Я начал интенсивно изучать программирование более <b>1.5</b> года назад, писал небольшие web
-                            приложения на <b>Python</b> - <b>Django</b> - <b>Postgresql</b>, фронтенд на <b>React</b>{" "}
+                            приложения на <b>Python</b> - <b>Django</b> - <b>Postgresql</b>, фронтенд
+                            на <b>React</b>{" "}
                             либо чистом <b>JavaScript</b>.
                         </p>
                         <p>
@@ -65,12 +71,15 @@ function App() {
                     </FoldableContent>
                 </section>
 
-                <PortfolioSection style={{zIndex: 10}} />
+                <PortfolioSection
+                    inputRef={getSectionRef("portfolio")}
+                    style={{ zIndex: 10 }}
+                    onClick={() => console.log(sectionsMap["portfolio"]?.ref)}
+                />
 
-                <ContactsSection />
-
+                <ContactsSection inputRef={getSectionRef("contacts")} />
             </main>
-            <Footer style={{zIndex: 10}}/>
+            <Footer style={{ zIndex: 10 }} />
         </div>
     );
 }
