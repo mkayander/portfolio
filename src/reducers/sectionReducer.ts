@@ -97,7 +97,6 @@ export const selectSectionsSortedTupleArray: SectionsSelector<Array<[string, Sec
     console.log("selectSectionsSortedTupleArray called!");
     return Object.entries(state.sections)
         .sort((a, b) => a[1].index - b[1].index)
-        .reverse();
 };
 
 export const selectActiveSectionKey: SectionsSelector<string | undefined> = state =>
