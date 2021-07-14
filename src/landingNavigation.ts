@@ -13,7 +13,7 @@ const landingNavigation = {
         ref: React.createRef<HTMLDivElement>(),
         scrollOffset: -128,
         isActive: false,
-        indent: 2,
+        index: 2,
     },
     portfolio: {
         displayName: "Портфолио",
