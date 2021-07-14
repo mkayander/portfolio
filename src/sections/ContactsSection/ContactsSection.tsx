@@ -45,14 +45,7 @@ const getContactHref = (contact: Contact) => {
     }
 };
 
-type ContactsSectionProps = {
-    inputRef?: React.RefObject<HTMLDivElement>;
-};
-
-const ContactsSection: React.FC<React.HTMLAttributes<HTMLDivElement> & ContactsSectionProps> = ({
-    inputRef,
-    ...rest
-}) => {
+const ContactsSection = React.forwardRef<HTMLDivElement>((props, ref) => {
     const [mousePos, setMousePos] = useState<MousePos>({ x: 0, y: 0 });
 
     useEffect(() => {
@@ -66,7 +59,7 @@ const ContactsSection: React.FC<React.HTMLAttributes<HTMLDivElement> & ContactsS
     }, []);
 
     return (
-        <section ref={inputRef} className={styles.root} {...rest}>
+        <section ref={ref} className={styles.root}>
             <div className="container">
                 <Heading emoji="🤝" text="Буду рад пообщаться" />
 
@@ -99,6 +92,6 @@ const ContactsSection: React.FC<React.HTMLAttributes<HTMLDivElement> & ContactsS
             </div>
         </section>
     );
-};
+});
 
 export default ContactsSection;

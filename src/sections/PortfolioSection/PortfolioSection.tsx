@@ -16,13 +16,9 @@ const mockData = {
 
 const mockArray = [mockData, mockData, mockData, mockData, mockData];
 
-type PortfolioSectionProps = {
-    inputRef?: React.RefObject<HTMLDivElement>;
-};
-
-const PortfolioSection: React.FC<React.HTMLAttributes<HTMLDivElement> & PortfolioSectionProps> = ({ inputRef, ...rest }) => {
+const PortfolioSection = React.forwardRef<HTMLDivElement>((props, ref) => {
     return (
-        <section ref={inputRef} className={styles.root} {...rest}>
+        <section ref={ref} className={styles.root}>
             <svg height="0" width="0">
                 <defs>
                     <clipPath
@@ -58,6 +54,6 @@ const PortfolioSection: React.FC<React.HTMLAttributes<HTMLDivElement> & Portfoli
             </div>
         </section>
     );
-};
+});
 
 export default PortfolioSection;

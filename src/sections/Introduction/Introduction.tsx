@@ -10,15 +10,14 @@ import { scrollToSection } from "../../utils/doScroll";
 import { Section } from "../../reducers/sectionReducer";
 
 type IntroductionProps = {
-    inputRef?: React.RefObject<HTMLDivElement>;
     nextSection?: Section;
 };
 
-const Introduction: React.FC<IntroductionProps> = ({ inputRef, nextSection }) => {
+const Introduction = React.forwardRef<HTMLDivElement, IntroductionProps>(({ nextSection }, ref) => {
     const bgRef = useRef<HTMLImageElement>(null);
 
     return (
-        <section ref={inputRef} className={styles.root}>
+        <section ref={ref} className={styles.root}>
             <div className={classNames(styles.content, "container")}>
                 <div className={styles.card}>
                     <h5>Привет,</h5>
@@ -41,6 +40,6 @@ const Introduction: React.FC<IntroductionProps> = ({ inputRef, nextSection }) =>
             <ScrollButton containerRef={bgRef} onClick={() => scrollToSection(nextSection)} />
         </section>
     );
-};
+});
 
 export default Introduction;
