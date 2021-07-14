@@ -33,10 +33,6 @@ const Header = () => {
             }
 
             for (const [key, section] of sectionsArray) {
-                console.log(
-                    window.scrollY,
-                    section.ref?.current && section.ref.current?.offsetTop + section.scrollOffset
-                );
                 if (
                     section.ref?.current &&
                     window.scrollY > section.ref.current?.offsetTop + section.scrollOffset * 1.5

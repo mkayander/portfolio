@@ -9,7 +9,6 @@ import landingNavigation from "./landingNavigation";
 
 function App() {
     const sectionsMap = useSelector(selectSections);
-    console.log(sectionsMap);
 
     const getSectionRef = (id: keyof typeof landingNavigation) => sectionsMap[id]?.ref;
 
