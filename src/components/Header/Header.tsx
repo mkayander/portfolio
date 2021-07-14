@@ -4,7 +4,12 @@ import styles from "./Header.module.scss";
 import classNames from "classnames";
 import { addWindowEvents, removeWindowEvents } from "../../utils/windowEvents";
 import { useDispatch, useSelector } from "react-redux";
-import { activateSection, selectSections } from "../../reducers/sectionReducer";
+import {
+    activateSection,
+    selectActiveSectionKey,
+    selectSections,
+    selectSectionsSortedTupleArray,
+} from "../../reducers/sectionReducer";
 import { scrollToSection } from "../../utils/doScroll";
 
 const Header = () => {
@@ -13,12 +18,9 @@ const Header = () => {
     const sections = useSelector(selectSections);
     const dispatch = useDispatch();
 
-    const activeSectionKey = Object.keys(sections).find(key => sections[key].isActive);
+    const activeSectionKey = useSelector(selectActiveSectionKey);
 
-    const sectionsArray = Object.entries(sections)
-        .sort((a, b) => a[1].index - b[1].index)
-        .reverse();
-    console.log(sectionsArray);
+    const sectionsArray = useSelector(selectSectionsSortedTupleArray)
 
     useEffect(() => {
         const updateSection = (id: string) => {

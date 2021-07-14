@@ -65,6 +65,9 @@ const sectionReducer = (state: SectionsState = {}, action: SectionReducerActions
     }
 };
 
+/*
+    Actions
+ */
 export const activateSection = (id: string): ActivateSectionAction => ({
     type: SectionActionType.ACTIVATE,
     id,
@@ -81,6 +84,23 @@ export const removeSectionAt = (id: string): RemoveAction => ({
     id,
 });
 
-export const selectSections = (state: any): SectionsState => state.sections;
+/*
+    Selectors
+ */
+type SectionsSelector<T> = { (state: { sections: SectionsState }): T };
+
+export const selectSections: SectionsSelector<SectionsState> = (state): SectionsState => state.sections;
+
+export const selectSectionsSortedTupleArray: SectionsSelector<Array<[string, Section]>> = (state: {
+    sections: SectionsState;
+}) => {
+    console.log("selectSectionsSortedTupleArray called!");
+    return Object.entries(state.sections)
+        .sort((a, b) => a[1].index - b[1].index)
+        .reverse();
+};
+
+export const selectActiveSectionKey: SectionsSelector<string | undefined> = state =>
+    Object.keys(state.sections).find(key => state.sections[key].isActive);
 
 export default sectionReducer;
