@@ -62,9 +62,9 @@
                 pointer-events: none;
             }
 
-            @mixin active-link {
+            @mixin active-link($opacity: 1) {
                 width: 100%;
-                opacity: 1;
+                opacity: $opacity;
             }
 
             &.active {
@@ -73,9 +73,9 @@
                 }
             }
 
-            &:hover {
+            &:hover:not(.active) {
                 &:after {
-                    @include active-link;
+                    @include active-link(0.5);
                 }
             }
         }
