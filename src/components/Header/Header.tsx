@@ -4,28 +4,24 @@ import styles from "./Header.module.scss";
 import classNames from "classnames";
 import { addWindowEvents, removeWindowEvents } from "../../utils/windowEvents";
 import { useDispatch, useSelector } from "react-redux";
-import {
-    activateSection,
-    selectActiveSectionKey,
-    selectSections,
-    selectSectionsSortedTupleArray,
-} from "../../reducers/sectionReducer";
+import { activateSection, selectActiveSectionKey, selectSectionsSortedTupleArray } from "../../reducers/sectionReducer";
 import { scrollToSection } from "../../utils/doScroll";
 
-const Header = () => {
+const Header: React.FC = () => {
     const [isScrolled, setIsScrolled] = useState(false);
 
-    const sections = useSelector(selectSections);
     const dispatch = useDispatch();
 
     const activeSectionKey = useSelector(selectActiveSectionKey);
 
-    const sectionsArray = useSelector(selectSectionsSortedTupleArray)
+    const sectionEntries = useSelector(selectSectionsSortedTupleArray);
 
     useEffect(() => {
         const updateSection = (id: string) => {
             if (id !== activeSectionKey) dispatch(activateSection(id));
         };
+
+        const sectionEntriesReversed = [...sectionEntries].reverse(); // .reverse() method is mutable
 
         const listener = () => {
             if (window.scrollY > 64) {
@@ -34,7 +30,7 @@ const Header = () => {
                 setIsScrolled(false);
             }
 
-            for (const [key, section] of sectionsArray) {
+            for (const [key, section] of sectionEntriesReversed) {
                 if (
                     section.ref?.current &&
                     window.scrollY > section.ref.current?.offsetTop + section.scrollOffset * 1.5
@@ -50,13 +46,13 @@ const Header = () => {
         return () => {
             removeWindowEvents(["load", "scroll", "resize"], listener);
         };
-    }, [activeSectionKey, dispatch, sectionsArray]);
+    }, [activeSectionKey, dispatch, sectionEntries]);
 
     return (
         <header className={classNames(styles.root, { [styles.scrolled]: isScrolled })}>
             <nav className="container">
                 <ul>
-                    {Object.entries(sections).map(([id, section]) => (
+                    {sectionEntries.map(([id, section]) => (
                         <li key={id} className={classNames({ [styles.active]: section.isActive })}>
                             <a
                                 href={`#${id}`}
