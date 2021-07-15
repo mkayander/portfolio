@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { activateSection, selectActiveSectionKey, selectSectionsSortedTupleArray } from "../../reducers/sectionReducer";
 import { scrollToSection } from "../../utils/doScroll";
 import Logo from "./assets/logo-1.1.svg";
+import ButtonIcon from "./assets/Menu Button 2.svg"
 
 const Header: React.FC = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -56,6 +57,9 @@ const Header: React.FC = () => {
                     <img src={Logo} alt="Logo" />
                 </a>
                 <nav>
+                    <button className={styles.navButton}>
+                        <img src={ButtonIcon} alt="Navigation"/>
+                    </button>
                     <ul>
                         {sectionEntries.map(([id, section]) => (
                             <li key={id} className={classNames({ [styles.active]: section.isActive })}>
