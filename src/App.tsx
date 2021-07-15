@@ -14,7 +14,7 @@ function App() {
         id: keyof typeof sectionsMap,
         Component: React.ForwardRefExoticComponent<T>
     ) => {
-        return (props: T) => <Component ref={sectionsMap[id]?.ref} {...props} />;
+        return (props: T) => <Component id={id} ref={sectionsMap[id]?.ref} {...props} />;
     };
 
     return (

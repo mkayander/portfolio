@@ -9,6 +9,7 @@ import GithubIcon from "./assets/GitHub_Icon_contact.svg";
 import VKIcon from "./assets/VK_Icon_contact.svg";
 import classNames from "classnames";
 import calculateMouseTranslation, { MousePos } from "../../utils/calculateMouseTranslation";
+import { createSectionComponent } from "../../components/abstract";
 
 type Contact = {
     id: number;
@@ -45,7 +46,7 @@ const getContactHref = (contact: Contact) => {
     }
 };
 
-const ContactsSection = React.forwardRef<HTMLDivElement>((props, ref) => {
+const ContactsSection = createSectionComponent(({ id }, ref) => {
     const [mousePos, setMousePos] = useState<MousePos>({ x: 0, y: 0 });
 
     useEffect(() => {

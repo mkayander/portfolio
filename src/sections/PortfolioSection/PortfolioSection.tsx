@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./PortfolioSection.module.scss";
 import { Heading, WorkItem } from "../../components";
 import classNames from "classnames";
+import { createSectionComponent } from "../../components/abstract";
 
 const mockData = {
     title: "Tour-Up.ru",
@@ -16,7 +17,7 @@ const mockData = {
 
 const mockArray = [mockData, mockData, mockData, mockData, mockData];
 
-const PortfolioSection = React.forwardRef<HTMLDivElement>((props, ref) => {
+const PortfolioSection = createSectionComponent(({ id }, ref) => {
     return (
         <section ref={ref} className={styles.root}>
             <svg height="0" width="0">

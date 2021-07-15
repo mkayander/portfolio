@@ -8,12 +8,13 @@ import classNames from "classnames";
 import { Button, ScrollButton } from "../../components";
 import { scrollToSection } from "../../utils/doScroll";
 import { Section } from "../../reducers/sectionReducer";
+import { createSectionComponent } from "../../components/abstract";
 
 type IntroductionProps = {
     nextSection?: Section;
 };
 
-const Introduction = React.forwardRef<HTMLDivElement, IntroductionProps>(({ nextSection }, ref) => {
+const Introduction = createSectionComponent<IntroductionProps>(({ id, nextSection }, ref) => {
     const bgRef = useRef<HTMLImageElement>(null);
 
     return (

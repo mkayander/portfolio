@@ -1,7 +1,8 @@
 import React from "react";
 import { FoldableContent } from "../../components";
+import { createSectionComponent } from "../../components/abstract";
 
-const AboutMeSection = React.forwardRef<HTMLDivElement>((props, ref) => {
+const AboutMeSection = createSectionComponent(({ id }, ref) => {
     return (
         <section ref={ref} className="container">
             <FoldableContent emoji="🧑" title="Обо мне">
