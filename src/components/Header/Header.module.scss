@@ -36,6 +36,7 @@
         display: flex;
         flex-flow: row wrap;
         justify-content: flex-end;
+        margin: 0;
 
         & > *:not(:first-child) {
             margin-left: 2rem;
@@ -79,5 +80,24 @@
                 }
             }
         }
+    }
+}
+
+.content {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.brand {
+    $size: 28px;
+    height: $size;
+    opacity: 0.9;
+
+    img {
+        height: $size;
     }
 }

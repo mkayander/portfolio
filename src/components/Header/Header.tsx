@@ -6,6 +6,7 @@ import { addWindowEvents, removeWindowEvents } from "../../utils/windowEvents";
 import { useDispatch, useSelector } from "react-redux";
 import { activateSection, selectActiveSectionKey, selectSectionsSortedTupleArray } from "../../reducers/sectionReducer";
 import { scrollToSection } from "../../utils/doScroll";
+import Logo from "./assets/logo-1.1.svg";
 
 const Header: React.FC = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -50,22 +51,28 @@ const Header: React.FC = () => {
 
     return (
         <header className={classNames(styles.root, { [styles.scrolled]: isScrolled })}>
-            <nav className="container">
-                <ul>
-                    {sectionEntries.map(([id, section]) => (
-                        <li key={id} className={classNames({ [styles.active]: section.isActive })}>
-                            <a
-                                href={`#${id}`}
-                                onClick={event => {
-                                    event.preventDefault();
-                                    scrollToSection(section);
-                                }}>
-                                {section.displayName}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
+            <div className={classNames(styles.content, "container")}>
+                <a className={styles.brand} href={window.location.href}>
+                    <img src={Logo} alt="Logo" />
+                </a>
+                <nav>
+                    <ul>
+                        {sectionEntries.map(([id, section]) => (
+                            <li key={id} className={classNames({ [styles.active]: section.isActive })}>
+                                <a
+                                    href={`#${id}`}
+                                    onClick={(ev: React.MouseEvent<HTMLAnchorElement>) => {
+                                        ev.preventDefault();
+                                        window.history.replaceState({}, "", (ev.target as HTMLAnchorElement).href);
+                                        scrollToSection(section);
+                                    }}>
+                                    {section.displayName}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+            </div>
         </header>
     );
 };
