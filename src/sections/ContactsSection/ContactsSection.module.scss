@@ -67,6 +67,13 @@ $horizontal_margin: 2rem;
         opacity: 0.9;
     }
 
+    h5,
+    a {
+        background: -webkit-linear-gradient(0deg, transparentize(#f1faee, 0.1), transparentize(#f1faee, 0.34));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
     h5 {
         font-style: normal;
         font-weight: bold;
@@ -84,15 +91,12 @@ $horizontal_margin: 2rem;
         text-decoration: underline;
 
         &:hover {
+            opacity: 1;
             text-decoration: underline;
+            background: -webkit-linear-gradient(0deg, transparentize(#f1faee, 0.05), transparentize(#f1faee, 0.05));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-    }
-
-    h5,
-    a {
-        background: -webkit-linear-gradient(0deg, transparentize(#f1faee, 0.1), transparentize(#f1faee, 0.34));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
     }
 }
 
