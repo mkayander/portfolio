@@ -39,7 +39,7 @@ p {
     line-height: 36px;
     margin-top: 0;
     font-size: 14pt;
-    color: #f1faee;
+    color: $color_text;
 }
 
 button {
@@ -94,7 +94,7 @@ h5 {
     align-items: center;
     letter-spacing: -0.02em;
 
-    color: #faf4e6;
+    color: $color_text;
 }
 
 /*code {*/
