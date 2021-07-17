@@ -110,7 +110,7 @@ const Header: React.FC = () => {
             <Overlay isActive={isMobile && isSidebarOpened} onClick={() => setIsSidebarOpened(false)} />
 
             <div className={classNames(styles.sideBar, { [styles.hidden]: !isSidebarOpened })}>
-                {/*{renderLinksList()}*/}
+                {isMobile && renderLinksList()}
             </div>
         </>
     );
