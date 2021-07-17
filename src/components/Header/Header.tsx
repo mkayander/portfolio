@@ -58,7 +58,7 @@ const Header: React.FC = () => {
             for (const [key, section] of sectionEntriesReversed) {
                 if (
                     section.ref?.current &&
-                    window.scrollY > section.ref.current?.offsetTop + section.scrollOffset * 2
+                    window.scrollY > section.ref.current?.offsetTop + section.scrollOffset * 5
                 ) {
                     updateSection(key);
                     break;
