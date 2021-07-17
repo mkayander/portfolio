@@ -39,6 +39,7 @@ const WorkItem: React.FC<WorkItemProps> = ({
                     />
                 </div>
             </div>
+            <hr className={styles.hr}/>
         </div>
     );
 };

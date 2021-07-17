@@ -1,3 +1,6 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins/breakpoints";
 @import "../../sass/colors";
 
 .root {
@@ -64,4 +67,34 @@
     line-height: 21px;
 
     text-align: center;
+}
+
+.hr {
+    display: none;
+    margin-top: 1.25rem;
+    width: 100%;
+    opacity: 0.9;
+}
+
+@include media-breakpoint-down(lg) {
+    .root {
+        flex-flow: column nowrap;
+
+        &.reversed {
+            flex-direction: column;
+        }
+
+        img {
+            max-width: 100%;
+            margin-bottom: 1.75rem;
+        }
+    }
+
+    .content {
+        margin: 0;
+    }
+
+    .hr {
+        display: block;
+    }
 }
