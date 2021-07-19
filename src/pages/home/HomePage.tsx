@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import styles from "./HomePage.module.scss";
 import "bootstrap/dist/css/bootstrap-grid.min.css";
-import { Footer, Header } from "../components";
-import { AboutMeSection, ContactsSection, Introduction, PortfolioSection } from "../sections";
+import { Footer, Header } from "../../components";
+import { AboutMeSection, ContactsSection, Introduction, PortfolioSection } from "../../sections";
 import { useSelector } from "react-redux";
-import { Section, selectSections } from "../reducers/sectionReducer";
-import landingNavigation from "../landingNavigation";
-import { scrollToSection } from "../utils/doScroll";
+import { Section, selectSections } from "../../reducers/sectionReducer";
+import landingNavigation from "../../landingNavigation";
+import { scrollToSection } from "../../utils/doScroll";
+import Link from "next/link";
 
 const HomePage: React.FC = () => {
     const sectionsMap = useSelector(selectSections) as Record<keyof typeof landingNavigation, Section>;
@@ -19,8 +20,7 @@ const HomePage: React.FC = () => {
     };
 
     useEffect(() => {
-        let handler = () => {
-        };
+        let handler = () => {};
 
         if (window.location.hash) {
             const id = window.location.hash.substring(1);
@@ -41,6 +41,10 @@ const HomePage: React.FC = () => {
             <Header />
             <main>
                 {withSectionRef("introduction", Introduction)({ nextSection: sectionsMap["aboutMe"] })}
+
+                <Link href="/test">
+                    <a>test</a>
+                </Link>
 
                 {withSectionRef("aboutMe", AboutMeSection)({})}
 
