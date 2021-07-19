@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import styles from "./App.module.scss";
+import styles from "./HomePage.module.scss";
 import "bootstrap/dist/css/bootstrap-grid.min.css";
-import { Footer, Header } from "./components";
-import { AboutMeSection, ContactsSection, Introduction, PortfolioSection } from "./sections";
+import { Footer, Header } from "../components";
+import { AboutMeSection, ContactsSection, Introduction, PortfolioSection } from "../sections";
 import { useSelector } from "react-redux";
-import { Section, selectSections } from "./reducers/sectionReducer";
-import landingNavigation from "./landingNavigation";
-import { scrollToSection } from "./utils/doScroll";
+import { Section, selectSections } from "../reducers/sectionReducer";
+import landingNavigation from "../landingNavigation";
+import { scrollToSection } from "../utils/doScroll";
 
-function App() {
+const HomePage: React.FC = () => {
     const sectionsMap = useSelector(selectSections) as Record<keyof typeof landingNavigation, Section>;
 
     const withSectionRef = <T extends object>(
@@ -51,6 +51,6 @@ function App() {
             <Footer style={{ zIndex: 10 }} />
         </div>
     );
-}
+};
 
-export default App;
+export default HomePage;

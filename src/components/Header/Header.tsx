@@ -95,7 +95,7 @@ const Header: React.FC = () => {
         <>
             <header className={classNames(styles.root, { [styles.scrolled]: isScrolled })}>
                 <div className={classNames(styles.content, "container")}>
-                    <a className={styles.brand} href={window.location.href}>
+                    <a className={styles.brand}>
                         <img src={Logo} alt="Logo" />
                     </a>
                     <nav>

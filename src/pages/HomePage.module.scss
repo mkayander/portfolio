@@ -1,0 +1,7 @@
+@import "../sass/colors";
+
+.root {
+    min-height: 100vh;
+    background: $color_background;
+    overflow: hidden;
+}
