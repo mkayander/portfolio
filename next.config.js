@@ -24,8 +24,10 @@ const nextConfig = {
     },
 };
 
-module.exports = withImages({
-    ...nextConfig,
-    inlineImageLimit: false,
-    fileExtensions: ["jpg", "jpeg", "png", "gif", "url.svg"],
-});
+module.exports = nextConfig;
+
+// module.exports = withImages({
+//     ...nextConfig,
+//     inlineImageLimit: false,
+//     fileExtensions: ["jpg", "jpeg", "png", "gif"],
+// });
