@@ -16,7 +16,9 @@ const HomePage: React.FC = () => {
         id: keyof typeof sectionsMap,
         Component: React.ForwardRefExoticComponent<T>
     ) => {
-        return (props: T) => <Component id={id} ref={sectionsMap[id]?.ref} {...props} />;
+        const fc = (props: T) => <Component id={id} ref={sectionsMap[id]?.ref} {...props} />;
+        fc.displayName = `Section${id.toUpperCase()}`;
+        return fc;
     };
 
     useEffect(() => {
