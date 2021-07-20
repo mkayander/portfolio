@@ -22,16 +22,14 @@
     button {
         display: flex;
         align-items: center;
+        width: 42px;
+        height: 42px;
         @include transition(0.2s);
         transform: rotate(180deg);
         opacity: 0.9;
 
         &.folded {
             transform: rotate(0);
-        }
-
-        img {
-            width: 42px;
         }
     }
 }
@@ -48,4 +46,9 @@
         opacity: 0;
         animation: fold 2s;
     }
+}
+
+.icon {
+    width: 42px;
+    height: 42px;
 }
