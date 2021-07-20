@@ -1,14 +1,15 @@
 import React, { useRef } from "react";
 
-import BgImg from "./assets/Bg_Image_Mask.svg";
-import Shape1 from "./assets/Shape_1.svg";
-import Shape2 from "./assets/Shape_2.svg";
+import BgImg from "./assets/Bg_Image_Mask.url.svg";
+import { ReactComponent as Shape1 } from "./assets/Shape_1.component.svg";
+import { ReactComponent as Shape2 } from "./assets/Shape_2.component.svg";
 import styles from "./Introduction.module.scss";
 import classNames from "classnames";
 import { Button, ScrollButton } from "../../components";
 import { scrollToSection } from "../../utils/doScroll";
 import { Section } from "../../reducers/sectionReducer";
 import { createSectionComponent } from "../../components/abstract";
+import Image from "next/image";
 
 type IntroductionProps = {
     nextSection?: Section;
@@ -35,9 +36,11 @@ const Introduction = createSectionComponent<IntroductionProps>(({ id, nextSectio
                     </div>
                 </div>
             </div>
-            <img className={styles.bgImage} src={BgImg} alt="Background" />
-            <img className={styles.bgImage} src={Shape1} alt="Background" />
-            <img ref={bgRef} className={styles.bgMain} src={Shape2} alt="Background" />
+            <Image className={styles.bgImage} src={BgImg} layout="fill" alt="Background" />
+            <Shape1 className={styles.bgImage} />
+            {/*<img className={styles.bgImage} src={Shape1} alt="Background" />*/}
+            <Shape2 className={styles.bgMain}/>
+            {/*<img ref={bgRef} className={styles.bgMain} src={Shape2} alt="Background" />*/}
             <ScrollButton containerRef={bgRef} onClick={() => scrollToSection(nextSection)} />
         </section>
     );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from 'next/image'
 import styles from "./FoldableContent.module.scss";
-import ExpandIcon from "../ScrollButton/assets/Scroll_Down_Button.svg";
+import ExpandIcon from "../ScrollButton/assets/Scroll_Down_Button.component.svg";
 import classNames from "classnames";
 import { Heading } from "../index";
 

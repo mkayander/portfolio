@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import styles from "./ScrollButton.module.scss";
-import ScrollIcon from "./assets/Scroll_Down_Button.svg";
+import { ReactComponent as ScrollIcon } from "./assets/Scroll_Down_Button.component.svg";
 import { addWindowEvents, removeWindowEvents } from "../../utils/windowEvents";
 import Image from "next/image"
 
@@ -62,7 +62,8 @@ const ScrollButton: React.FC<React.HTMLAttributes<HTMLButtonElement> & ScrollBut
 
     return (
         <button ref={buttonRef} className={classNames(styles.root, styles[scrollButtonState])} {...rest}>
-            <Image src={ScrollIcon} alt="Scroll Down" layout="fill" />
+            <ScrollIcon/>
+            {/*<Image src={ScrollIcon} alt="Scroll Down" layout="fill" />*/}
         </button>
     );
 };

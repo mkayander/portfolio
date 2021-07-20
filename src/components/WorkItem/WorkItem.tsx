@@ -25,7 +25,20 @@ const WorkItem: React.FC<WorkItemProps> = ({
 }) => {
     return (
         <div className={classNames(styles.root, { [styles.reversed]: reversed })}>
-            <Image src={imageUrl} alt="My work screenshot" layout="fill" />
+            <div className={styles.imageContainer}>
+                <Image
+                    className={styles.image}
+                    src={imageUrl}
+                    alt="My work screenshot"
+                    objectFit="contain"
+                    objectPosition="top"
+                    // quality={100}
+                    // sizes="100vw"
+                    // height={400}
+                    // width={700}
+                    layout="fill"
+                />
+            </div>
             <div className={styles.content}>
                 <h5>{title}</h5>
                 <h5>{shortDescription}</h5>

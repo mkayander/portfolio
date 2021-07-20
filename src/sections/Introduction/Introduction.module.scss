@@ -119,6 +119,7 @@
 .bgImage {
     z-index: 0;
     position: absolute;
+    width: 100%;
     top: 0;
     left: 0;
     right: 0;
@@ -126,6 +127,7 @@
 
 .bgMain {
     z-index: 0;
+    width: 100%;
     position: relative;
     min-height: 50vw;
 

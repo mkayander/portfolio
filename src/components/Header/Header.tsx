@@ -99,7 +99,7 @@ const Header: React.FC = () => {
                 <div className={classNames(styles.content, "container")}>
                     <Link href="/">
                         <a className={styles.brand}>
-                            <Image src={Logo} alt="Logo" layout="fill" />
+                            <Image src={Logo} alt="Logo" height={28} width={28} layout="intrinsic" />
                         </a>
                     </Link>
                     <nav>
