@@ -46,6 +46,8 @@
     "@types/twemoji": "^12.1.1",
     "bootstrap": "^5.0.2",
     "classnames": "^2.3.1",
+    "eslint": "^7.31.0",
+    "eslint-config-next": "^11.0.1",
     "prettier": "^2.3.2",
     "redux-devtools": "^3.7.0",
     "sass": "^1.35.1",
