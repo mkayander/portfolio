@@ -3,7 +3,6 @@ import classNames from "classnames";
 import styles from "./ScrollButton.module.scss";
 import { ReactComponent as ScrollIcon } from "./assets/Scroll_Down_Button.component.svg";
 import { addWindowEvents, removeWindowEvents } from "../../utils/windowEvents";
-import Image from "next/image"
 
 const scrollButtonOffset = 160;
 
@@ -13,7 +12,7 @@ enum ScrollButtonState {
 }
 
 type ScrollButtonProps = {
-    containerRef: React.RefObject<HTMLImageElement>;
+    containerRef: React.RefObject<HTMLDivElement>;
 };
 
 const ScrollButton: React.FC<React.HTMLAttributes<HTMLButtonElement> & ScrollButtonProps> = ({
@@ -31,8 +30,8 @@ const ScrollButton: React.FC<React.HTMLAttributes<HTMLButtonElement> & ScrollBut
                 switch (scrollButtonState) {
                     case ScrollButtonState.fixed:
                         if (
-                            containerRef.current.height - scrollButtonOffset < buttonRef.current.offsetTop ||
-                            containerRef.current.height - window.scrollY - scrollButtonOffset <
+                            containerRef.current.offsetHeight - scrollButtonOffset < buttonRef.current.offsetTop ||
+                            containerRef.current.offsetHeight - window.scrollY - scrollButtonOffset <
                                 buttonRef.current.offsetTop
                         ) {
                             setScrollButtonState(ScrollButtonState.relative);
@@ -40,8 +39,11 @@ const ScrollButton: React.FC<React.HTMLAttributes<HTMLButtonElement> & ScrollBut
                         break;
 
                     case ScrollButtonState.relative:
-                        if (window.innerHeight > containerRef.current.height) return;
-                        if (window.innerHeight + window.scrollY - scrollButtonOffset / 3 < buttonRef?.current?.offsetTop) {
+                        if (window.innerHeight > containerRef.current.offsetHeight) return;
+                        if (
+                            window.innerHeight + window.scrollY - scrollButtonOffset / 3 <
+                            buttonRef?.current?.offsetTop
+                        ) {
                             console.log(window.innerHeight);
                             console.log(window.scrollY);
                             console.log(buttonRef?.current?.offsetTop);
@@ -62,7 +64,7 @@ const ScrollButton: React.FC<React.HTMLAttributes<HTMLButtonElement> & ScrollBut
 
     return (
         <button ref={buttonRef} className={classNames(styles.root, styles[scrollButtonState])} {...rest}>
-            <ScrollIcon/>
+            <ScrollIcon />
             {/*<Image src={ScrollIcon} alt="Scroll Down" layout="fill" />*/}
         </button>
     );
