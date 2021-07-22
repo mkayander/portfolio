@@ -4,11 +4,6 @@
 
 // /// <reference types="next-images" />
 
-declare module "*.url.svg" {
-    const content: string;
-    export default content;
-}
-
 declare module "*.component.svg" {
     import React = require("react");
 
@@ -17,16 +12,25 @@ declare module "*.component.svg" {
     export default src;
 }
 
+declare module "*.svg" {
+    const content: {
+        src: string;
+        height: number;
+        width: number;
+        blurDataURL: string;
+    };
+    export default content;
+}
+
 // declare module '*.css' {
 //     const content: Record<string, string>;
 //     export default content;
 // }
 //
-// declare module '*.scss' {
-//     const content: Record<string, string>;
-//     export default content;
-// }
-//
+declare module "*.scss" {
+    const content: Record<string, string>;
+    export default content;
+}
 
 declare module "*.png" {
     const content: {
