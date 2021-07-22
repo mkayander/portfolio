@@ -10,13 +10,13 @@ $horizontal_margin: 2rem;
 .root {
     position: relative;
     padding: 4rem 0;
+}
 
-    h3 {
-        position: relative;
-        opacity: 1;
-        z-index: 5;
-        margin: 1rem $horizontal_padding + $horizontal_margin;
-    }
+.heading {
+    position: relative;
+    opacity: 1;
+    z-index: 5;
+    margin: 1rem $horizontal_padding + $horizontal_margin;
 }
 
 .bigCircleContainer {
@@ -60,7 +60,16 @@ $horizontal_margin: 2rem;
     font-size: 20pt;
     line-height: 42px;
 
-    img {
+    & > *:not(:first-child) {
+        margin-top: 1rem;
+    }
+
+    .iconContainer {
+        position: relative;
+        display: flex;
+        flex-shrink: 0;
+        justify-content: center;
+        align-items: center;
         margin-right: 1rem;
         height: 42px;
         width: 42px;
@@ -105,8 +114,6 @@ $horizontal_margin: 2rem;
     flex-flow: row wrap;
     align-items: center;
 
-    margin-top: 1rem;
-
     & > * {
         box-sizing: border-box;
         flex-shrink: 0;
@@ -133,7 +140,7 @@ $horizontal_margin: 2rem;
     $horizontal_margin: 8rem;
 
     .root {
-        h3 {
+        .heading {
             margin: 1rem $horizontal_padding + $horizontal_margin;
         }
     }
@@ -192,7 +199,7 @@ $horizontal_margin: 2rem;
         font-size: 22px;
         line-height: 30px;
 
-        img {
+        .iconContainer {
             width: 30px;
             height: 30px;
         }
@@ -235,6 +242,14 @@ $horizontal_margin: 2rem;
 
         font-size: 14pt;
         line-height: 30px;
+
+        .iconContainer {
+            margin-right: 0.5rem;
+        }
+
+        h5 {
+            margin-right: 0.5rem;
+        }
     }
 
     .bigCircleContainer {
@@ -251,6 +266,66 @@ $horizontal_margin: 2rem;
 
         .smallCircle {
             $diameter: 500px;
+            width: $diameter;
+            height: $diameter;
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .root {
+        padding: 2rem 0;
+    }
+
+    .card {
+        padding: 1.25rem 1.75rem;
+
+        font-size: 13pt;
+
+        $size: 24px;
+        line-height: $size;
+
+        .iconContainer {
+            width: $size;
+            height: $size;
+        }
+    }
+
+    .titleCol {
+        width: 15%;
+
+        justify-content: center;
+
+        h5 {
+            display: none;
+        }
+    }
+
+    .valueCol {
+        width: 85%;
+    }
+
+    .heading {
+        margin: 0;
+    }
+
+    .row {
+    }
+
+    .bigCircleContainer {
+        transform: translate(-40%, 40%);
+
+        .bigCircle {
+            $diameter: 600px;
+            width: $diameter;
+            height: $diameter;
+        }
+    }
+    .smallCircleContainer {
+        transform: translate(40%, -50%);
+
+        .smallCircle {
+            $diameter: 400px;
             width: $diameter;
             height: $diameter;
         }
