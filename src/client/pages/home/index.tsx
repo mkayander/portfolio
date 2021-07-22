@@ -10,7 +10,7 @@ import { scrollToSection } from "../../utils/doScroll";
 import Link from "next/link";
 import Head from "next/head";
 
-const HomePage: React.FC = () => {
+const Index: React.FC = () => {
     const sectionsMap = useSelector(selectSections) as Record<keyof typeof landingNavigation, Section>;
 
     const withSectionRef = <T extends object>(
@@ -64,4 +64,4 @@ const HomePage: React.FC = () => {
     );
 };
 
-export default HomePage;
+export default Index;
