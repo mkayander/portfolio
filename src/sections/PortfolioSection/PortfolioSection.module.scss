@@ -16,13 +16,33 @@
         clip-path: url(#svgPath2);
     }
 
-    .content {
-        padding-top: 5rem;
-        padding-bottom: 10%;
-    }
-
     p {
         margin-top: 1rem;
         margin-bottom: 1rem;
+    }
+}
+
+.content {
+    padding-top: 5rem;
+    padding-bottom: 10%;
+}
+
+.worksList {
+    margin-top: 2.25rem;
+
+    & > *:not(:last-child) {
+        margin-bottom: 4.25rem;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .content {
+        padding-bottom: 1.25rem;
+    }
+
+    .worksList {
+        & > *:not(:last-child) {
+            margin-bottom: 2.75rem;
+        }
     }
 }
