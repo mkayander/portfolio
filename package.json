@@ -25,10 +25,10 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "cd src/client && next dev",
+    "build": "cd src/client && next build",
+    "start": "cd src/client && next start",
+    "lint": "cd src/client && next lint"
   },
   "browserslist": {
     "production": [
