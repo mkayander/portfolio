@@ -8,6 +8,7 @@ import { Section, selectSections } from "../../reducers/sectionReducer";
 import landingNavigation from "../../landingNavigation";
 import { scrollToSection } from "../../utils/doScroll";
 import Link from "next/link";
+import Head from "next/head";
 
 const HomePage: React.FC = () => {
     const sectionsMap = useSelector(selectSections) as Record<keyof typeof landingNavigation, Section>;
@@ -40,6 +41,10 @@ const HomePage: React.FC = () => {
 
     return (
         <div className={styles.root}>
+            <Head>
+                <title>Max Kayander</title>
+            </Head>
+
             <Header />
             <main>
                 {withSectionRef("introduction", Introduction)({ nextSection: sectionsMap["aboutMe"] })}
