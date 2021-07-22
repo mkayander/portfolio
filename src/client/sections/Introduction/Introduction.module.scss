@@ -1,0 +1,140 @@
+@import "../../../../node_modules/bootstrap/scss/functions";
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../../sass/mixins";
+@import "../../sass/colors";
+@import "../../sass/dimensions";
+
+.root {
+    width: 100%;
+    position: relative;
+
+    margin-bottom: 4rem;
+
+    img {
+        //margin-top: -100px;
+        width: 100%;
+        pointer-events: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+}
+
+.content {
+    //margin-top: 50vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 20%;
+    z-index: 10;
+    position: absolute;
+
+    @include media-breakpoint-down(md) {
+        position: relative;
+        padding-top: 20%;
+    }
+
+    .card {
+        padding: 0 0;
+        @include transition();
+        @include glassmorph-hidden($color_primary, 9px, 0.82, $button_border_radius);
+
+        @include media-breakpoint-down(md) {
+            @include glassmorph($color_primary, 9px, 0.82, $button_border_radius);
+            padding: $button_border_radius $button_border_radius;
+            margin-top: 1.75rem;
+
+            h3,
+            h5,
+            h6 {
+                margin-top: 1rem;
+            }
+
+            h5 {
+                font-size: 26px;
+                line-height: 32px;
+            }
+            h3 {
+                line-height: 42px;
+                font-size: 42px;
+            }
+            h6 {
+                font-size: 26px;
+                line-height: 32px;
+            }
+
+            .buttons {
+                button {
+                    margin-top: 1rem !important;
+                }
+            }
+        }
+
+        .buttons {
+            display: flex;
+            flex-flow: row wrap;
+
+            button {
+                margin-top: 1.75rem;
+            }
+
+            & > *:not(:last-child) {
+                margin-right: 1rem;
+            }
+        }
+    }
+
+    h3,
+    h5,
+    h6 {
+        @include transition();
+    }
+
+    h5 {
+        margin: 0 0;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 36px;
+        line-height: 54px;
+    }
+
+    h3 {
+        margin: 0 0;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 64px;
+        line-height: 96px;
+    }
+
+    h6 {
+        margin-top: 1rem;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 36px;
+    }
+}
+
+.bgImage {
+    z-index: 0;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.bgMain {
+    z-index: 0;
+    width: 100%;
+    position: relative;
+    min-height: 50vw;
+
+    @include media-breakpoint-down(md) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+}

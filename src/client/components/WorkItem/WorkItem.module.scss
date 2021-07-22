@@ -1,0 +1,144 @@
+@import "../../../../node_modules/bootstrap/scss/functions";
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../../sass/colors";
+
+.root {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    //min-height: 500px;
+
+    .content {
+        margin-left: 1.25rem;
+        margin-right: 0;
+    }
+
+    &.reversed {
+        flex-direction: row-reverse;
+
+        .content {
+            margin-left: 0;
+            margin-right: 1.25rem;
+        }
+    }
+}
+
+.image {
+    //height: 370px;
+    //width: 600px !important;
+    //max-width: 50% !important;
+    //object-fit: contain;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.imageContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-grow: 1;
+}
+
+.content {
+    display: flex;
+    flex-flow: column nowrap;
+    max-width: 40%;
+    //flex-grow: 1;
+    //margin: 0 2rem;
+
+    h5 {
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 25px;
+    }
+
+    .buttons {
+        display: flex;
+        flex-flow: row wrap;
+
+        & > button:not(:last-child) {
+            margin-right: 1rem;
+        }
+    }
+}
+
+.yearChip {
+    background: $color_primary;
+    border-radius: 30px;
+    padding: 0.1rem 0.75rem;
+    margin-top: 0.25rem;
+
+    align-self: start;
+
+    color: #ffffff;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 21px;
+
+    text-align: center;
+}
+
+.hr {
+    display: none;
+    margin-top: 1.25rem;
+    width: 100%;
+    opacity: 0.9;
+}
+
+@include media-breakpoint-down(lg) {
+    .root {
+        flex-flow: column nowrap;
+
+        .content {
+            margin: 0;
+        }
+
+        &.reversed {
+            flex-direction: column;
+
+            .content {
+                margin: 0;
+            }
+        }
+    }
+
+    .content {
+        margin: 0;
+        max-width: 100%;
+    }
+
+    .image {
+    }
+
+    .imageContainer {
+        height: 400px;
+        margin-bottom: 1.25rem;
+    }
+
+    .hr {
+        display: block;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .imageContainer {
+        height: 300px;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .imageContainer {
+        height: 55vw;
+    }
+}

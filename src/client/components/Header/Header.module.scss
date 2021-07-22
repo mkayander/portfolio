@@ -1,0 +1,190 @@
+@import "../../../../node_modules/bootstrap/scss/functions";
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../../sass/colors";
+@import "../../sass/mixins";
+
+.root {
+    @include transition();
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+
+    padding-top: 2rem;
+
+    @include glassmorph-hidden($color_primary, 9px, 0.75, 0, true);
+
+    &.scrolled {
+        padding: 0 0;
+        @include glassmorph($color_primary, 9px, 0.75, 0, true);
+    }
+}
+
+.content {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.brand {
+    $size: 28px;
+    height: $size;
+    opacity: 0.9;
+
+    img {
+        height: $size;
+    }
+}
+
+.navButton {
+    @include transition(0.15s);
+
+    $radius: 4px;
+
+    user-select: none;
+    position: relative;
+    height: 32px;
+    width: 36px;
+    padding: $radius;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: $radius;
+
+    &:focus {
+        box-shadow: transparentize($color_text, 0.4) 0 0 0.1rem 2px;
+    }
+
+    img {
+        opacity: 0.9;
+    }
+}
+
+.linksList {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+
+    li {
+        position: relative;
+        opacity: 0.9;
+        margin-left: 2rem;
+
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: -3px;
+            height: 3px;
+            width: 1%;
+            background: $color_text;
+            border: 1px solid $color_text;
+            border-radius: 6px;
+            opacity: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            transition: 0.3s;
+            pointer-events: none;
+        }
+
+        @mixin active-link($opacity: 1) {
+            width: 100%;
+            opacity: $opacity;
+        }
+
+        &.active {
+            &:after {
+                @include active-link;
+            }
+        }
+
+        &:hover:not(.active) {
+            &:after {
+                @include active-link(0.5);
+            }
+        }
+    }
+}
+
+.sideBar {
+    //display: none;
+    //position: static;
+    @include transition();
+    z-index: 120;
+    display: flex;
+    flex-flow: column nowrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 60%;
+    padding: 4rem 2rem 1rem;
+    opacity: 1;
+
+    //@include glassmorph($color_primary, 9px, 0.75, 0);
+    //background: #1d3557;
+    background: linear-gradient(45deg, transparentize(#122238, 0.05), transparentize(#1d3557, 0.5));
+    //background: transparentize(#1d3557, 0.02);
+    //box-shadow: 0 8px 32px 0 transparentize($color, 0.75);
+    backdrop-filter: blur(32px);
+    border-right: 1px solid rgba(255, 255, 255, 0.18);
+    //-webkit-backdrop-filter: blur($blur);
+    //border-radius: $radius;
+
+    &.hidden {
+        transform: translate(-100%, 0);
+        //background: red;
+    }
+
+    @include media-breakpoint-up(md) {
+        display: none;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .root {
+        padding-top: 1rem;
+    }
+
+    .content {
+        padding: 0.5rem 0;
+    }
+
+    .linksList {
+        //display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        & > *:not(:first-child) {
+            //margin-left: 0;
+        }
+    }
+
+    .navButton {
+        display: flex;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .content {
+        padding: 0.75rem 0.75rem;
+    }
+
+    .sideBar {
+        width: 70%;
+    }
+}
