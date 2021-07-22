@@ -24,7 +24,12 @@ const FoldableContent: React.FC<TextSectionProps> = ({ title, emoji, initiallyFo
                     <ExpandIcon height={42} width={42} className={styles.icon} />
                 </button>
             </div>
-            <div className={classNames(styles.content, { [styles.folded]: isFolded })}>{children}</div>
+            <div
+                className={classNames(styles.content, {
+                    [styles.folded]: isFolded,
+                })}>
+                {children}
+            </div>
         </div>
     );
 };

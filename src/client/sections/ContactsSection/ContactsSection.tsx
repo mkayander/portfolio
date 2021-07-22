@@ -21,9 +21,27 @@ type Contact = {
 };
 
 const contactsData: Contact[] = [
-    { id: 1, type: "mobile", iconUrl: WhatsAppIcon.src, title: "Мобильный", value: "+7 (977) 491-90-67" },
-    { id: 2, type: "email", iconUrl: GmailIcon.src, title: "Email", value: "maxim.kayander1@gmail.com" },
-    { id: 3, type: "url", iconUrl: TelegramIcon.src, title: "Telegram", value: "https://t.me/mkayander" },
+    {
+        id: 1,
+        type: "mobile",
+        iconUrl: WhatsAppIcon.src,
+        title: "Мобильный",
+        value: "+7 (977) 491-90-67",
+    },
+    {
+        id: 2,
+        type: "email",
+        iconUrl: GmailIcon.src,
+        title: "Email",
+        value: "maxim.kayander1@gmail.com",
+    },
+    {
+        id: 3,
+        type: "url",
+        iconUrl: TelegramIcon.src,
+        title: "Telegram",
+        value: "https://t.me/mkayander",
+    },
     {
         id: 4,
         type: "url",
@@ -31,8 +49,20 @@ const contactsData: Contact[] = [
         title: "LinkedIn",
         value: "https://www.linkedin.com/in/max-kayander-54a42b211/",
     },
-    { id: 5, type: "url", iconUrl: GithubIcon.src, title: "GitHub", value: "https://github.com/mkayander" },
-    { id: 6, type: "url", iconUrl: VKIcon.src, title: "VK", value: "https://vk.com/mkayander" },
+    {
+        id: 5,
+        type: "url",
+        iconUrl: GithubIcon.src,
+        title: "GitHub",
+        value: "https://github.com/mkayander",
+    },
+    {
+        id: 6,
+        type: "url",
+        iconUrl: VKIcon.src,
+        title: "VK",
+        value: "https://vk.com/mkayander",
+    },
 ];
 
 const getContactHref = (contact: Contact) => {
@@ -68,13 +98,17 @@ const ContactsSection = createSectionComponent(({ id }, ref) => {
                 <div className={styles.bigCircleContainer}>
                     <div
                         className={styles.bigCircle}
-                        style={{ transform: calculateMouseTranslation(mousePos, -0.02) }}
+                        style={{
+                            transform: calculateMouseTranslation(mousePos, -0.02),
+                        }}
                     />
                 </div>
                 <div className={styles.smallCircleContainer}>
                     <div
                         className={styles.smallCircle}
-                        style={{ transform: calculateMouseTranslation(mousePos, 0.04) }}
+                        style={{
+                            transform: calculateMouseTranslation(mousePos, 0.04),
+                        }}
                     />
                 </div>
 

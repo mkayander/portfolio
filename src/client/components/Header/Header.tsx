@@ -78,7 +78,11 @@ const Header: React.FC = () => {
     const renderLinksList = () => (
         <ul className={styles.linksList}>
             {sectionEntries.map(([id, section]) => (
-                <li key={id} className={classNames({ [styles.active]: section.isActive })}>
+                <li
+                    key={id}
+                    className={classNames({
+                        [styles.active]: section.isActive,
+                    })}>
                     <a
                         href={`#${id}`}
                         onClick={(ev: React.MouseEvent<HTMLAnchorElement>) => {
@@ -95,7 +99,10 @@ const Header: React.FC = () => {
 
     return (
         <>
-            <header className={classNames(styles.root, { [styles.scrolled]: isScrolled })}>
+            <header
+                className={classNames(styles.root, {
+                    [styles.scrolled]: isScrolled,
+                })}>
                 <div className={classNames(styles.content, "container")}>
                     <Link href="/">
                         <a className={styles.brand}>
@@ -113,7 +120,10 @@ const Header: React.FC = () => {
 
             <Overlay isActive={isMobile && isSidebarOpened} onClick={() => setIsSidebarOpened(false)} />
 
-            <div className={classNames(styles.sideBar, { [styles.hidden]: !isSidebarOpened })}>
+            <div
+                className={classNames(styles.sideBar, {
+                    [styles.hidden]: !isSidebarOpened,
+                })}>
                 {isMobile && renderLinksList()}
             </div>
         </>

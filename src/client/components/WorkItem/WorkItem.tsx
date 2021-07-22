@@ -24,7 +24,10 @@ const WorkItem: React.FC<WorkItemProps> = ({
     reversed,
 }) => {
     return (
-        <div className={classNames(styles.root, { [styles.reversed]: reversed })}>
+        <div
+            className={classNames(styles.root, {
+                [styles.reversed]: reversed,
+            })}>
             <div className={styles.imageContainer}>
                 <Image
                     className={styles.image}
