@@ -17,8 +17,6 @@ type IntroductionProps = {
 const Introduction = createSectionComponent<IntroductionProps>(({ id, nextSection }, ref) => {
     const bgRef = useRef<HTMLDivElement>(null);
 
-    console.log(BgImg);
-
     return (
         <section ref={ref} className={styles.root}>
             <div className={classNames(styles.content, "container")}>
@@ -52,15 +50,12 @@ const Introduction = createSectionComponent<IntroductionProps>(({ id, nextSectio
                     </g>
                 </svg>
             </div>
-            {/*<Image className={styles.bgImage} src={BgImg} layout="fill" placeholder="blur" alt="Background" />*/}
             <div className={styles.bgImage}>
                 <Shape1 />
             </div>
-            {/*<img className={styles.bgImage} src={Shape1} alt="Background" />*/}
             <div ref={bgRef} className={styles.bgMain}>
                 <Shape2 />
             </div>
-            {/*<img ref={bgRef} className={styles.bgMain} src={Shape2} alt="Background" />*/}
             <svg height="0" width="0">
                 <defs>
                     {/*1440 1064.86*/}
