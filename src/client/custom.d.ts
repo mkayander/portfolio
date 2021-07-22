@@ -1,9 +1,3 @@
-/// <reference types="next" />
-/// <reference types="next/types/global" />
-// /// <reference types="next/image-types/global" />
-
-// /// <reference types="next-images" />
-
 declare module "*.component.svg" {
     import React = require("react");
 
@@ -41,3 +35,7 @@ declare module "*.png" {
     };
     export default content;
 }
+
+/// <reference types="next" />
+/// <reference types="next/types/global" />
+/// <reference types="next/image-types/global" />
