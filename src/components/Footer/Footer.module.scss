@@ -1,28 +1,59 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../../sass/colors";
+
 .root {
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-end;
     position: relative;
-    //height: 150px;
 
     //padding-bottom: 1rem;
+}
 
-    .content {
-        position: absolute;
-        width: 100%;
-        bottom: 0;
-        margin-bottom: 2%;
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: center;
-        align-items: flex-end;
-    }
+.content {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    margin-bottom: 2%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.shapeContainer {
+    position: relative;
+    //height: 100%;
+    width: 100%;
 }
 
 .shape {
+    margin-bottom: -100px;
     //position: absolute;
-    width: 100%;
+    //width: 100%;
     //bottom: 0;
     //left: 0;
     //right: 0;
+}
+
+@include media-breakpoint-down(xl) {
+    .shape {
+        margin-bottom: 0;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    //.root {
+    //    //padding-bottom: 2rem;
+    //    height: 190px;
+    //}
+
+    .content {
+        margin-bottom: 12px;
+    }
+
+    .shape {
+    }
 }

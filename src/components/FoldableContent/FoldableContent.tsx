@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./FoldableContent.module.scss";
-import ExpandIcon from "../ScrollButton/assets/Scroll_Down_Button.svg";
+import { ReactComponent as ExpandIcon } from "../ScrollButton/assets/Scroll_Down_Button.component.svg";
 import classNames from "classnames";
 import { Heading } from "../index";
 
@@ -21,7 +21,7 @@ const FoldableContent: React.FC<TextSectionProps> = ({ title, emoji, initiallyFo
                 <button
                     title={isFolded ? "Развернуть" : "Свернуть"}
                     className={classNames({ [styles.folded]: isFolded })}>
-                    <img src={ExpandIcon} alt="Expand" />
+                    <ExpandIcon height={42} width={42} className={styles.icon} />
                 </button>
             </div>
             <div className={classNames(styles.content, { [styles.folded]: isFolded })}>{children}</div>

@@ -8,6 +8,8 @@ $color_primary: #457b9d;
 $color_primary_variant: #45589d;
 $primary_gradient: linear-gradient(265.34deg, $color_primary_variant 3.98%, $color_primary 94.23%);
 
+$color_black: #060b13;
+
 @mixin colored_shadow($color, $transparency: 0.7, $y: 2px, $blur: 6px) {
     box-shadow: 0 $y $blur transparentize($color, $transparency);
 }

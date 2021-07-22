@@ -1,5 +1,5 @@
 module.exports = {
-    extends: ["react-app"],
+    extends: ["eslint-config-next"],
     rules: {
     },
     overrides: [

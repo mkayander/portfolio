@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./WorkItem.module.scss";
 import classNames from "classnames";
 import { Button } from "../index";
+import Image from "next/image";
 
 type WorkItemProps = {
     title: string;
@@ -24,7 +25,20 @@ const WorkItem: React.FC<WorkItemProps> = ({
 }) => {
     return (
         <div className={classNames(styles.root, { [styles.reversed]: reversed })}>
-            <img src={imageUrl} alt="My work screenshot" />
+            <div className={styles.imageContainer}>
+                <Image
+                    className={styles.image}
+                    src={imageUrl}
+                    alt="My work screenshot"
+                    objectFit="contain"
+                    objectPosition="top"
+                    // quality={100}
+                    // sizes="100vw"
+                    // height={400}
+                    // width={700}
+                    layout="fill"
+                />
+            </div>
             <div className={styles.content}>
                 <h5>{title}</h5>
                 <h5>{shortDescription}</h5>
@@ -39,7 +53,7 @@ const WorkItem: React.FC<WorkItemProps> = ({
                     />
                 </div>
             </div>
-            <hr className={styles.hr}/>
+            <hr className={styles.hr} />
         </div>
     );
 };

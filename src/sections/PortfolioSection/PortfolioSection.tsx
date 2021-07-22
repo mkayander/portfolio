@@ -36,10 +36,8 @@ const PortfolioSection = createSectionComponent(({ id }, ref) => {
                     <clipPath
                         id="svgPath2"
                         clipPathUnits="objectBoundingBox"
-                        transform="scale(0.0026666666666667, 0.00028851702250432775533756)">
-                        <path
-                            d="M5.9825e-05 3396.33L7.28664e-05 54.7002C7.28664e-05 54.7002 68.7496 34.9004 166.796 58.8718C264.843 82.8433 375 54.7002 375 54.7002L375 3396.33C375 3396.33 264.844 3424.47 166.797 3400.5C68.7501 3376.53 5.9825e-05 3396.33 5.9825e-05 3396.33Z"
-                        />
+                        transform="scale(0.0026666666666667, 0.0002918)">
+                        <path d="M5.9825e-05 3396.33L7.28664e-05 54.7002C7.28664e-05 54.7002 68.7496 34.9004 166.796 58.8718C264.843 82.8433 375 54.7002 375 54.7002L375 3396.33C375 3396.33 264.844 3424.47 166.797 3400.5C68.7501 3376.53 5.9825e-05 3396.33 5.9825e-05 3396.33Z" />
                     </clipPath>
                 </defs>
             </svg>
@@ -53,18 +51,22 @@ const PortfolioSection = createSectionComponent(({ id }, ref) => {
                     Ниже представлены мои работы и пет-проекты, которыми я занимался с целью изучения технологий,
                     паттернов клиент-серверных систем, ориентируясь на лучшие практики и изучая докумментацию.
                 </p>
-                {mockArray.map((value, index) => (
-                    <WorkItem
-                        key={index}
-                        title={value.title}
-                        shortDescription={value.shortDescription}
-                        year={value.year}
-                        description={value.description}
-                        imageUrl={value.imageUrl}
-                        githubUrls={value.githubUrls}
-                        reversed={index % 2 !== 0}
-                    />
-                ))}
+                <div className={styles.worksList}>
+                    {mockArray.map((value, index) => (
+                        <WorkItem
+                            key={index}
+                            title={value.title}
+                            shortDescription={value.shortDescription}
+                            year={value.year}
+                            description={value.description}
+                            imageUrl={value.imageUrl}
+                            githubUrls={value.githubUrls}
+                            reversed={index % 2 !== 0}
+                        />
+                    ))}
+                </div>
+                <br />
+                <br />
             </div>
         </section>
     );

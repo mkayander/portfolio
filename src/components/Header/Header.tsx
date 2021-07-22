@@ -9,6 +9,8 @@ import { scrollToSection } from "../../utils/doScroll";
 import Logo from "./assets/logo-1.1.svg";
 import ButtonIcon from "./assets/Menu_Icon_1.svg";
 import styled from "styled-components";
+import Link from "next/link";
+import Image from "next/image";
 
 const smWidth = 767.98;
 
@@ -95,12 +97,14 @@ const Header: React.FC = () => {
         <>
             <header className={classNames(styles.root, { [styles.scrolled]: isScrolled })}>
                 <div className={classNames(styles.content, "container")}>
-                    <a className={styles.brand} href={window.location.href}>
-                        <img src={Logo} alt="Logo" />
-                    </a>
+                    <Link href="/">
+                        <a className={styles.brand}>
+                            <Image src={Logo} alt="Logo" height={28} width={28} layout="intrinsic" />
+                        </a>
+                    </Link>
                     <nav>
                         <button className={styles.navButton} onClick={() => setIsSidebarOpened(!isSidebarOpened)}>
-                            <img src={ButtonIcon} alt="Navigation" />
+                            <Image src={ButtonIcon} alt="Navigation" layout="fill" />
                         </button>
                         {!isMobile && renderLinksList()}
                     </nav>

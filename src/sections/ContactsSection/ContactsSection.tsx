@@ -10,6 +10,7 @@ import VKIcon from "./assets/VK_Icon_contact.svg";
 import classNames from "classnames";
 import calculateMouseTranslation, { MousePos } from "../../utils/calculateMouseTranslation";
 import { createSectionComponent } from "../../components/abstract";
+import Image from "next/image";
 
 type Contact = {
     id: number;
@@ -20,18 +21,18 @@ type Contact = {
 };
 
 const contactsData: Contact[] = [
-    { id: 1, type: "mobile", iconUrl: WhatsAppIcon, title: "Мобильный", value: "+7 (977) 491-90-67" },
-    { id: 2, type: "email", iconUrl: GmailIcon, title: "Email", value: "maxim.kayander1@gmail.com" },
-    { id: 3, type: "url", iconUrl: TelegramIcon, title: "Telegram", value: "https://t.me/mkayander" },
+    { id: 1, type: "mobile", iconUrl: WhatsAppIcon.src, title: "Мобильный", value: "+7 (977) 491-90-67" },
+    { id: 2, type: "email", iconUrl: GmailIcon.src, title: "Email", value: "maxim.kayander1@gmail.com" },
+    { id: 3, type: "url", iconUrl: TelegramIcon.src, title: "Telegram", value: "https://t.me/mkayander" },
     {
         id: 4,
         type: "url",
-        iconUrl: LinkedInIcon,
+        iconUrl: LinkedInIcon.src,
         title: "LinkedIn",
         value: "https://www.linkedin.com/in/max-kayander-54a42b211/",
     },
-    { id: 5, type: "url", iconUrl: GithubIcon, title: "GitHub", value: "https://github.com/mkayander" },
-    { id: 6, type: "url", iconUrl: VKIcon, title: "VK", value: "https://vk.com/mkayander" },
+    { id: 5, type: "url", iconUrl: GithubIcon.src, title: "GitHub", value: "https://github.com/mkayander" },
+    { id: 6, type: "url", iconUrl: VKIcon.src, title: "VK", value: "https://vk.com/mkayander" },
 ];
 
 const getContactHref = (contact: Contact) => {
@@ -62,7 +63,7 @@ const ContactsSection = createSectionComponent(({ id }, ref) => {
     return (
         <section ref={ref} className={styles.root}>
             <div className="container">
-                <Heading emoji="🤝" text="Буду рад пообщаться" />
+                <Heading className={styles.heading} emoji="🤝" text="Буду рад пообщаться" />
 
                 <div className={styles.bigCircleContainer}>
                     <div
@@ -81,7 +82,9 @@ const ContactsSection = createSectionComponent(({ id }, ref) => {
                     {contactsData.map(contact => (
                         <div key={contact.id} className={styles.row}>
                             <div className={classNames("col-3", styles.titleCol)}>
-                                <img src={contact.iconUrl} alt="Icon" />
+                                <div className={styles.iconContainer}>
+                                    <Image src={contact.iconUrl} alt="Icon" layout="fill" />
+                                </div>
                                 <h5>{contact.title}: </h5>
                             </div>
                             <div className={styles.valueCol}>
