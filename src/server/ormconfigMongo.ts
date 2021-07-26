@@ -10,6 +10,7 @@ const connectionOptions: ConnectionOptions = {
     database: process.env.MONGODB_DATABASE,
     entities: ["dist/**/entities/*.js"],
     migrations: ["dist/migrations/*.js"],
+    synchronize: true,
     useUnifiedTopology: true,
     useNewUrlParser: true,
     cli: {
