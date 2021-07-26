@@ -5,21 +5,21 @@ export class Project {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ unique: true, nullable: false })
+    @Column({ unique: true })
     title: string;
 
-    @Column({ nullable: true })
-    subtitle: string;
+    @Column()
+    subtitle?: string;
 
-    @Column({ unique: true, nullable: true })
-    url: string;
+    @Column({ unique: true })
+    url?: string;
 
-    @Column({ nullable: false })
+    @Column()
     year: number;
 
-    @Column("text", { nullable: true })
-    description: string;
+    @Column("text")
+    description?: string;
 
-    @Column("linestring", { array: true, nullable: true })
+    @Column({ array: true, nullable: true })
     githubUrls: string[];
 }
