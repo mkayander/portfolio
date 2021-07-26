@@ -1,4 +1,5 @@
 import React from "react";
+import landingNavigation from "../landingNavigation";
 
 export type Section = {
     // id: string;
@@ -9,7 +10,9 @@ export type Section = {
     scrollOffset: number;
 };
 
-export type SectionsState = Record<string, Section>;
+export type SectionsState = Record<keyof typeof landingNavigation, Section>;
+
+const initialState: SectionsState = landingNavigation;
 
 enum SectionActionType {
     ADD,
@@ -35,7 +38,7 @@ type ActivateSectionAction = {
 
 type SectionReducerActions = AddAction | RemoveAction | ActivateSectionAction;
 
-const sectionReducer = (state: SectionsState = {}, action: SectionReducerActions) => {
+const sectionReducer = (state: SectionsState = initialState, action: SectionReducerActions) => {
     switch (action.type) {
         case SectionActionType.ADD:
             if (action.id in state) {
