@@ -7,8 +7,9 @@ import styles from "./Introduction.module.scss";
 import classNames from "classnames";
 import { Button, ScrollButton } from "../../components";
 import { scrollToSection } from "../../utils/doScroll";
-import { Section } from "../../reducers/sectionReducer";
+import { Section, selectSections } from "../../reducers/sectionReducer";
 import { createSectionComponent } from "../../components/abstract";
+import { useSelector } from "react-redux";
 
 type IntroductionProps = {
     nextSection?: Section;
@@ -16,6 +17,8 @@ type IntroductionProps = {
 
 const Introduction = createSectionComponent<IntroductionProps>(({ id, nextSection }, ref) => {
     const bgRef = useRef<HTMLDivElement>(null);
+
+    const sections = useSelector(selectSections);
 
     return (
         <section ref={ref} className={styles.root}>
@@ -31,7 +34,11 @@ const Introduction = createSectionComponent<IntroductionProps>(({ id, nextSectio
                     </h6>
                     <div className={styles.buttons}>
                         <Button text={"Скачать Резюме"} />
-                        <Button text={"Контакты"} color="primary" />
+                        <Button
+                            text={"Контакты"}
+                            color="primary"
+                            onClick={() => scrollToSection(sections["contacts"])}
+                        />
                     </div>
                 </div>
             </div>
