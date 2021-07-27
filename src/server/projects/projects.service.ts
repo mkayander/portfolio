@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { CreateProjectDto } from "./dto/create-project.dto";
 import { UpdateProjectDto } from "./dto/update-project.dto";
 import { Repository } from "typeorm";
@@ -10,18 +10,7 @@ export class ProjectsService {
     constructor(@InjectRepository(Project) private readonly repository: Repository<Project>) {}
 
     async create(createProjectDto: CreateProjectDto) {
-        try {
-            return this.repository.findOne((await this.repository.insert(createProjectDto)).identifiers[0].id);
-        } catch (e) {
-            switch (e.name) {
-                case "MongoError":
-                    console.warn("Caught error: ", e.message);
-                    throw new BadRequestException({ error: e.message });
-
-                default:
-                    throw e;
-            }
-        }
+        return this.repository.findOne((await this.repository.insert(createProjectDto)).identifiers[0].id);
     }
 
     findAll() {
