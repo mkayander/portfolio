@@ -6,6 +6,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import * as connectionOptions from "../ormconfigMongo";
 import { ProjectsModule } from "../projects/projects.module";
 import { ContactsModule } from "../contacts/contacts.module";
+import { AdminModule } from "@admin-bro/nestjs";
 
 @Module({
     imports: [
@@ -15,6 +16,12 @@ import { ContactsModule } from "../contacts/contacts.module";
         TypeOrmModule.forRoot({ ...connectionOptions, autoLoadEntities: true }),
         ProjectsModule,
         ContactsModule,
+        AdminModule.createAdmin({
+            adminBroOptions: {
+                rootPath: "/admin",
+                resources: [],
+            },
+        }),
     ],
     controllers: [AppController],
     providers: [AppService],
