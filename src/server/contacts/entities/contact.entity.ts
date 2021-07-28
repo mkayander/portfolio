@@ -11,8 +11,8 @@ export class Contact extends BaseEntity {
     @Column({ type: "enum", enum: ["mobile", "email", "url"] })
     type: "mobile" | "email" | "url";
 
-    @Column()
-    iconUrl: string;
+    @Column({ nullable: true })
+    iconUrl?: string;
 
     @Column({ unique: true })
     title: string;
