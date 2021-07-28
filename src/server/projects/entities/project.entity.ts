@@ -1,9 +1,12 @@
-import { Column, Entity, ObjectID, ObjectIdColumn } from "typeorm";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Project {
-    @ObjectIdColumn()
-    id: ObjectID;
+export class Project extends BaseEntity {
+    // @ObjectIdColumn()
+    // id: ObjectID;
+
+    @PrimaryGeneratedColumn()
+    id: number;
 
     @Column({ unique: true })
     title: string;
@@ -20,6 +23,6 @@ export class Project {
     @Column("text")
     description?: string;
 
-    @Column({ array: true, nullable: true })
-    githubUrls: string[];
+    // @Column({ array: true, nullable: true })
+    // githubUrls: string[];
 }

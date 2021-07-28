@@ -3,10 +3,16 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import * as connectionOptions from "../ormconfigMongo";
+import * as connectionOptions from "../ormconfigMySQL";
 import { ProjectsModule } from "../projects/projects.module";
 import { ContactsModule } from "../contacts/contacts.module";
-import { AdminModule } from "@admin-bro/nestjs";
+import AdminBro from "admin-bro";
+import { Database, Resource } from "@admin-bro/typeorm";
+import { AdminModule } from "../admin";
+import { Project } from "../projects/entities/project.entity";
+import { Contact } from "../contacts/entities/contact.entity";
+
+AdminBro.registerAdapter({ Database, Resource });
 
 @Module({
     imports: [
@@ -19,7 +25,7 @@ import { AdminModule } from "@admin-bro/nestjs";
         AdminModule.createAdmin({
             adminBroOptions: {
                 rootPath: "/admin",
-                resources: [],
+                resources: [Project, Contact],
             },
         }),
     ],

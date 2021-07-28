@@ -1,9 +1,12 @@
-import { Column, Entity, ObjectID, ObjectIdColumn } from "typeorm";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Contact {
-    @ObjectIdColumn()
-    id: ObjectID;
+export class Contact extends BaseEntity {
+    // @ObjectIdColumn()
+    // id: ObjectID;
+
+    @PrimaryGeneratedColumn()
+    id: number;
 
     @Column({ type: "enum", enum: ["mobile", "email", "url"] })
     type: "mobile" | "email" | "url";
