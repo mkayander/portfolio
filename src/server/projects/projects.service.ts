@@ -1,31 +1,31 @@
 import { Injectable } from "@nestjs/common";
 import { CreateProjectDto } from "./dto/create-project.dto";
 import { UpdateProjectDto } from "./dto/update-project.dto";
-import { Repository } from "typeorm";
-import { Project } from "./entities/project.entity";
-import { InjectRepository } from "@nestjs/typeorm";
+import { Model } from "mongoose";
+import { Project, ProjectDocument } from "./schemas/project.schema";
+import { InjectModel } from "@nestjs/mongoose";
 
 @Injectable()
 export class ProjectsService {
-    constructor(@InjectRepository(Project) private readonly repository: Repository<Project>) {}
+    constructor(@InjectModel(Project.name) private readonly projectModel: Model<ProjectDocument>) {}
 
     async create(createProjectDto: CreateProjectDto) {
-        return this.repository.findOne((await this.repository.insert(createProjectDto)).identifiers[0].id);
+        return new this.projectModel(createProjectDto);
     }
 
     findAll() {
-        return this.repository.find();
+        return this.projectModel.find().exec();
     }
 
-    findOne(id: number) {
-        return this.repository.findOne(id);
+    findOne(id: string) {
+        return this.projectModel.findById(id).exec();
     }
 
-    update(id: number, updateProjectDto: UpdateProjectDto) {
-        return this.repository.update(id, updateProjectDto);
+    update(id: string, updateProjectDto: UpdateProjectDto) {
+        return this.projectModel.findByIdAndUpdate(id, updateProjectDto).exec();
     }
 
-    async remove(id: number) {
-        return this.repository.remove(await this.repository.findOne(id));
+    async remove(id: string) {
+        return this.projectModel.findByIdAndRemove(id).exec();
     }
 }
