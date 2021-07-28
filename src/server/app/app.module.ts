@@ -14,6 +14,11 @@ import { Project } from "../projects/schemas/project.schema";
 import { Database, Resource } from "@adminjs/mongoose";
 import { Contact } from "../contacts/entities/contact.entity";
 import { AdminModule, AdminModuleOptions } from "@adminjs/nestjs";
+import { APP_GUARD } from "@nestjs/core";
+import { RolesGuard } from "../users/roles.guard";
+import { User } from "../users/entities/user.entity";
+import { UsersModule } from "../users/users.module";
+import { AuthModule } from "../auth/auth.module";
 
 AdminBro.registerAdapter(AdminBroTypeOrm);
 
@@ -28,18 +33,20 @@ AdminBro.registerAdapter({ Database, Resource });
         MongooseModule.forRoot("mongodb://localhost/portfolio"),
         ProjectsModule,
         ContactsModule,
+        UsersModule,
+        AuthModule,
         AdminModule.createAdminAsync({
             imports: [ProjectsModule],
             inject: [getModelToken("Project")],
             useFactory: (projectModel: Model<Project>): AdminModuleOptions => ({
                 adminJsOptions: {
                     rootPath: "/admin",
-                    resources: [{ resource: projectModel }, Contact],
+                    resources: [{ resource: projectModel }, Contact, User],
                 },
             }),
         }),
     ],
     controllers: [AppController],
-    providers: [AppService],
+    providers: [AppService, { provide: APP_GUARD, useClass: RolesGuard }],
 })
 export class AppModule {}
