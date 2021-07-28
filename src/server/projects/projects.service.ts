@@ -10,7 +10,7 @@ export class ProjectsService {
     constructor(@InjectModel(Project.name) private readonly projectModel: Model<ProjectDocument>) {}
 
     async create(createProjectDto: CreateProjectDto) {
-        return new this.projectModel(createProjectDto);
+        return new this.projectModel(createProjectDto).save();
     }
 
     findAll() {
