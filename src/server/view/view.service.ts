@@ -23,6 +23,6 @@ export class ViewService implements OnModuleInit {
     }
 
     handler(req: Request, res: Response) {
-        return this.server.getRequestHandler()(req, res);
+        return this.server?.getRequestHandler()(req, res);
     }
 }

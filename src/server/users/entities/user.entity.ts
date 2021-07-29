@@ -13,8 +13,8 @@ export class User extends BaseEntity {
     @Column({ unique: true })
     email: string;
 
-    @Column({ nullable: true })
-    passwordRaw?: string;
+    @Column({ type: "varchar", nullable: true })
+    passwordRaw: string | null;
 
     @Column()
     passwordHash: string;
