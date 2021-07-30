@@ -26,6 +26,6 @@ export class ContactsService {
     }
 
     async remove(id: number) {
-        return this.repository.remove(await this.repository.findOne(id));
+        return this.repository.remove(await this.repository.findOneOrFail(id));
     }
 }
