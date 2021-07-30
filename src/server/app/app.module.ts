@@ -14,8 +14,6 @@ import { Project } from "../projects/schemas/project.schema";
 import { Database, Resource } from "@adminjs/mongoose";
 import { Contact } from "../contacts/entities/contact.entity";
 import { AdminModule, AdminModuleOptions } from "@adminjs/nestjs";
-import { APP_GUARD } from "@nestjs/core";
-import { RolesGuard } from "../users/roles.guard";
 import { User } from "../users/entities/user.entity";
 import { UsersModule } from "../users/users.module";
 import { AuthModule } from "../auth/auth.module";
@@ -47,6 +45,6 @@ AdminBro.registerAdapter({ Database, Resource });
         }),
     ],
     controllers: [AppController],
-    providers: [AppService, { provide: APP_GUARD, useClass: RolesGuard }],
+    providers: [AppService],
 })
 export class AppModule {}

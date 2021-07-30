@@ -1,19 +1,23 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Patch, Post, Req, UseGuards } from "@nestjs/common";
 import { ProjectsService } from "./projects.service";
 import { CreateProjectDto } from "./dto/create-project.dto";
 import { UpdateProjectDto } from "./dto/update-project.dto";
 import { Roles } from "../users/roles.decorator";
 import { Role } from "../users/role.enum";
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
+import { Request } from "express";
+import { RolesGuard } from "../users/roles.guard";
 
 @Controller("projects")
 export class ProjectsController {
     constructor(private readonly projectsService: ProjectsService) {}
 
     @Post()
+    @Roles(Role.Admin)
+    @UseGuards(RolesGuard)
     @UseGuards(JwtAuthGuard)
-    // @Roles(Role.Admin)
-    create(@Body() createProjectDto: CreateProjectDto) {
+    create(@Body() createProjectDto: CreateProjectDto, @Req() request: Request) {
+        console.log("Projects request user: ", request.user);
         return this.projectsService.create(createProjectDto);
     }
 
