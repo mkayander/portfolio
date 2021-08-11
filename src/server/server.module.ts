@@ -6,6 +6,7 @@ import { ProjectsModule } from "./projects/projects.module";
 import { ContactsModule } from "./contacts/contacts.module";
 import { AuthModule } from "./auth/auth.module";
 import { UsersModule } from "./users/users.module";
+import { StaticModule } from "./static/static.module";
 
 @Module({
     imports: [
@@ -35,6 +36,7 @@ import { UsersModule } from "./users/users.module";
             },
         ]),
         ViewModule,
+        StaticModule,
     ],
 })
 export class ServerModule {}
