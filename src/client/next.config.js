@@ -6,7 +6,7 @@
 const nextConfig = {
     distDir: "../../.next",
     images: {
-        domains: ["i.ibb.co"],
+        domains: ["i.ibb.co", "localhost"],
     },
 
     webpack(config) {
