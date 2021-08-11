@@ -9,8 +9,9 @@ import landingNavigation from "../../landingNavigation";
 import { scrollToSection } from "../../utils/doScroll";
 import Link from "next/link";
 import Head from "next/head";
+import { NextPage } from "next";
 
-const Index: React.FC = () => {
+const Index: NextPage = () => {
     const sectionsMap = useSelector(selectSections) as Record<keyof typeof landingNavigation, Section>;
 
     const withSectionRef = <T extends object>(

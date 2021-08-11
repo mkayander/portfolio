@@ -1,12 +1,12 @@
 import React from "react";
-import { GetStaticProps } from "next";
+import { GetStaticProps, NextPage } from "next";
 import axios from "axios";
 
 type TestPageProps = {
     value: number;
 };
 
-const Test: React.FC<TestPageProps> = ({ value }) => {
+const Test: NextPage<TestPageProps> = ({ value }) => {
     return (
         <div className="container" style={{ color: "black" }}>
             <h1>This is a NEST test page</h1>
