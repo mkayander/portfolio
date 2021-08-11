@@ -66,7 +66,7 @@ const PortfolioSection = createSectionComponent<PortfolioSectionProps>(({ id, pr
                             shortDescription={value.subtitle}
                             year={value.year}
                             description={value.description}
-                            imageUrl={value.imageUrl}
+                            imageUrl={"http://localhost:3000" + value.imageUrl}
                             githubUrls={value.githubUrls}
                             reversed={index % 2 !== 0}
                         />
