@@ -19,7 +19,7 @@ export class Project {
     @Prop()
     year: number;
 
-    @Prop()
+    @Prop({ text: true })
     description?: string;
 
     @Prop()

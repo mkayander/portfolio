@@ -9,5 +9,7 @@ export class CreateProjectDto {
 
     description?: string;
 
+    imageUrl?: string;
+
     githubUrls: string[];
 }
