@@ -4,6 +4,7 @@ import { UpdateUserDto } from "./dto/update-user.dto";
 import { Repository } from "typeorm";
 import { User } from "./entities/user.entity";
 import { InjectRepository } from "@nestjs/typeorm";
+import { ShowUserDto } from "./dto/show-user.dto";
 
 @Injectable()
 export class UsersService {
@@ -18,11 +19,11 @@ export class UsersService {
     }
 
     findOne(id: number) {
-        return this.repository.findOne(id);
+        return this.repository.findOneOrFail(id);
     }
 
     findByEmail(email: string) {
-        return this.repository.findOne({ email });
+        return this.repository.findOneOrFail({ email });
     }
 
     update(id: number, updateUserDto: UpdateUserDto) {
@@ -31,5 +32,12 @@ export class UsersService {
 
     async remove(id: number) {
         return this.repository.remove(await this.repository.findOneOrFail(id));
+    }
+
+    toDto(...users: User[]): ShowUserDto[] | ShowUserDto {
+        const result = users.map(user => {
+            return { id: user.id, email: user.email, roles: user.roles };
+        });
+        return result.length === 1 ? result[0] : result;
     }
 }

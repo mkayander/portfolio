@@ -3,21 +3,28 @@ import styles from "./PortfolioSection.module.scss";
 import { Heading, WorkItem } from "../../components";
 import classNames from "classnames";
 import { createSectionComponent } from "../../components/abstract";
+import { Project } from "../../api/models";
 
-const mockData = {
-    title: "Tour-Up.ru",
-    shortDescription: "Туристическое Android Приложение",
-    year: 2021,
-    description:
-        "Это моя выпускная квалификационная работа (диплом), с которой я закончил высшее образование. Создано мобильное приложение с возможностью просмотра туристических маршрутов и следования по ним, с помощью GPS.\n" +
-        "Также реализована полноценная серверная часть (Backend & Frontend) c базой данных маршрутов и редактором маршрутов, созданном на React с применением библиотеки карт Leaflet.",
-    imageUrl: "https://i.ibb.co/yWgY14q/image-1.png",
-    githubUrls: ["https://github.com/mkayander/TouringApp", "https://github.com/mkayander/TouringAndroidApp"],
+// const mockData: Project = {
+//     title: "Tour-Up.ru",
+//     subtitle: "Туристическое Android Приложение",
+//     year: 2021,
+//     description:
+//         "Это моя выпускная квалификационная работа (диплом), с которой я закончил высшее образование. Создано мобильное приложение с возможностью просмотра туристических маршрутов и следования по ним, с помощью GPS.\n" +
+//         "Также реализована полноценная серверная часть (Backend & Frontend) c базой данных маршрутов и редактором маршрутов, созданном на React с применением библиотеки карт Leaflet.",
+//     imageUrl: "https://i.ibb.co/yWgY14q/image-1.png",
+//     githubUrls: ["https://github.com/mkayander/TouringApp", "https://github.com/mkayander/TouringAndroidApp"],
+// };
+
+// const mockArray = [mockData, mockData, mockData, mockData, mockData];
+
+type PortfolioSectionProps = {
+    projects?: Project[];
 };
 
-const mockArray = [mockData, mockData, mockData, mockData, mockData];
+const PortfolioSection = createSectionComponent<PortfolioSectionProps>(({ id, projects }, ref) => {
+    console.log("Portfolio section projects prop: ", projects);
 
-const PortfolioSection = createSectionComponent(({ id }, ref) => {
     return (
         <section ref={ref} className={styles.root}>
             {/*1/bb.width; 1/bb.height*/}
@@ -52,14 +59,14 @@ const PortfolioSection = createSectionComponent(({ id }, ref) => {
                     паттернов клиент-серверных систем, ориентируясь на лучшие практики и изучая докумментацию.
                 </p>
                 <div className={styles.worksList}>
-                    {mockArray.map((value, index) => (
+                    {projects?.map((value, index) => (
                         <WorkItem
                             key={index}
                             title={value.title}
-                            shortDescription={value.shortDescription}
+                            shortDescription={value.subtitle}
                             year={value.year}
                             description={value.description}
-                            imageUrl={value.imageUrl}
+                            imageUrl={"http://localhost:3000" + value.imageUrl}
                             githubUrls={value.githubUrls}
                             reversed={index % 2 !== 0}
                         />
