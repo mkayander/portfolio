@@ -19,11 +19,11 @@ export class UsersService {
     }
 
     findOne(id: number) {
-        return this.repository.findOne(id);
+        return this.repository.findOneOrFail(id);
     }
 
     findByEmail(email: string) {
-        return this.repository.findOne({ email });
+        return this.repository.findOneOrFail({ email });
     }
 
     update(id: number, updateUserDto: UpdateUserDto) {
