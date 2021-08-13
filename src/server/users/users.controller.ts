@@ -19,14 +19,14 @@ export class UsersController {
     @Get()
     @UseGuards(JwtAuthGuard)
     findAll() {
-        return this.usersService.findAll();
+        return this.usersService.findAll().then(users => this.usersService.toDto(...users));
     }
 
     @Get()
     @UseGuards(JwtAuthGuard)
     @Get(":id")
     findOne(@Param("id") id: string) {
-        return this.usersService.findOne(+id);
+        return this.usersService.findOne(+id).then(user => this.usersService.toDto(user));
     }
 
     @Get()
