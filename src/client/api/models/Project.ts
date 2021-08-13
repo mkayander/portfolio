@@ -1,4 +1,6 @@
-export class CreateProjectDto {
+export type Project = {
+    _id: string;
+
     title: string;
 
     subtitle?: string;
@@ -9,7 +11,7 @@ export class CreateProjectDto {
 
     description?: string;
 
-    imageUrl?: string;
+    imageUrl: string;
 
     githubUrls: string[];
-}
+};

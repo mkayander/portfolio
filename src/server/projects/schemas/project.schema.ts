@@ -19,8 +19,11 @@ export class Project {
     @Prop()
     year: number;
 
-    @Prop()
+    @Prop({ text: true })
     description?: string;
+
+    @Prop()
+    imageUrl: string;
 
     @Prop([String])
     githubUrls: string[];

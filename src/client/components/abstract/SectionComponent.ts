@@ -4,7 +4,7 @@ type SectionComponentProps = {
     id?: string;
 };
 
-export const createSectionComponent = <T extends Record<string, unknown>>(
+export const createSectionComponent = <T extends Record<string, unknown> = {}>(
     render: ForwardRefRenderFunction<HTMLDivElement, SectionComponentProps & T>
 ) => React.forwardRef<HTMLDivElement, SectionComponentProps & T>(render);
 
