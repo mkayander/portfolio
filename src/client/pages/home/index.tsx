@@ -10,14 +10,15 @@ import { scrollToSection } from "../../utils/doScroll";
 import Link from "next/link";
 import Head from "next/head";
 import { GetServerSideProps, NextPage } from "next";
-import { Project } from "../../api/models";
-import { fetchProjects } from "../../api";
+import { Contact, Project } from "../../api/models";
+import { fetchContacts, fetchProjects } from "../../api";
 
 type HomePageProps = {
     projects?: Project[];
+    contacts?: Contact[];
 };
 
-const HomePage: NextPage<HomePageProps> = ({ projects }) => {
+const HomePage: NextPage<HomePageProps> = ({ projects, contacts }) => {
     const sectionsMap = useSelector(selectSections) as Record<keyof typeof landingNavigation, Section>;
 
     const withSectionRef = <T extends object>(
@@ -64,7 +65,7 @@ const HomePage: NextPage<HomePageProps> = ({ projects }) => {
 
                 {withSectionRef("portfolio", PortfolioSection)({ projects })}
 
-                {withSectionRef("contacts", ContactsSection)({})}
+                {withSectionRef("contacts", ContactsSection)({ contacts })}
             </main>
             <Footer style={{ zIndex: 10 }} />
         </div>
@@ -77,6 +78,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const props = {};
     try {
         props["projects"] = (await fetchProjects()).data;
+        props["contacts"] = (await fetchContacts()).data;
     } catch (e) {}
 
     return {
