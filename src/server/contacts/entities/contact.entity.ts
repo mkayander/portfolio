@@ -8,6 +8,9 @@ export class Contact extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @Column({ unique: true })
+    index: number;
+
     @Column({ type: "enum", enum: ["mobile", "email", "url"] })
     type: "mobile" | "email" | "url";
 
