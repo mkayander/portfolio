@@ -42,7 +42,7 @@ export class ProjectsController {
     @UseInterceptors(
         FileInterceptor("image", {
             storage: diskStorage({
-                destination: "./static",
+                destination: "./media",
                 filename: editFileName,
             }),
         })
