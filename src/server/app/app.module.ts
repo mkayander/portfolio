@@ -22,6 +22,17 @@ AdminBro.registerAdapter(AdminBroTypeOrm);
 
 AdminBro.registerAdapter({ Database, Resource });
 
+const projectResourceOptions = {
+    properties: {
+        description: {
+            type: "richtext",
+            custom: {
+                // some custom options
+            },
+        },
+    },
+};
+
 @Module({
     imports: [
         ConfigModule.forRoot({
@@ -39,7 +50,7 @@ AdminBro.registerAdapter({ Database, Resource });
             useFactory: (projectModel: Model<Project>): AdminModuleOptions => ({
                 adminJsOptions: {
                     rootPath: "/admin",
-                    resources: [{ resource: projectModel }, Contact, User],
+                    resources: [{ resource: projectModel, options: projectResourceOptions }, Contact, User],
                 },
             }),
         }),
