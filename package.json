@@ -33,6 +33,7 @@
         "express": "^4.17.1",
         "express-formidable": "^1.2.0",
         "express-session": "^1.17.2",
+        "isomorphic-dompurify": "^0.15.0",
         "mongodb": "^3.6.10",
         "mongoose": "^5.13.3",
         "mysql": "^2.18.1",
