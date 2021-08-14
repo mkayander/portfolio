@@ -23,8 +23,6 @@ type PortfolioSectionProps = {
 };
 
 const PortfolioSection = createSectionComponent<PortfolioSectionProps>(({ id, projects }, ref) => {
-    console.log("Portfolio section projects prop: ", projects);
-
     return (
         <section ref={ref} className={styles.root}>
             {/*1/bb.width; 1/bb.height*/}
