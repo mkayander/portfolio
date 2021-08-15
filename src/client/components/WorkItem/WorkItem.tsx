@@ -3,6 +3,7 @@ import styles from "./WorkItem.module.scss";
 import classNames from "classnames";
 import { Button } from "../index";
 import Image from "next/image";
+import DOMPurify from "isomorphic-dompurify";
 
 type WorkItemProps = {
     title: string;
@@ -46,7 +47,7 @@ const WorkItem: React.FC<WorkItemProps> = ({
                 <h5>{title}</h5>
                 <h5>{shortDescription}</h5>
                 <span className={styles.yearChip}>{year}</span>
-                <p>{description}</p>
+                <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }} />
                 <div className={styles.buttons}>
                     <Button text="Подробнее" />
                     <Button
