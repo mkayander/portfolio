@@ -34,10 +34,7 @@ export class UsersService {
         return this.repository.remove(await this.repository.findOneOrFail(id));
     }
 
-    toDto(...users: User[]): ShowUserDto[] | ShowUserDto {
-        const result = users.map(user => {
-            return { id: user.id, email: user.email, roles: user.roles };
-        });
-        return result.length === 1 ? result[0] : result;
+    toDto(user: User): ShowUserDto {
+        return { id: user.id, email: user.email, roles: user.roles };
     }
 }
