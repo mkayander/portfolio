@@ -3,31 +3,25 @@ import { UsersService } from "../users/users.service";
 import * as bcrypt from "bcrypt";
 import { JwtService } from "@nestjs/jwt";
 import { JwtPayload } from "./jwt.strategy";
-import { User } from "../users/entities/user.entity";
+import { ShowUserDto } from "../users/dto/show-user.dto";
 
 @Injectable()
 export class AuthService {
     constructor(private readonly usersService: UsersService, private readonly jwtService: JwtService) {}
 
-    private static getUserDto(user: User) {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { passwordRaw, passwordHash, ...result } = user;
-        return result;
-    }
-
-    async validateUser(email: string, pwd: string): Promise<any> {
+    async validateUser(email: string, pwd: string): Promise<ShowUserDto | null> {
         const user = await this.usersService.findByEmail(email);
         if (user && (await bcrypt.compare(pwd, user.passwordHash))) {
-            return AuthService.getUserDto(user);
+            return this.usersService.toDto(user);
         }
 
         return null;
     }
 
-    async validateUserJwt(payload: JwtPayload) {
+    async validateUserJwt(payload: JwtPayload): Promise<ShowUserDto | null> {
         const user = await this.usersService.findOne(payload.id);
         if (user) {
-            return AuthService.getUserDto(user);
+            return this.usersService.toDto(user);
         }
 
         return null;
