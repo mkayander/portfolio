@@ -12,6 +12,7 @@ export class UsersController {
     constructor(private readonly usersService: UsersService) {}
 
     @Post()
+    @UseGuards(JwtAuthGuard)
     create(@Body() createUserDto: CreateUserDto) {
         return this.usersService.create(createUserDto);
     }
@@ -19,12 +20,11 @@ export class UsersController {
     @Get()
     @UseGuards(JwtAuthGuard)
     findAll() {
-        return this.usersService.findAll().then(users => this.usersService.toDto(...users));
+        return this.usersService.findAll().then(users => users.map(user => this.usersService.toDto(user)));
     }
 
-    @Get()
-    @UseGuards(JwtAuthGuard)
     @Get(":id")
+    @UseGuards(JwtAuthGuard)
     findOne(@Param("id") id: string) {
         return this.usersService.findOne(+id).then(user => this.usersService.toDto(user));
     }

@@ -1,4 +1,4 @@
-import { Module } from "@nestjs/common";
+import { Module, UnauthorizedException } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { ConfigModule } from "@nestjs/config";
@@ -17,6 +17,7 @@ import { AdminModule, AdminModuleOptions } from "@adminjs/nestjs";
 import { User } from "../users/entities/user.entity";
 import { UsersModule } from "../users/users.module";
 import { AuthModule } from "../auth/auth.module";
+import { AuthService } from "../auth/auth.service";
 
 AdminBro.registerAdapter(AdminBroTypeOrm);
 
@@ -45,12 +46,23 @@ const projectResourceOptions = {
         UsersModule,
         AuthModule,
         AdminModule.createAdminAsync({
-            imports: [ProjectsModule],
-            inject: [getModelToken("Project")],
-            useFactory: (projectModel: Model<Project>): AdminModuleOptions => ({
+            imports: [ProjectsModule, AuthModule],
+            inject: [getModelToken("Project"), AuthService],
+            useFactory: (projectModel: Model<Project>, authService: AuthService): AdminModuleOptions => ({
                 adminJsOptions: {
                     rootPath: "/admin",
                     resources: [{ resource: projectModel, options: projectResourceOptions }, Contact, User],
+                },
+                auth: {
+                    authenticate: async (email, password) => {
+                        console.log("Authenticating in admin panel...", email);
+                        const user = await authService.validateUser(email, password);
+                        console.log("User: ", user);
+                        if (user === null) throw new UnauthorizedException();
+                        return { email: user.email, id: user.id.toString() };
+                    },
+                    cookieName: "test",
+                    cookiePassword: "testPass",
                 },
             }),
         }),

@@ -39,6 +39,7 @@ export class ProjectsController {
     }
 
     @Post(":id/image")
+    @UseGuards(JwtAuthGuard)
     @UseInterceptors(
         FileInterceptor("image", {
             storage: diskStorage({
