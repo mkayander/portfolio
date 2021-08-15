@@ -23,7 +23,7 @@ export class UsersService {
     }
 
     findByEmail(email: string) {
-        return this.repository.findOneOrFail({ email });
+        return this.repository.findOne({ email });
     }
 
     update(id: number, updateUserDto: UpdateUserDto) {
