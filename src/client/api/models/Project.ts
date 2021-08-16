@@ -11,7 +11,7 @@ export type Project = {
 
     description?: string;
 
-    imageUrl: string;
+    imageUrl?: string;
 
     githubUrls: string[];
 };

@@ -10,7 +10,7 @@ type WorkItemProps = {
     shortDescription: string;
     year: number;
     description: string;
-    imageUrl: string;
+    imageUrl?: string;
     githubUrls: Array<string>;
     reversed?: boolean;
 };
@@ -30,18 +30,20 @@ const WorkItem: React.FC<WorkItemProps> = ({
                 [styles.reversed]: reversed,
             })}>
             <div className={styles.imageContainer}>
-                <Image
-                    className={styles.image}
-                    src={imageUrl}
-                    alt="My work screenshot"
-                    objectFit="contain"
-                    objectPosition="top"
-                    // quality={100}
-                    // sizes="100vw"
-                    // height={400}
-                    // width={700}
-                    layout="fill"
-                />
+                {imageUrl && (
+                    <Image
+                        className={styles.image}
+                        src={"http://localhost:3000" + imageUrl}
+                        alt="My work screenshot"
+                        objectFit="contain"
+                        objectPosition="top"
+                        // quality={100}
+                        // sizes="100vw"
+                        // height={400}
+                        // width={700}
+                        layout="fill"
+                    />
+                )}
             </div>
             <div className={styles.content}>
                 <h5>{title}</h5>
