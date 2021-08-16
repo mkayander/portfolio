@@ -33,6 +33,8 @@ export default class MyDocument extends Document {
         return (
             <Html lang="ru">
                 <Head>
+                    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+                    <link rel="icon" type="image/png" href="/favicon.png" />
                     <meta name="theme-color" content="#457b9d" />
                 </Head>
                 <body>
