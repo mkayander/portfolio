@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  mysqldb:
+    image: mysql
+    restart: always
+    env_file:
+      - .env
+    environment:
+      MYSQL_USERNAME: $MYSQL_USERNAME
+      MYSQL_ROOT_PASSWORD: $MYSQL_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DB_NAME
+    #    ports:
+    #      - $MYSQL_LOCAL_PORT:$MYSQL_DOCKER_PORT
+    volumes:
+      - db-config:/etc/mysql
+      - db-data:/var/lib/mysql
+      - ./db/backup/files/:/data_backup/data
+
+  mongodb:
+    image: mongo:4
+    restart: always
+    env_file:
+      - .env
+    environment:
+      MONGO_URL: $MONGO_URL
+    volumes:
+      - mongodb-data:/data/db
+
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: portfolioapp
+    restart: unless-stopped
+    env_file:
+      - .env
+    depends_on:
+      - mysqldb
+      - mongodb
+    stdin_open: true
+    tty: true
+
+
+volumes:
+  db-config:
+  db-data:
+  mongodb-data:
