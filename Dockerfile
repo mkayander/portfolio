@@ -19,6 +19,6 @@ COPY . .
 RUN yarn build:prod
 
 # Bind port
-EXPOSE 80
+EXPOSE 3000
 
 CMD [ "yarn", "start:prod" ]
