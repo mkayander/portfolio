@@ -16,9 +16,9 @@ RUN yarn install --frozen-lockfile --network-timeout 600000
 COPY . .
 
 # Build app
-RUN yarn next:build
+RUN yarn build:prod
 
 # Bind port
 EXPOSE 80
 
-CMD [ "yarn", "next:start" ]
+CMD [ "yarn", "start:prod" ]
