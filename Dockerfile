@@ -19,6 +19,6 @@ COPY . .
 RUN yarn next:build
 
 # Bind port
-EXPOSE 3000
+EXPOSE 80
 
 CMD [ "yarn", "next:start" ]
