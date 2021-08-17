@@ -40,7 +40,9 @@ const projectResourceOptions = {
             isGlobal: true,
         }),
         TypeOrmModule.forRoot({ ...connectionOptions, autoLoadEntities: true }),
-        MongooseModule.forRoot(`mongodb://${process.env.MONGODB_HOSTNAME || "localhost"}/portfolio`),
+        MongooseModule.forRoot(
+            `mongodb://root:example@${process.env.MONGODB_HOSTNAME || "localhost"}/portfolio?authSource=admin`
+        ),
         ProjectsModule,
         ContactsModule,
         UsersModule,
