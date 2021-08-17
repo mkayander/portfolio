@@ -10,7 +10,7 @@ WORKDIR /usr/src/portfolio-app
 COPY package.json yarn.lock ./
 
 # Install app dependencies with the continuous integration system strategy
-RUN yarn install --frozen-lockfile
+RUN yarn install --frozen-lockfile --network-timeout 600000
 
 # Bundle app source
 COPY . .
