@@ -2,7 +2,7 @@ import axios from "axios";
 import { Contact, Project } from "./models";
 
 export const api = axios.create({
-    baseURL: process.env.NODE_ENV === "production" ? "blablalbla" : "http://localhost:3000/api/v1/",
+    baseURL: `${config.baseUrl}/api/v1/`,
 });
 
 api.interceptors.response.use(
