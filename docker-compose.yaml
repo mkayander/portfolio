@@ -63,6 +63,8 @@ services:
     environment:
       MYSQL_HOSTNAME: mysqldb
       MONGODB_HOSTNAME: mongodb
+      MONGODB_USER: root
+      MONGODB_PASSWORD: example
     depends_on:
       - mysqldb
       - mongodb
