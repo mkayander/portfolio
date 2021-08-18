@@ -1,6 +1,7 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, SaveOptions } from "typeorm";
 import { Role } from "../role.enum";
 import * as bcrypt from "bcrypt";
+import validateEmail from "../../utils/validateEmail";
 
 @Entity()
 export class User extends BaseEntity {
@@ -20,6 +21,9 @@ export class User extends BaseEntity {
     passwordHash: string;
 
     async save(options?: SaveOptions): Promise<this> {
+        if (!validateEmail(this.email)) {
+            throw new Error("Email is invalid! - " + this.email);
+        }
         if (this.passwordRaw) {
             this.passwordHash = await bcrypt.hash(this.passwordRaw, 10);
             this.passwordRaw = null;
