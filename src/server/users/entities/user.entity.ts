@@ -17,7 +17,7 @@ export class User extends BaseEntity {
     @Column({ type: "varchar", nullable: true })
     passwordRaw: string | null;
 
-    @Column()
+    @Column({ default: "" })
     passwordHash: string;
 
     async save(options?: SaveOptions): Promise<this> {
