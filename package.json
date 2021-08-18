@@ -115,7 +115,8 @@
         "migration:create": "yarn run typeorm migration:create -n",
         "migration:run": "yarn run typeorm migration:run",
         "migration:revert": "yarn typeorm migration:revert",
-        "schema:log": "yarn typeorm schema:log"
+        "schema:log": "yarn build && yarn typeorm schema:log",
+        "createsuperuser": "ts-node -r tsconfig-paths/register src/server/commands/createSuperUser.ts"
     },
     "browserslist": {
         "production": [
