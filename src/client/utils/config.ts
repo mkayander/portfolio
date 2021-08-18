@@ -1,7 +1,4 @@
 import isProd from "./isProd";
-import * as dotenv from "dotenv";
-
-dotenv.config();
 
 const hostname: string | undefined = isProd ? process.env.SERVER_PROD_HOSTNAME : "localhost";
 const port: string | undefined = isProd ? process.env.SERVER_PROD_PORT : "3000";
