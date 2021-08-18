@@ -8,7 +8,7 @@ services:
     env_file:
       - .env
     ports:
-      - 127.0.0.1:3307:3306
+      - "127.0.0.1:3307:3306"
     environment:
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
       MYSQL_DATABASE: $MYSQL_DB_NAME
@@ -25,7 +25,7 @@ services:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - "8080:8080"
 
   mongodb:
     container_name: mongodb
@@ -57,7 +57,7 @@ services:
     image: portfolioapp
     restart: unless-stopped
     ports:
-      - 80:3000
+      - "80:3000"
     env_file:
       - .env
     environment:
