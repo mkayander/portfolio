@@ -56,7 +56,9 @@ const WorkItem: React.FC<WorkItemProps> = ({
                     <Button
                         text="GitHub"
                         color="primary"
-                        onClick={() => window.open(githubUrls[0], "_blank")?.focus()}
+                        link={githubUrls[0]}
+                        openNewTab={true}
+                        // onClick={() => window.open(githubUrls[0], "_blank")?.focus()}
                     />
                 </div>
             </div>
