@@ -71,7 +71,12 @@ const ContactsSection = createSectionComponent<ContactsSectionProps>(({ id, cont
                                 <h5>{contact.title}: </h5>
                             </div>
                             <div className={styles.valueCol}>
-                                <a href={getContactHref(contact)}>{contact.value}</a>
+                                <a
+                                    href={getContactHref(contact)}
+                                    target={contact.type === "url" ? "_blank" : undefined}
+                                    rel="noreferrer">
+                                    {contact.value}
+                                </a>
                             </div>
                         </div>
                     ))}
