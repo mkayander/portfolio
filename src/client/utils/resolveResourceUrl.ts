@@ -1,9 +1,9 @@
 import config from "./config";
 
 /**
- * @param relativePath Relative path of the dynamic media/resource. Ex.: '/media/image.png'
+ * @param path Relative path of the dynamic media/resource. Ex.: '/media/image.png'
  * @return Absolute url string to access given static file
  */
-const resolveResourceUrl = (relativePath: string) => config.baseUrl + relativePath;
+const resolveResourceUrl = (path: string) => (path[0] === "/" ? config.baseUrl + path : path);
 
 export default resolveResourceUrl;
