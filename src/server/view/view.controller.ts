@@ -16,7 +16,7 @@ export class ViewController {
         await this.viewService.handler(req, res);
     }
 
-    @Get("favicon.ico")
+    @Get("/favicon.*")
     public async favicon(@Req() req: Request, @Res() res: Response) {
         await this.viewService.handler(req, res);
     }
