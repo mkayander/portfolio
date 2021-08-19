@@ -6,7 +6,7 @@ dotenv.config();
 
 const connectionOptions: ConnectionOptions = {
     type: "mysql",
-    host: "localhost",
+    host: process.env.MYSQL_HOSTNAME || "localhost",
     port: 3306,
     synchronize: false,
     database: process.env.MYSQL_DB_NAME,

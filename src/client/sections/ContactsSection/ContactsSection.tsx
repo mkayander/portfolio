@@ -6,6 +6,7 @@ import calculateMouseTranslation, { MousePos } from "../../utils/calculateMouseT
 import { createSectionComponent } from "../../components/abstract";
 import Image from "next/image";
 import { Contact } from "../../api/models";
+import resolveResourceUrl from "../../utils/resolveResourceUrl";
 
 const getContactHref = (contact: Contact) => {
     switch (contact.type) {
@@ -64,11 +65,7 @@ const ContactsSection = createSectionComponent<ContactsSectionProps>(({ id, cont
                             <div className={classNames("col-3", styles.titleCol)}>
                                 <div className={styles.iconContainer}>
                                     {contact.iconUrl && (
-                                        <Image
-                                            src={"http://localhost:3000" + contact.iconUrl}
-                                            alt="Icon"
-                                            layout="fill"
-                                        />
+                                        <Image src={resolveResourceUrl(contact.iconUrl)} alt="Icon" layout="fill" />
                                     )}
                                 </div>
                                 <h5>{contact.title}: </h5>

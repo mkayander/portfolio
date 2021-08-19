@@ -11,6 +11,7 @@
         "target": "es2017",
         "sourceMap": true,
         "outDir": "./dist",
+        "rootDir": "src/server",
         "baseUrl": "./",
         "incremental": true,
         "skipLibCheck": true,
