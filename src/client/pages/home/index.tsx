@@ -11,7 +11,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { GetServerSideProps, NextPage } from "next";
 import { Contact, Project } from "../../api/models";
-import { fetchContacts, fetchProjects } from "../../api";
+import { fetchContactsLocally, fetchProjectsLocally } from "../../api";
 
 type HomePageProps = {
     projects?: Project[];
@@ -77,8 +77,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     const props = {};
     try {
-        props["projects"] = (await fetchProjects()).data;
-        props["contacts"] = (await fetchContacts()).data;
+        props["projects"] = (await fetchProjectsLocally()).data;
+        props["contacts"] = (await fetchContactsLocally()).data;
     } catch (e) {}
 
     return {

@@ -25,6 +25,7 @@
         "@types/react": "^17.0.0",
         "@types/react-dom": "^17.0.0",
         "@types/react-redux": "^7.1.18",
+        "@types/readline-sync": "^1.4.4",
         "@types/styled-components": "^5.1.11",
         "adminjs": "^5.1.0",
         "axios": "^0.21.1",
@@ -36,7 +37,7 @@
         "isomorphic-dompurify": "^0.15.0",
         "mongodb": "^3.6.10",
         "mongoose": "^5.13.3",
-        "mysql": "^2.18.1",
+        "mysql2": "^2.3.0",
         "next": "11.0.1",
         "passport": "^0.4.1",
         "passport-jwt": "^4.0.0",
@@ -44,6 +45,7 @@
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-redux": "^7.2.4",
+        "readline-sync": "^1.4.10",
         "redux": "^4.1.0",
         "redux-devtools-extension": "^2.13.9",
         "reflect-metadata": "^0.1.13",
@@ -53,43 +55,6 @@
         "typeorm": "^0.2.34",
         "typescript": "^4.3.5",
         "web-vitals": "^1.0.1"
-    },
-    "scripts": {
-        "next:dev": "cd src/client && next dev",
-        "next:build": "cd src/client && next build",
-        "next:start": "cd src/client && next start",
-        "next:lint": "cd src/client && next lint",
-        "prebuild": "rimraf dist",
-        "build": "nest build",
-        "format": "prettier --write \"src/**/*.ts\"",
-        "start": "nest start",
-        "start:dev": "nest start --watch",
-        "start:debug": "nest start --debug --watch",
-        "start:prod": "node dist/main",
-        "lint": "eslint \"src/server\" --fix",
-        "test": "jest",
-        "test:watch": "jest --watch",
-        "test:cov": "jest --coverage",
-        "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-        "test:e2e": "jest --config ./test/jest-e2e.json",
-        "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config src/server/ormconfigMySQL.ts",
-        "migration:generate": "yarn run typeorm migration:generate -n",
-        "migration:create": "yarn run typeorm migration:create -n",
-        "migration:run": "yarn run typeorm migration:run",
-        "migration:revert": "yarn typeorm migration:revert",
-        "schema:log": "yarn typeorm schema:log"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
     },
     "devDependencies": {
         "@nestjs/cli": "^8.0.0",
@@ -108,6 +73,7 @@
         "@typescript-eslint/parser": "^4.28.2",
         "bootstrap": "^5.0.2",
         "classnames": "^2.3.1",
+        "cross-env": "^7.0.3",
         "eslint": "^7.31.0",
         "eslint-config-next": "^11.0.1",
         "eslint-config-prettier": "^8.3.0",
@@ -123,6 +89,48 @@
         "tsconfig-paths": "^3.10.1",
         "twemoji": "^13.1.0",
         "typescript": "^4.3.5"
+    },
+    "resolutions": {
+        "@carbon/icons-react": "10.14.0"
+    },
+    "scripts": {
+        "next:dev": "cd src/client && next dev",
+        "next:build": "cd src/client && next build",
+        "next:start": "cd src/client && next start",
+        "next:lint": "cd src/client && next lint",
+        "prebuild": "rimraf dist",
+        "build": "nest build",
+        "build:prod": "cross-env NODE_ENV=production nest build && yarn run next:build",
+        "format": "prettier --write \"src/**/*.ts\"",
+        "start": "nest start",
+        "start:dev": "nest start --watch",
+        "start:debug": "nest start --debug --watch",
+        "start:prod": "cross-env NODE_ENV=production node dist/main",
+        "lint": "eslint \"src/server\" --fix",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:cov": "jest --coverage",
+        "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+        "test:e2e": "jest --config ./test/jest-e2e.json",
+        "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config src/server/ormconfigMySQL.ts",
+        "migration:generate": "yarn run typeorm migration:generate -n",
+        "migration:create": "yarn run typeorm migration:create -n",
+        "migration:run": "yarn run typeorm migration:run",
+        "migration:revert": "yarn typeorm migration:revert",
+        "schema:log": "yarn build && yarn typeorm schema:log",
+        "createsuperuser": "ts-node -r tsconfig-paths/register src/server/commands/createSuperUser.ts"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
     },
     "jest": {
         "moduleFileExtensions": [
