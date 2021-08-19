@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 import { Section, selectSections } from "../../reducers/sectionReducer";
 import landingNavigation from "../../landingNavigation";
 import { scrollToSection } from "../../utils/doScroll";
-import Link from "next/link";
 import Head from "next/head";
 import { GetServerSideProps, NextPage } from "next";
 import { Contact, Project } from "../../api/models";
@@ -56,10 +55,6 @@ const HomePage: NextPage<HomePageProps> = ({ projects, contacts }) => {
             <Header />
             <main>
                 {withSectionRef("introduction", Introduction)({ nextSection: sectionsMap["aboutMe"] })}
-
-                <Link href="/test">
-                    <a>test</a>
-                </Link>
 
                 {withSectionRef("aboutMe", AboutMeSection)({})}
 
