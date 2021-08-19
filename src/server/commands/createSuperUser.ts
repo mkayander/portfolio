@@ -4,8 +4,6 @@ import { User } from "../users/entities/user.entity";
 import { Role } from "../users/role.enum";
 import * as readlineSync from "readline-sync";
 
-console.log(process.argv.slice(2));
-
 const [email] = process.argv.slice(2);
 
 const insertUser = async () => {
