@@ -12,8 +12,4 @@ export class AppService implements OnModuleInit {
             this.connection.entityMetadatas.map(value => value.name)
         );
     }
-
-    getHello(): string {
-        return "Hello World!";
-    }
 }
