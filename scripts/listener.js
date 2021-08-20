@@ -41,7 +41,7 @@ function updateProject() {
     updateTask = spawn("bash", ["scripts/bash/updateAndRebuild.sh"]);
 
     updateTask.stdout.on("data", data => {
-        console.log(data.toString());
+        process.stdout.write(data.toString());
     });
 
     updateTask.stderr.on("data", data => {
