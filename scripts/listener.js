@@ -38,19 +38,19 @@ function updateProject() {
     }
 
     console.log("Updating project...");
-    updateTask = spawn("git pull && docker-compose build && docker-compose up -d");
+    updateTask = spawn("bash", ["scripts/bash/updateAndRebuild.sh"]);
 
-    updateTask.stdout.on("data", function (data) {
-        console.log("stdout: " + data.toString());
+    updateTask.stdout.on("data", data => {
+        console.log(data.toString());
     });
 
-    updateTask.stderr.on("data", function (data) {
-        console.error("stderr: " + data.toString());
+    updateTask.stderr.on("data", data => {
+        console.error(data.toString());
     });
 
-    updateTask.on("exit", function (code) {
+    updateTask.on("exit", code => {
         updateTask = null;
-        console.log("child process exited with code " + code.toString());
+        console.log("Child process exited with code " + code.toString());
     });
 }
 
@@ -75,7 +75,6 @@ app.post("/payload", (req, res) => {
             console.warn(new Date(), "Received unknown event! - ", event);
     }
 
-    //console.log("Recieved data: \n", req.body);
     res.send();
 });
 
@@ -83,11 +82,8 @@ app.listen(port, () => {
     console.log(`GitHub Webhook listener started and running at 0.0.0.0:${port}!`);
 });
 
-//app.use((req, res, next) => {
-//  next({ status: 404 });
-//});
-
 app.use((err, req, res, next) => {
     console.error(err);
     res.status(err.status || 500).json(err.message);
 });
+
