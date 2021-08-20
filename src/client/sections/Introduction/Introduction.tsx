@@ -28,7 +28,7 @@ const Introduction = createSectionComponent<IntroductionProps>(({ id, nextSectio
                     <h3>
                         Меня зовут <b>Максим</b>
                     </h3>
-                    <h5>Я начинающий разработчик</h5>
+                    <h5>Я Web-разработчик</h5>
                     <h6>
                         Специализируюсь в <b>Frontend | React.JS</b>
                     </h6>
