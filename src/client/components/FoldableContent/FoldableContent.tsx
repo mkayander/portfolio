@@ -13,9 +13,17 @@ type TextSectionProps = {
 const FoldableContent: React.FC<TextSectionProps> = ({ title, emoji, initiallyFolded, children }) => {
     const [isFolded, setIsFolded] = useState(initiallyFolded);
 
+    const toggle: React.MouseEventHandler = ev => {
+        ev.stopPropagation();
+        setIsFolded(!isFolded);
+    };
+
     return (
-        <div className={styles.root}>
-            <div className={styles.header} onClick={() => setIsFolded(!isFolded)}>
+        <div
+            className={styles.root}
+            onClick={isFolded ? toggle : undefined}
+            title={isFolded ? "Развернуть" : "Свернуть"}>
+            <div className={styles.header} onClick={toggle}>
                 <Heading emoji={emoji} text={title} />
                 <hr />
                 <button
