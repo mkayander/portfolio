@@ -33,7 +33,7 @@ const Introduction = createSectionComponent<IntroductionProps>(({ id, nextSectio
                         Специализируюсь в <b>Frontend | React.JS</b>
                     </h6>
                     <div className={styles.buttons}>
-                        <Button text={"Скачать Резюме"} />
+                        <Button text={"Скачать Резюме"} link={"/api/v1/portfolio.txt"} />
                         <Button
                             text={"Контакты"}
                             color="primary"
