@@ -1,4 +1,5 @@
 @import "../../sass/mixins";
+@import "../../sass/colors";
 
 .root {
     position: relative;
@@ -39,12 +40,25 @@
     padding-top: 0.5rem;
     overflow: hidden;
     opacity: 1;
+    position: relative;
 
     &.folded {
-        max-height: 0;
-        //transform: scaleY(0);
-        opacity: 0;
+        max-height: 100px;
         animation: fold 2s;
+
+        &:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            cursor: pointer;
+
+            background: linear-gradient(to top, $color_background 10%, transparentize($color_background, 0.5) 100%);
+        }
     }
 }
 
