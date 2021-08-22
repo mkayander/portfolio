@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import BgImg from "./assets/Top_Bg_Image.png";
 import { ReactComponent as Shape1 } from "./assets/Shape_1.component.svg";
@@ -10,6 +10,7 @@ import { scrollToSection } from "../../utils/doScroll";
 import { Section, selectSections } from "../../reducers/sectionReducer";
 import { createSectionComponent } from "../../components/abstract";
 import { useSelector } from "react-redux";
+import { fetchCVUrl } from "../../api";
 
 type IntroductionProps = {
     nextSection?: Section;
@@ -17,8 +18,14 @@ type IntroductionProps = {
 
 const Introduction = createSectionComponent<IntroductionProps>(({ id, nextSection }, ref) => {
     const bgRef = useRef<HTMLDivElement>(null);
-
     const sections = useSelector(selectSections);
+    const [CVUrl, setCVUrl] = useState<string | null>();
+
+    useEffect(() => {
+        fetchCVUrl()
+            .then(value => setCVUrl(value.data.relativeUrl))
+            .catch(() => {});
+    }, []);
 
     return (
         <section ref={ref} className={styles.root}>
@@ -33,7 +40,13 @@ const Introduction = createSectionComponent<IntroductionProps>(({ id, nextSectio
                         Специализируюсь в <b>Frontend | React.JS</b>
                     </h6>
                     <div className={styles.buttons}>
-                        <Button text={"Скачать Резюме"} link={"/api/v1/portfolio.txt"} />
+                        <Button
+                            text={"Скачать Резюме"}
+                            title={CVUrl ? "Скачать PDF" : "Резюме временно не готово, пожалуйста попробуйте позже!"}
+                            disabled={CVUrl === undefined}
+                            link={CVUrl}
+                            openNewTab={true}
+                        />
                         <Button
                             text={"Контакты"}
                             color="primary"
