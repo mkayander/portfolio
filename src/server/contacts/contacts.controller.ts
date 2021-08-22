@@ -15,7 +15,7 @@ import { CreateContactDto } from "./dto/create-contact.dto";
 import { UpdateContactDto } from "./dto/update-contact.dto";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { diskStorage } from "multer";
-import { editFileName } from "../projects/file-uploading.utils";
+import { editFileName } from "../utils/file-uploading.utils";
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 
 @Controller("contacts")

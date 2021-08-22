@@ -23,7 +23,7 @@ import { RolesGuard } from "../users/roles.guard";
 import { FileInterceptor } from "@nestjs/platform-express";
 import * as mongoose from "mongoose";
 import { diskStorage } from "multer";
-import { editFileName } from "./file-uploading.utils";
+import { editFileName } from "../utils/file-uploading.utils";
 
 @Controller("projects")
 export class ProjectsController {
