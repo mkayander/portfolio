@@ -29,11 +29,10 @@ export class UsersController {
         return this.usersService.findOne(+id).then(user => this.usersService.toDto(user));
     }
 
-    @Get()
+    @Patch(":id")
     @Roles(Role.Admin)
     @UseGuards(RolesGuard)
     @UseGuards(JwtAuthGuard)
-    @Patch(":id")
     update(@Param("id") id: string, @Body() updateUserDto: UpdateUserDto) {
         return this.usersService.update(+id, updateUserDto);
     }
