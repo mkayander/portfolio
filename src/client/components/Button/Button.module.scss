@@ -13,7 +13,7 @@
         background: $accent_gradient;
         @include colored_shadow($color_accent);
 
-        &:hover {
+        &:hover:not(:disabled) {
             @include colored_shadow_intensive($color_accent);
         }
     }
@@ -22,7 +22,7 @@
         background: $primary_gradient;
         @include colored_shadow($color_primary);
 
-        &:hover {
+        &:hover:not(:disabled) {
             @include colored_shadow_intensive($color_primary);
         }
     }
@@ -38,7 +38,16 @@
         height: 100%;
         background: white;
         opacity: 0;
-        mix-blend-mode: soft-light;
+        //mix-blend-mode: soft-light;
+    }
+
+    &:disabled {
+        cursor: default;
+
+        &:after {
+            opacity: 0.3;
+            background: black;
+        }
     }
 
     span {
@@ -52,7 +61,7 @@
         line-height: 36px;
     }
 
-    &:hover {
+    &:hover:not(:disabled) {
         cursor: pointer;
         transform: translateY(-2px);
 
@@ -63,13 +72,13 @@
 
     &:focus {
         &:after {
-            opacity: 0.3;
+            opacity: 0.1;
         }
     }
 
     &:focus:active {
         &:after {
-            opacity: 0.5;
+            opacity: 0.2;
         }
     }
 }
