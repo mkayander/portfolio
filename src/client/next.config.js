@@ -1,4 +1,5 @@
-// const withImages = require("next-images");
+const path = require("path");
+require("dotenv").config({ path: path.join(__dirname, "..", "..", ".env") });
 
 /**
  // * @type {next.NextConfig}
@@ -7,6 +8,11 @@ const nextConfig = {
     distDir: "../../.next",
     images: {
         domains: ["i.ibb.co", "localhost", "images.freeimages.com"],
+    },
+
+    env: {
+        NEXT_PUBLIC_HOSTNAME: process.env.SERVER_PROD_HOSTNAME,
+        NEXT_PUBLIC_PORT: process.env.SERVER_PROD_PORT,
     },
 
     webpack(config) {
