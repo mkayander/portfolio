@@ -65,9 +65,7 @@
             }
 
             .buttons {
-                button {
-                    margin-top: 1rem !important;
-                }
+                padding-top: 1rem;
             }
         }
 
@@ -75,9 +73,7 @@
             display: flex;
             flex-flow: row wrap;
 
-            button {
-                margin-top: 1.75rem;
-            }
+            padding-top: 1.75rem;
 
             & > *:not(:last-child) {
                 margin-right: 1rem;
