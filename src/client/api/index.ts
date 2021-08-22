@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Contact, Project } from "./models";
+import { Contact, CVInfo, Project } from "./models";
 import config from "../utils/config";
 
 export const api = axios.create({
@@ -25,3 +25,5 @@ export default api;
 export const fetchProjectsLocally = () => localApi.get<Project[]>("projects");
 
 export const fetchContactsLocally = () => localApi.get<Contact[]>("contacts");
+
+export const fetchCVUrl = () => api.get<CVInfo>("cv");
