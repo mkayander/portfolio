@@ -70,6 +70,8 @@ services:
       - mongodb
     stdin_open: true
     tty: true
+    volumes:
+      - ./media:/usr/src/portfolio-app/media
 
 
 volumes:
