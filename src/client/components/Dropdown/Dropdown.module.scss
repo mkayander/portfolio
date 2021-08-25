@@ -1,34 +1,86 @@
 @import "../../sass/colors";
+@import "../../sass/mixins";
 
-.container {
-    display: none;
-    //width: 2px;
+.root {
+    transition: opacity 0.1s;
+    display: flex;
+    max-width: 90vw;
+    opacity: 0;
     position: relative;
     flex-direction: column;
-    background-color: $color_text;
-    border-radius: 4px;
-    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.14);
-    padding: 5px;
 
-    margin: 0;
+    pointer-events: none;
 
     &.active {
-        display: flex;
+        opacity: 1;
+        pointer-events: auto;
     }
 
-    li {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        height: 40px;
+    ul {
+        background-color: $color_text;
         border-radius: 4px;
-        padding-right: 10px;
-        padding-left: 10px;
-        color: $color_primary_variant;
+        box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.14);
+        padding: 5px;
+        margin: 0 10px;
+        z-index: 1;
 
-        &:hover {
-            background-color: transparentize($color_primary, 0.7);
-            cursor: pointer;
+        overflow-x: hidden;
+
+        li {
+            display: flex;
+            position: relative;
+            justify-content: flex-start;
+            align-items: center;
+            height: 40px;
+            border-radius: 4px;
+            padding-right: 10px;
+            padding-left: 10px;
+            color: $color_primary_variant;
+
+            text-overflow: ellipsis;
+
+            a {
+                width: 100%;
+                overflow-x: hidden;
+                text-overflow: ellipsis;
+            }
+
+            &:hover {
+                background-color: transparentize($color_primary, 0.7);
+                cursor: pointer;
+            }
+        }
+    }
+
+    $arrow-offset: -1px;
+
+    &[data-popper-placement^="top"] > [data-popper-arrow] {
+        bottom: $arrow-offset;
+    }
+
+    &[data-popper-placement^="right"] > [data-popper-arrow] {
+        left: $arrow-offset;
+    }
+
+    &[data-popper-placement^="bottom"] > [data-popper-arrow] {
+        top: $arrow-offset;
+    }
+
+    &[data-popper-placement^="left"] > [data-popper-arrow] {
+        right: $arrow-offset;
+    }
+
+    .arrow {
+        width: 40px;
+        height: 40px;
+
+        &:before {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            transform: rotate(45deg);
+            background-color: $color_text;
         }
     }
 }
