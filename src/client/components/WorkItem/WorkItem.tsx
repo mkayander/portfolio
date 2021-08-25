@@ -52,14 +52,11 @@ const WorkItem: React.FC<WorkItemProps> = ({
                 <span className={styles.yearChip}>{year}</span>
                 <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }} />
                 <div className={styles.buttons}>
-                    <Button text="Подробнее" />
-                    <Button
-                        text="GitHub"
-                        color="primary"
-                        link={githubUrls[0]}
-                        openNewTab={true}
-                        // onClick={() => window.open(githubUrls[0], "_blank")?.focus()}
-                    />
+                    {githubUrls.length > 0 && (
+                        <Button color="primary" link={githubUrls[0]} openNewTab={true}>
+                            <b>GitHub</b>
+                        </Button>
+                    )}
                 </div>
             </div>
             <hr className={styles.hr} />
