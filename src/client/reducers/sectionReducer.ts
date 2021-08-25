@@ -97,7 +97,6 @@ export const selectSections: SectionsSelector<SectionsState> = (state): Sections
 export const selectSectionsSortedTupleArray: SectionsSelector<Array<[string, Section]>> = (state: {
     sections: SectionsState;
 }) => {
-    console.log("selectSectionsSortedTupleArray called!");
     return Object.entries(state.sections).sort((a, b) => a[1].index - b[1].index);
 };
 

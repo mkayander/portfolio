@@ -68,8 +68,6 @@ const HomePage: NextPage<HomePageProps> = ({ projects, contacts }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    console.log("Hello from server! I am fetching projects for you...");
-
     const props = {};
     try {
         props["projects"] = (await fetchProjectsLocally()).data;
