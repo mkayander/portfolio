@@ -44,7 +44,7 @@ const Introduction = createSectionComponent<IntroductionProps>(({ id, nextSectio
                             text={"Скачать Резюме"}
                             title={CVUrl ? "Скачать PDF" : "Резюме временно не готово, пожалуйста попробуйте позже!"}
                             disabled={CVUrl === undefined}
-                            link={CVUrl}
+                            links={[CVUrl]}
                             openNewTab={true}
                         />
                         <Button

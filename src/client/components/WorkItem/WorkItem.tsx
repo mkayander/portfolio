@@ -53,7 +53,7 @@ const WorkItem: React.FC<WorkItemProps> = ({
                 <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }} />
                 <div className={styles.buttons}>
                     {githubUrls.length > 0 && (
-                        <Button color="primary" link={githubUrls[0]} openNewTab={true}>
+                        <Button color="primary" links={githubUrls} openNewTab={true}>
                             <b>GitHub</b>
                         </Button>
                     )}

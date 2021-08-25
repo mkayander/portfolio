@@ -1,0 +1,34 @@
+@import "../../sass/colors";
+
+.container {
+    display: none;
+    //width: 2px;
+    position: relative;
+    flex-direction: column;
+    background-color: $color_text;
+    border-radius: 4px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.14);
+    padding: 5px;
+
+    margin: 0;
+
+    &.active {
+        display: flex;
+    }
+
+    li {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 40px;
+        border-radius: 4px;
+        padding-right: 10px;
+        padding-left: 10px;
+        color: $color_primary_variant;
+
+        &:hover {
+            background-color: transparentize($color_primary, 0.7);
+            cursor: pointer;
+        }
+    }
+}
