@@ -5,19 +5,6 @@ import classNames from "classnames";
 import { createSectionComponent } from "../../components/abstract";
 import { Project } from "../../api/models";
 
-// const mockData: Project = {
-//     title: "Tour-Up.ru",
-//     subtitle: "Туристическое Android Приложение",
-//     year: 2021,
-//     description:
-//         "Это моя выпускная квалификационная работа (диплом), с которой я закончил высшее образование. Создано мобильное приложение с возможностью просмотра туристических маршрутов и следования по ним, с помощью GPS.\n" +
-//         "Также реализована полноценная серверная часть (Backend & Frontend) c базой данных маршрутов и редактором маршрутов, созданном на React с применением библиотеки карт Leaflet.",
-//     imageUrl: "https://i.ibb.co/yWgY14q/image-1.png",
-//     githubUrls: ["https://github.com/mkayander/TouringApp", "https://github.com/mkayander/TouringAndroidApp"],
-// };
-
-// const mockArray = [mockData, mockData, mockData, mockData, mockData];
-
 type PortfolioSectionProps = {
     projects?: Project[];
 };
