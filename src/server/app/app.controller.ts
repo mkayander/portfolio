@@ -1,4 +1,5 @@
 import {
+    BadRequestException,
     Controller,
     Get,
     InternalServerErrorException,
@@ -64,6 +65,7 @@ export class AppController {
         })
     )
     postFile(@Res() res: Response, @UploadedFile() file: Express.Multer.File) {
+        if (file === undefined) throw new BadRequestException("Failed to obtain the file!");
         return res.status(200).send({ path: file.path });
     }
 }
