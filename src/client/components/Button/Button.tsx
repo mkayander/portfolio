@@ -17,7 +17,16 @@ type ButtonProps = {
 /**
  * If URL is passed to the 'link' argument, the button would be rendered as <a/> tag with specified href.
  */
-const Button: React.FC<ButtonProps> = ({ text, color = "accent", onClick, link, disabled, title, openNewTab }) => {
+const Button: React.FC<ButtonProps> = ({
+    text,
+    color = "accent",
+    onClick,
+    link,
+    disabled,
+    title,
+    openNewTab,
+    children,
+}) => {
     const Tag = link === undefined ? "button" : "a";
 
     return (
@@ -30,6 +39,7 @@ const Button: React.FC<ButtonProps> = ({ text, color = "accent", onClick, link, 
             rel={link && openNewTab && "noreferrer"}
             onClick={onClick}>
             {text && <span>{text}</span>}
+            {children}
         </Tag>
     );
 };
