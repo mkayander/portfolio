@@ -26,7 +26,7 @@ const WorkItem: React.FC<WorkItemProps> = ({
                     <Image
                         className={styles.image}
                         src={resolveResourceUrl(imageUrl)}
-                        alt="My work screenshot"
+                        alt={`${title} screenshot`}
                         objectFit="contain"
                         objectPosition="top"
                         // quality={100}
