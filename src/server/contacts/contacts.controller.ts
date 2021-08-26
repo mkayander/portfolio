@@ -41,7 +41,7 @@ export class ContactsController {
     uploadIcon(@Param("id") id: string, @UploadedFile() file: Express.Multer.File) {
         console.log(id, file);
 
-        return this.update(id, { iconUrl: `/static/icons/${file.filename}` });
+        return this.update(id, { iconUrl: `/media/icons/${file.filename}` });
     }
 
     @Get()
