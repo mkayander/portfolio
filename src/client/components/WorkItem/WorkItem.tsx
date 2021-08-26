@@ -38,8 +38,14 @@ const WorkItem: React.FC<WorkItemProps> = ({
                 )}
             </div>
             <div className={styles.content}>
-                <h5>{title}</h5>
-                <h5>{shortDescription}</h5>
+                {url ? (
+                    <a href={url}>
+                        <h5>{title}</h5>
+                    </a>
+                ) : (
+                    <h5>{title}</h5>
+                )}
+                <h5>{subtitle}</h5>
                 <span className={styles.yearChip}>{year}</span>
                 <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }} />
                 <div className={styles.buttons}>
