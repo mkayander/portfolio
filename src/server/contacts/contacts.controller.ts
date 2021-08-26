@@ -45,8 +45,8 @@ export class ContactsController {
     }
 
     @Get()
-    findAll() {
-        return this.contactsService.findAll();
+    async findAll() {
+        return (await this.contactsService.findAll()).sort((a, b) => a.index - b.index);
     }
 
     @Get(":id")
