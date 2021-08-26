@@ -36,7 +36,6 @@ const Button: React.FC<ButtonProps> = ({
 
     const linksCount: number | undefined = links?.length;
     const isSingleLink = linksCount === 1;
-    console.log(linksCount, Boolean(linksCount));
     const Tag = linksCount ? "a" : "button";
 
     return (
