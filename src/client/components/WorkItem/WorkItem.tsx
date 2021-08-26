@@ -29,10 +29,6 @@ const WorkItem: React.FC<WorkItemProps> = ({
                         alt={`${title} screenshot`}
                         objectFit="contain"
                         objectPosition="top"
-                        // quality={100}
-                        // sizes="100vw"
-                        // height={400}
-                        // width={700}
                         layout="fill"
                     />
                 )}
