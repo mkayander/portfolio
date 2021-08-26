@@ -13,6 +13,8 @@
     right: 0;
     width: 100%;
 
+    font-size: 24px;
+
     padding-top: 2rem;
 
     @include glassmorph-hidden($color_primary, 9px, 0.75, 0, true);
@@ -130,6 +132,8 @@
     width: 60%;
     padding: 4rem 2rem 1rem;
     opacity: 1;
+
+    font-size: 24px;
 
     //@include glassmorph($color_primary, 9px, 0.75, 0);
     //background: #1d3557;
