@@ -5,24 +5,15 @@ import { Button } from "../index";
 import Image from "next/image";
 import DOMPurify from "isomorphic-dompurify";
 import resolveResourceUrl from "../../utils/resolveResourceUrl";
+import { Project } from "../../api/models";
 
 type WorkItemProps = {
-    title: string;
-    shortDescription: string;
-    year: number;
-    description: string;
-    imageUrl?: string;
-    githubUrls: Array<string>;
+    item: Project;
     reversed?: boolean;
 };
 
 const WorkItem: React.FC<WorkItemProps> = ({
-    title,
-    shortDescription,
-    year,
-    description,
-    imageUrl,
-    githubUrls,
+    item: { title, url, subtitle, year, description, imageUrl, githubUrls },
     reversed,
 }) => {
     return (

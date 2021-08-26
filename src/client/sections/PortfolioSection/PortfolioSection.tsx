@@ -45,16 +45,7 @@ const PortfolioSection = createSectionComponent<PortfolioSectionProps>(({ id, pr
                 </p>
                 <div className={styles.worksList}>
                     {projects?.map((value, index) => (
-                        <WorkItem
-                            key={index}
-                            title={value.title}
-                            shortDescription={value.subtitle}
-                            year={value.year}
-                            description={value.description}
-                            imageUrl={value.imageUrl}
-                            githubUrls={value.githubUrls}
-                            reversed={index % 2 !== 0}
-                        />
+                        <WorkItem key={value._id} item={value} reversed={index % 2 !== 0} />
                     ))}
                 </div>
                 <br />

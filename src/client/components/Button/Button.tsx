@@ -8,7 +8,11 @@ type ButtonProps = {
     text?: string;
     color?: "accent" | "primary";
     onClick?: React.MouseEventHandler;
-    links?: string[];
+    links?: Array<{
+        _id?: string;
+        name?: string;
+        url: string;
+    }>;
     disabled?: boolean;
     title?: string;
     // Adds 'target="_blank"' and 'rel="noreferrer"' attributes to anchor element if 'link' prop is specified.
@@ -42,7 +46,7 @@ const Button: React.FC<ButtonProps> = ({
                 disabled={disabled}
                 title={title}
                 className={classNames(styles.root, styles[color])}
-                href={isSingleLink ? links[0] : undefined}
+                href={isSingleLink ? links[0].url : undefined}
                 target={isSingleLink && openNewTab ? "_blank" : undefined}
                 rel={isSingleLink && openNewTab ? "noreferrer" : undefined}
                 onClick={onClick}>
@@ -52,9 +56,11 @@ const Button: React.FC<ButtonProps> = ({
 
             {linksCount && !isSingleLink && (
                 <Dropdown referenceRef={ref}>
-                    {links.map(url => (
-                        <li key={url}>
-                            <a href={url}>{url}</a>
+                    {links.map(item => (
+                        <li key={item._id || item.url}>
+                            <a href={item.url} target={openNewTab && "_blank"} rel={openNewTab && "noreferrer"}>
+                                {item.name || item.url}
+                            </a>
                         </li>
                     ))}
                 </Dropdown>
