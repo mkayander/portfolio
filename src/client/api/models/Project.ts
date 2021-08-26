@@ -13,5 +13,9 @@ export type Project = {
 
     imageUrl?: string;
 
-    githubUrls: string[];
+    githubUrls: Array<{
+        _id?: string;
+        name?: string;
+        url: string;
+    }>;
 };

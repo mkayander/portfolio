@@ -3,6 +3,11 @@ import { Document } from "mongoose";
 
 export type ProjectDocument = Project & Document;
 
+export type GitHubReference = {
+    name: string;
+    url: string;
+};
+
 @Schema()
 export class Project {
     // id: number;
@@ -25,8 +30,8 @@ export class Project {
     @Prop()
     imageUrl: string;
 
-    @Prop([String])
-    githubUrls: string[];
+    @Prop({ type: [{ name: { type: String }, url: { type: String } }] })
+    githubUrls: GitHubReference[];
 }
 
 export const ProjectSchema = SchemaFactory.createForClass(Project);

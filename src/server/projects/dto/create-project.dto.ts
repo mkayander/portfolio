@@ -1,3 +1,5 @@
+import { GitHubReference } from "../schemas/project.schema";
+
 export class CreateProjectDto {
     title: string;
 
@@ -11,5 +13,5 @@ export class CreateProjectDto {
 
     imageUrl?: string;
 
-    githubUrls: string[];
+    githubUrls: GitHubReference[];
 }
