@@ -43,7 +43,7 @@ export class ProjectsController {
     @UseInterceptors(
         FileInterceptor("image", {
             storage: diskStorage({
-                destination: "./media",
+                destination: "./media/projects",
                 filename: editFileName,
             }),
         })
@@ -51,7 +51,7 @@ export class ProjectsController {
     uploadImage(@Param("id") id: string, @UploadedFile() file: Express.Multer.File) {
         console.log(id, file);
 
-        return this.update(id, { imageUrl: `/static/${file.filename}` });
+        return this.update(id, { imageUrl: `/media/projects/${file.filename}` });
     }
 
     @Get()
