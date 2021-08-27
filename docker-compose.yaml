@@ -57,7 +57,7 @@ services:
     image: portfolioapp
     restart: unless-stopped
     ports:
-      - "80:3000"
+      - "3000:3000"
     env_file:
       - .env
     environment:
@@ -72,7 +72,7 @@ services:
     tty: true
     volumes:
       - ./media:/usr/src/portfolio-app/media
-
+      # - ./.next/static:/usr/src/portfolio-app/.next/static
 
 volumes:
   db-config:
