@@ -4,7 +4,6 @@ import classNames from "classnames";
 import { Button } from "../index";
 import Image from "next/image";
 import DOMPurify from "isomorphic-dompurify";
-import resolveResourceUrl from "../../utils/resolveResourceUrl";
 import { Project } from "../../api/models";
 
 type WorkItemProps = {
@@ -25,8 +24,9 @@ const WorkItem: React.FC<WorkItemProps> = ({
                 {imageUrl && (
                     <Image
                         className={styles.image}
-                        src={resolveResourceUrl(imageUrl)}
+                        src={imageUrl}
                         alt={`${title} screenshot`}
+                        unoptimized
                         objectFit="contain"
                         objectPosition="top"
                         layout="fill"
