@@ -51,7 +51,7 @@ export class ProjectsController {
     uploadImage(@Param("id") id: string, @UploadedFile() file: Express.Multer.File) {
         console.log(id, file);
 
-        return this.update(id, { imageUrl: `/media/projects/${file.filename}` });
+        return this.projectsService.update(id, { imageUrl: `/media/projects/${file.filename}` });
     }
 
     @Get()
