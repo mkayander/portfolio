@@ -56,7 +56,9 @@ export class ProjectsController {
 
     @Get()
     findAll() {
-        return this.projectsService.findAll();
+        return this.projectsService
+            .findAll()
+            .then(projects => projects.sort((a, b) => Number(a.index) - Number(b.index)));
     }
 
     @Get(":id")
