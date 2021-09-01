@@ -44,6 +44,7 @@ const projectResourceOptions = {
             dbName: process.env.MONGODB_DATABASE || "portfolio",
             user: process.env.MONGODB_USER,
             pass: process.env.MONGODB_PASSWORD,
+            useFindAndModify: false,
         }),
         ProjectsModule,
         ContactsModule,
