@@ -13,6 +13,9 @@ export class Project {
     // id: number;
 
     @Prop()
+    index?: number;
+
+    @Prop()
     title: string;
 
     @Prop()

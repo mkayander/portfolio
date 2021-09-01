@@ -1,6 +1,8 @@
 import { GitHubReference } from "../schemas/project.schema";
 
 export class CreateProjectDto {
+    index: number;
+
     title: string;
 
     subtitle?: string;
