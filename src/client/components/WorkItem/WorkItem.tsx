@@ -35,7 +35,7 @@ const WorkItem: React.FC<WorkItemProps> = ({
             </div>
             <div className={styles.content}>
                 {url ? (
-                    <a href={url}>
+                    <a href={url} target="_blank" rel="noreferrer">
                         <h5>{title}</h5>
                     </a>
                 ) : (
