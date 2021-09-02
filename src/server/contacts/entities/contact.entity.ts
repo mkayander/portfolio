@@ -8,6 +8,9 @@ export class Contact extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @Column({ default: true })
+    isActive: boolean;
+
     @Column({ unique: true })
     index: number;
 
