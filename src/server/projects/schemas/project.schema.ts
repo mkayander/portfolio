@@ -16,6 +16,9 @@ export class Project {
     index?: number;
 
     @Prop()
+    isActive: boolean;
+
+    @Prop()
     title: string;
 
     @Prop()
