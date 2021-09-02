@@ -9,8 +9,10 @@ async function bootstrap() {
     // app.useGlobalFilters(new GlobalExceptionFilter());
     // app.use("/static", express.static(join(__dirname, "..", "..", "static")));
     // app.useStaticAssets(join(__dirname, "..", "..", "static"));
-    app.useStaticAssets("public");
-    app.useStaticAssets("media", { prefix: "/media" });
+    if (process.env.NODE_ENV !== "production") {
+        app.useStaticAssets("public");
+        app.useStaticAssets("media", { prefix: "/media" });
+    }
     await app.listen(3000);
 }
 
