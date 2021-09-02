@@ -17,6 +17,10 @@ import { FileInterceptor } from "@nestjs/platform-express";
 import { diskStorage } from "multer";
 import { editFileName } from "../utils/file-uploading.utils";
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
+import { JwtOptionalAuthGuard } from "../auth/jwt-optional-auth.guard";
+import { User } from "../users/user.decorator";
+import { ShowUserDto } from "../users/dto/show-user.dto";
+import { Role } from "../users/role.enum";
 
 @Controller("contacts")
 export class ContactsController {
@@ -45,8 +49,13 @@ export class ContactsController {
     }
 
     @Get()
-    async findAll() {
-        return (await this.contactsService.findAll()).sort((a, b) => a.index - b.index);
+    @UseGuards(JwtOptionalAuthGuard)
+    findAll(@User() user?: ShowUserDto) {
+        console.log(user, user?.roles.includes(Role.Admin));
+        return this.contactsService
+            .findAll()
+            .then(contacts => contacts.sort((a, b) => a.index - b.index))
+            .then(contacts => (user?.roles.includes(Role.Admin) ? contacts : contacts.filter(value => value.isActive)));
     }
 
     @Get(":id")

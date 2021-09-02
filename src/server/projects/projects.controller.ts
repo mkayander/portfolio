@@ -24,6 +24,9 @@ import { FileInterceptor } from "@nestjs/platform-express";
 import * as mongoose from "mongoose";
 import { diskStorage } from "multer";
 import { editFileName } from "../utils/file-uploading.utils";
+import { JwtOptionalAuthGuard } from "../auth/jwt-optional-auth.guard";
+import { User } from "../users/user.decorator";
+import { ShowUserDto } from "../users/dto/show-user.dto";
 
 @Controller("projects")
 export class ProjectsController {
@@ -55,10 +58,12 @@ export class ProjectsController {
     }
 
     @Get()
-    findAll() {
+    @UseGuards(JwtOptionalAuthGuard)
+    findAll(@User() user?: ShowUserDto) {
         return this.projectsService
             .findAll()
-            .then(projects => projects.sort((a, b) => Number(a.index) - Number(b.index)));
+            .then(projects => projects.sort((a, b) => Number(a.index) - Number(b.index)))
+            .then(projects => (user?.roles.includes(Role.Admin) ? projects : projects.filter(value => value.isActive)));
     }
 
     @Get(":id")
