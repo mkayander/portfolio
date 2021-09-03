@@ -6,6 +6,7 @@ import { ProjectsModule } from "./projects/projects.module";
 import { ContactsModule } from "./contacts/contacts.module";
 import { AuthModule } from "./auth/auth.module";
 import { UsersModule } from "./users/users.module";
+import { InfoSectionsModule } from "./info-sections/info-sections.module";
 
 @Module({
     imports: [
@@ -22,6 +23,10 @@ import { UsersModule } from "./users/users.module";
                     {
                         path: "/",
                         module: ProjectsModule,
+                    },
+                    {
+                        path: "/",
+                        module: InfoSectionsModule,
                     },
                     {
                         path: "/",
