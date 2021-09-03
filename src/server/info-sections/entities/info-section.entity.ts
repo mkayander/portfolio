@@ -11,6 +11,6 @@ export class InfoSection extends BaseEntity {
     @Column({ length: 32 })
     title: string;
 
-    @Column()
+    @Column({ type: "text" })
     content: string;
 }
