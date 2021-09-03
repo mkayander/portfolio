@@ -21,7 +21,7 @@ import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 import { Request } from "express";
 import { RolesGuard } from "../users/roles.guard";
 import { FileInterceptor } from "@nestjs/platform-express";
-import * as mongoose from "mongoose";
+import { isValidObjectId } from "mongoose";
 import { diskStorage } from "multer";
 import { editFileName } from "../utils/file-uploading.utils";
 import { JwtOptionalAuthGuard } from "../auth/jwt-optional-auth.guard";
@@ -76,7 +76,7 @@ export class ProjectsController {
     @UseGuards(RolesGuard)
     @UseGuards(JwtAuthGuard)
     update(@Param("id") id: string, @Body() updateProjectDto: UpdateProjectDto) {
-        if (!mongoose.Types.ObjectId.isValid(id)) throw new BadRequestException("Invalid object id!");
+        if (isValidObjectId(id)) throw new BadRequestException("Invalid object id!");
         return this.projectsService.update(id, updateProjectDto);
     }
 
