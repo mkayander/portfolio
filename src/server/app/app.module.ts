@@ -18,6 +18,8 @@ import { User } from "../users/entities/user.entity";
 import { UsersModule } from "../users/users.module";
 import { AuthModule } from "../auth/auth.module";
 import { AuthService } from "../auth/auth.service";
+import { InfoSectionsModule } from "../info-sections/info-sections.module";
+import { InfoSection } from "../info-sections/entities/info-section.entity";
 
 AdminBro.registerAdapter(AdminBroTypeOrm);
 
@@ -26,6 +28,17 @@ AdminBro.registerAdapter({ Database, Resource });
 const projectResourceOptions = {
     properties: {
         description: {
+            type: "richtext",
+            custom: {
+                // some custom options
+            },
+        },
+    },
+};
+
+const sectionResourceOptions = {
+    properties: {
+        content: {
             type: "richtext",
             custom: {
                 // some custom options
@@ -50,13 +63,25 @@ const projectResourceOptions = {
         ContactsModule,
         UsersModule,
         AuthModule,
+        InfoSectionsModule,
         AdminModule.createAdminAsync({
             imports: [ProjectsModule, AuthModule],
             inject: [getModelToken("Project"), AuthService],
             useFactory: (projectModel: Model<Project>, authService: AuthService): AdminModuleOptions => ({
                 adminJsOptions: {
                     rootPath: "/admin",
-                    resources: [{ resource: projectModel, options: projectResourceOptions }, Contact, User],
+                    resources: [
+                        {
+                            resource: projectModel,
+                            options: projectResourceOptions,
+                        },
+                        {
+                            resource: InfoSection,
+                            options: sectionResourceOptions,
+                        },
+                        Contact,
+                        User,
+                    ],
                 },
                 auth: {
                     authenticate: async (email, password) => {
