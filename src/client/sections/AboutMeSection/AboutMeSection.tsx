@@ -1,10 +1,18 @@
 import React from "react";
 import { FoldableContent } from "../../components";
 import { createSectionComponent } from "../../components/abstract";
+import { InfoSection } from "../../api/models";
 
-const AboutMeSection = createSectionComponent(({ id }, ref) => {
+type AboutMeSectionProps = {
+    infoSections?: InfoSection[];
+};
+
+const AboutMeSection = createSectionComponent<AboutMeSectionProps>(({ id, infoSections }, ref) => {
     return (
         <section ref={ref} className="container">
+            {infoSections?.map(item => (
+                <FoldableContent key={item.id} emoji={item.emoji} title={item.title} innerHtml={item.content} />
+            ))}
             <FoldableContent emoji="🧑" title="Обо мне">
                 <p>
                     С самого детства заинтересован сферой <b>IT</b>, закончил среднее специальное и высшее образование (

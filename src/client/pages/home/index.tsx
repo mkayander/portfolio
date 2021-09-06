@@ -16,9 +16,10 @@ import { AxiosResponse } from "axios";
 type HomePageProps = {
     projects?: Project[];
     contacts?: Contact[];
+    infoSections?: InfoSection[];
 };
 
-const HomePage: NextPage<HomePageProps> = ({ projects, contacts }) => {
+const HomePage: NextPage<HomePageProps> = ({ projects, contacts, infoSections }) => {
     const sectionsMap = useSelector(selectSections) as Record<keyof typeof landingNavigation, Section>;
 
     const withSectionRef = <T extends object>(
@@ -57,7 +58,7 @@ const HomePage: NextPage<HomePageProps> = ({ projects, contacts }) => {
             <main>
                 {withSectionRef("introduction", Introduction)({ nextSection: sectionsMap["aboutMe"] })}
 
-                {withSectionRef("aboutMe", AboutMeSection)({})}
+                {withSectionRef("aboutMe", AboutMeSection)({ infoSections })}
 
                 {withSectionRef("portfolio", PortfolioSection)({ projects })}
 
