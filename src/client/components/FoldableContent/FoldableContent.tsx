@@ -3,14 +3,16 @@ import styles from "./FoldableContent.module.scss";
 import { ReactComponent as ExpandIcon } from "../ScrollButton/assets/Scroll_Down_Button.component.svg";
 import classNames from "classnames";
 import { Heading } from "../index";
+import DOMPurify from "isomorphic-dompurify";
 
 type TextSectionProps = {
     emoji: string;
     title: string;
     initiallyFolded?: boolean;
+    innerHtml?: string;
 };
 
-const FoldableContent: React.FC<TextSectionProps> = ({ title, emoji, initiallyFolded, children }) => {
+const FoldableContent: React.FC<TextSectionProps> = ({ title, emoji, initiallyFolded, innerHtml, children }) => {
     const [isFolded, setIsFolded] = useState(initiallyFolded);
 
     const toggle: React.MouseEventHandler = ev => {
@@ -35,7 +37,8 @@ const FoldableContent: React.FC<TextSectionProps> = ({ title, emoji, initiallyFo
             <div
                 className={classNames(styles.content, {
                     [styles.folded]: isFolded,
-                })}>
+                })}
+                dangerouslySetInnerHTML={innerHtml && { __html: DOMPurify.sanitize(innerHtml) }}>
                 {children}
             </div>
         </div>
