@@ -9,8 +9,9 @@ import landingNavigation from "../../landingNavigation";
 import { scrollToSection } from "../../utils/doScroll";
 import Head from "next/head";
 import { GetServerSideProps, NextPage } from "next";
-import { Contact, Project } from "../../api/models";
-import { fetchContactsLocally, fetchProjectsLocally } from "../../api";
+import { Contact, InfoSection, Project } from "../../api/models";
+import { fetchContactsLocally, fetchInfoSectionsLocally, fetchProjectsLocally } from "../../api";
+import { AxiosResponse } from "axios";
 
 type HomePageProps = {
     projects?: Project[];
@@ -67,12 +68,24 @@ const HomePage: NextPage<HomePageProps> = ({ projects, contacts }) => {
     );
 };
 
+type PropRequest = {
+    name: keyof HomePageProps;
+    request: () => Promise<AxiosResponse>;
+};
+const propRequests: PropRequest[] = [
+    { name: "projects", request: fetchProjectsLocally },
+    { name: "contacts", request: fetchContactsLocally },
+    { name: "infoSections", request: fetchInfoSectionsLocally },
+];
+
 export const getServerSideProps: GetServerSideProps = async () => {
     const props = {};
-    try {
-        props["projects"] = (await fetchProjectsLocally()).data;
-        props["contacts"] = (await fetchContactsLocally()).data;
-    } catch (e) {}
+
+    (await Promise.allSettled(propRequests.map(value => value.request()))).forEach((request, index) => {
+        if (request.status !== "rejected") {
+            props[propRequests[index].name] = request.value.data;
+        }
+    });
 
     return {
         props,
