@@ -20,7 +20,8 @@ import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 import { JwtOptionalAuthGuard } from "../auth/jwt-optional-auth.guard";
 import { User } from "../users/user.decorator";
 import { ShowUserDto } from "../users/dto/show-user.dto";
-import { Role } from "../users/role.enum";
+import { filterActiveRecords } from "../users/user.utils";
+import { sortItemsByIndex } from "../app/app.utils.";
 
 @Controller("contacts")
 export class ContactsController {
@@ -51,14 +52,12 @@ export class ContactsController {
     @Get()
     @UseGuards(JwtOptionalAuthGuard)
     findAll(@User() user?: ShowUserDto) {
-        console.log(user, user?.roles.includes(Role.Admin));
-        return this.contactsService
-            .findAll()
-            .then(contacts => contacts.sort((a, b) => a.index - b.index))
-            .then(contacts => (user?.roles.includes(Role.Admin) ? contacts : contacts.filter(value => value.isActive)));
+        const data = this.contactsService.findAll();
+        return filterActiveRecords(user, sortItemsByIndex(data));
     }
 
     @Get(":id")
+    @UseGuards(JwtAuthGuard)
     findOne(@Param("id") id: string) {
         return this.contactsService.findOne(+id);
     }

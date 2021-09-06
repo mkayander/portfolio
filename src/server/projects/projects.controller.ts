@@ -27,6 +27,8 @@ import { editFileName } from "../utils/file-uploading.utils";
 import { JwtOptionalAuthGuard } from "../auth/jwt-optional-auth.guard";
 import { User } from "../users/user.decorator";
 import { ShowUserDto } from "../users/dto/show-user.dto";
+import { filterActiveRecords } from "../users/user.utils";
+import { sortItemsByIndex } from "../app/app.utils.";
 
 @Controller("projects")
 export class ProjectsController {
@@ -60,10 +62,8 @@ export class ProjectsController {
     @Get()
     @UseGuards(JwtOptionalAuthGuard)
     findAll(@User() user?: ShowUserDto) {
-        return this.projectsService
-            .findAll()
-            .then(projects => projects.sort((a, b) => Number(a.index) - Number(b.index)))
-            .then(projects => (user?.roles.includes(Role.Admin) ? projects : projects.filter(value => value.isActive)));
+        const data = this.projectsService.findAll();
+        return filterActiveRecords(user, sortItemsByIndex(data));
     }
 
     @Get(":id")
