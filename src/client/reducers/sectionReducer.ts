@@ -15,9 +15,9 @@ export type SectionsState = Record<keyof typeof landingNavigation, Section>;
 const initialState: SectionsState = landingNavigation;
 
 enum SectionActionType {
-    ADD,
-    REMOVE,
-    ACTIVATE,
+    ADD = "ADD",
+    REMOVE = "REMOVE",
+    ACTIVATE = "ACTIVATE",
 }
 
 type AddAction = {
@@ -69,7 +69,7 @@ const sectionReducer = (state: SectionsState = initialState, action: SectionRedu
 };
 
 /*
-    Actions
+    Dispatches
  */
 export const activateSection = (id: string): ActivateSectionAction => ({
     type: SectionActionType.ACTIVATE,

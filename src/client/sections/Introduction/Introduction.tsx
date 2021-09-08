@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 import BgImg from "./assets/Top_Bg_Image.png";
 import { ReactComponent as Shape1 } from "./assets/Shape_1.component.svg";
@@ -9,8 +9,8 @@ import { Button, ScrollButton } from "../../components";
 import { scrollToSection } from "../../utils/doScroll";
 import { Section, selectSections } from "../../reducers/sectionReducer";
 import { createSectionComponent } from "../../components/abstract";
-import { useSelector } from "react-redux";
-import { fetchCVUrl } from "../../api";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCvInfoAndDispatch, selectCvInfo } from "../../reducers/cvInfoReducer";
 
 type IntroductionProps = {
     nextSection?: Section;
@@ -19,13 +19,12 @@ type IntroductionProps = {
 const Introduction = createSectionComponent<IntroductionProps>(({ id, nextSection }, ref) => {
     const bgRef = useRef<HTMLDivElement>(null);
     const sections = useSelector(selectSections);
-    const [CVUrl, setCVUrl] = useState<string | null>();
+    const { url: CVUrl } = useSelector(selectCvInfo);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        fetchCVUrl()
-            .then(value => setCVUrl(value.data.relativeUrl))
-            .catch(() => {});
-    }, []);
+        fetchCvInfoAndDispatch(dispatch).then(r => console.log(r));
+    }, [dispatch]);
 
     return (
         <section ref={ref} className={styles.root}>
