@@ -10,7 +10,7 @@ import { scrollToSection } from "../../utils/doScroll";
 import { Section, selectSections } from "../../reducers/sectionReducer";
 import { createSectionComponent } from "../../components/abstract";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCvInfoAndDispatch, selectCvInfo } from "../../reducers/cvInfoReducer";
+import { fetchCvInfoAction, selectCvInfo } from "../../reducers/cvInfoReducer";
 
 type IntroductionProps = {
     nextSection?: Section;
@@ -23,7 +23,7 @@ const Introduction = createSectionComponent<IntroductionProps>(({ id, nextSectio
     const dispatch = useDispatch();
 
     useEffect(() => {
-        fetchCvInfoAndDispatch(dispatch).then(r => console.log(r));
+        dispatch(fetchCvInfoAction());
     }, [dispatch]);
 
     return (
@@ -42,7 +42,7 @@ const Introduction = createSectionComponent<IntroductionProps>(({ id, nextSectio
                         <Button
                             text={"Скачать Резюме"}
                             title={CVUrl ? "Скачать PDF" : "Резюме временно не готово, пожалуйста попробуйте позже!"}
-                            disabled={CVUrl === undefined}
+                            disabled={!Boolean(CVUrl)}
                             links={[{ url: CVUrl }]}
                             openNewTab={true}
                         />
