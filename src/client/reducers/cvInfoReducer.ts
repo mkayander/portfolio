@@ -1,5 +1,6 @@
-import { Dispatch } from "redux";
 import { fetchCVUrl } from "../api";
+import { ThunkAction } from "redux-thunk";
+import { RootState } from "../store";
 
 type CvInfoState = {
     url?: string;
@@ -23,7 +24,7 @@ type CvInfoReducerActions = SetUrlAction;
 const cvInfoReducer = (state: CvInfoState = initialState, action: CvInfoReducerActions) => {
     switch (action.type) {
         case CvInfoActionType.SET_URL:
-            return { url: action.payload, ...state };
+            return { ...state, url: action.payload };
         default:
             return state;
     }
@@ -32,15 +33,19 @@ const cvInfoReducer = (state: CvInfoState = initialState, action: CvInfoReducerA
 /*
     Dispatches
 */
+type CvInfoThunk<R = void> = ThunkAction<R, RootState, unknown, CvInfoReducerActions>;
+
 export const setUrlAction = (url: string) => ({
     type: CvInfoActionType.SET_URL,
     payload: url,
 });
 
-export const fetchCvInfoAndDispatch = async (dispatch: Dispatch<CvInfoReducerActions>) => {
-    const response = await fetchCVUrl();
-    console.log("Dispatching result - ", response.data);
-    dispatch(setUrlAction(response.data.relativeUrl));
+export const fetchCvInfoAction = (): CvInfoThunk => {
+    return async (dispatch, getState) => {
+        const response = await fetchCVUrl();
+        console.dir(getState());
+        dispatch(setUrlAction(response.data.relativeUrl));
+    };
 };
 
 /*
