@@ -15,7 +15,7 @@
         background: $accent_gradient;
         @include colored_shadow($color_accent);
 
-        &:hover:not(:disabled) {
+        &:hover:not(.disabled) {
             @include colored_shadow_intensive($color_accent);
         }
     }
@@ -43,7 +43,7 @@
         //mix-blend-mode: soft-light;
     }
 
-    &:disabled {
+    &.disabled {
         cursor: default;
 
         &:after {
@@ -62,7 +62,7 @@
         line-height: 36px;
     }
 
-    &:hover:not(:disabled) {
+    &:hover:not(.disabled) {
         cursor: pointer;
         transform: translateY(-2px);
 
