@@ -5,11 +5,10 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import Header from "./Header";
 import { Provider } from "react-redux";
-import createConfiguredStore from "../../store";
+import store from "../../store";
 
 describe("Header", () => {
     const ReduxProvider = ({ children, reduxStore }) => <Provider store={reduxStore}>{children}</Provider>;
-    const store = createConfiguredStore();
     const wrapper = ({ children }) => <ReduxProvider reduxStore={store}>{children}</ReduxProvider>;
 
     beforeAll(() => {
