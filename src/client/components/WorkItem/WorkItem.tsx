@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./WorkItem.module.scss";
 import classNames from "classnames";
-import { Button } from "../index";
+import { Button, Spinner } from "../index";
 import Image from "next/image";
 import DOMPurify from "isomorphic-dompurify";
 import { Project } from "../../api/models";
@@ -15,12 +15,15 @@ const WorkItem: React.FC<WorkItemProps> = ({
     item: { title, url, subtitle, year, description, imageUrl, githubUrls },
     reversed,
 }) => {
+    const [imageIsLoaded, setImageIsLoaded] = useState(false);
+
     return (
         <div
             className={classNames(styles.root, {
                 [styles.reversed]: reversed,
             })}>
             <div className={styles.imageContainer}>
+                {!imageIsLoaded && <Spinner />}
                 {imageUrl && (
                     <Image
                         className={styles.image}
@@ -30,6 +33,7 @@ const WorkItem: React.FC<WorkItemProps> = ({
                         objectFit="contain"
                         objectPosition="top"
                         layout="fill"
+                        onLoad={() => setImageIsLoaded(true)}
                     />
                 )}
             </div>

@@ -7,3 +7,4 @@ export { default as Twemoji } from "./Twemoji/Twemoji";
 export { default as Heading } from "./Heading/Heading";
 export { default as WorkItem } from "./WorkItem/WorkItem";
 export { default as Dropdown } from "./Dropdown/Dropdown";
+export { default as Spinner } from "./Spinner/Spinner";
